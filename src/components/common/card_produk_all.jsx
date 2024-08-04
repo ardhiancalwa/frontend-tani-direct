@@ -7,6 +7,7 @@ import bookmarkIconFilled from "../../assets/images/bookmark_fill2.svg"; // Add 
 
 const CardProductAll = ({ product }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => !prev);
@@ -17,8 +18,8 @@ const CardProductAll = ({ product }) => {
       <div className="p-[5px]">
         <img
           // src={product.image_produk}
-          src={imageDummy}
-          className=" lg:p-3 w-[145px] h-[117px] border border-gray border-opacity-50 rounded-[10px] lg:w-[295px] lg:h-[280px] "
+          src={`${imageUrl}${product.image_produk}`}
+          className=" lg:p-3 w-[145px] h-[117px] border border-gray border-opacity-50 rounded-[10px] lg:w-[295px] lg:h-[280px] object-cover"
           alt={product.nama_produk}
         />
       </div>

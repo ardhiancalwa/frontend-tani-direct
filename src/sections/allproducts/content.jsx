@@ -4,26 +4,22 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import SearchBar from "../../components/common/searchBar";
 import ArrowBack from "../../assets/images/arrow_back3.svg";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6); // Fixed items per page
+  const [productsPerPage] = useState(8); // Fixed items per page
 
   useEffect(() => {
     const tokenPembeli = cookies.get("token_pembeli");
     const tokenPetani = cookies.get("token_petani");
 
     const fetchData = (token) => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      axios
-        .get("http://localhost:4000/produk", config)
+      request
+        .get("/produk")
         .then((res) => {
           setProducts(res.data.data);
         })
@@ -74,7 +70,7 @@ const Products = () => {
       <div className="hidden md:flex justify-center md:pt-[80px] mt-4">
         <button
           className="bg-white hover:bg-black hover:text-white text-black font-semibold py-2 px-4 border border-gray border-opacity-50 rounded mx-1"
-          onClick={() => setCurrentPage(currentPage - 1)}
+        onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
           Previous

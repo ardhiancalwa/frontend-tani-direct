@@ -3,6 +3,7 @@ import Cookies from "universal-cookie";
 import TextfieldProfile from "../../components/common/textfieldProfile";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 
@@ -10,18 +11,15 @@ const ContentEditProfileToko = () => {
   const [updatedProfile, setUpdatedProfile] = useState({});
   const { enqueueSnackbar } = useSnackbar();
   const [errorMessage, setErrorMessage] = useState("");
+  const imageUrl = "https://github.com/ardhiancalwa/frontend-tani-direct.git";
 
   useEffect(() => {
     const userToken = cookies.get("token_petani");
     const fetchData = (token) => {
       const pembeliID = cookies.get("petaniID");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      axios
-        .get(`http://localhost:4000/petani/${pembeliID}`, config)
+
+      request
+        .get(`/petani/${pembeliID}`)
         .then((res) => {
           const data = res.data.data;
           console.log("Received data:", data);

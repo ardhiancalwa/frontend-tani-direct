@@ -10,6 +10,7 @@ import Textfield from "../../components/common/textfield";
 import Divider from "@mui/material/Divider";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import request from "../../utils/config";
 const cookies = new Cookies();
 
 const PetaniLoginPage = () => {
@@ -34,8 +35,8 @@ const PetaniLoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios
-      .post(`http://localhost:4000/petani/login`, {
+    request
+      .post(`/petani/login`, {
         email_petani: email,
         password_petani: password,
       })

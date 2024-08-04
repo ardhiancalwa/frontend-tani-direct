@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardProduct from "../../components/common/card_produk";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 
@@ -9,13 +10,8 @@ const OurProduct = () => {
   const [products, setProducts] = useState([]);
 
   const fetchData = (token) => {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    axios
-      .get("http://localhost:4000/produk", config)
+    request
+      .get("/produk")
       .then((response) => {
         setProducts(response.data.data);
       })

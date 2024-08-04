@@ -5,6 +5,7 @@ import AddImagesIcon from "../../assets/images/add_image2.png";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useSnackbar } from "notistack";
+// import request from "../../utils/config";
 const cookies = new Cookies();
 
 const ContentUploadProduct = () => {
@@ -39,14 +40,13 @@ const ContentUploadProduct = () => {
     const token = cookies.get("token_petani");
 
     axios
-      .post(`${process.env.REACT_APP_BASE_URL}/produk`, formData, {
+      .post(`http://localhost:4000/produk`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        console.log(res.data.data);
         enqueueSnackbar("Product uploaded successfully", {
           variant: "success",
         });
@@ -54,7 +54,6 @@ const ContentUploadProduct = () => {
       })
       .catch((error) => {
         console.log(error);
-        // window.alert = error;
         alert("upload failed");
         enqueueSnackbar("Error uploading product", { variant: "error" });
       });
@@ -163,7 +162,7 @@ const ContentUploadProduct = () => {
         height={46}
         readOnly={false}
       />
-      <div className="flex flex-row justify-start pt-[20px] lg:pt-0">
+      <div className="flex flex-row justify-start pt-[20px] lg:py-10">
         <button className="border-2 border-primary rounded-md pl-[26px] pr-[26px] lg:pl-11 lg:pr-11 pt-2 pb-2 font-inter font-medium text-primary text-[16px] lg:text-[28px] ">
           Cancel
         </button>

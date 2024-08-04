@@ -19,6 +19,7 @@ const ContentProfile = (profileData) => {
   const [showModal, setShowModal] = useState(false);
   const cloudinaryBaseURL = process.env.REACT_APP_IMAGE_URL;
   const baseURL = process.env.REACT_APP_BASE_URL;
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const fileInputRef = useRef(null);
   const openModal = () => setShowModal(true);
@@ -91,8 +92,8 @@ const ContentProfile = (profileData) => {
           <div className="flex flex-col items-center">
             <div className="flex flex-col w-[173px] md:w-[223px] lg:w-96 items-center border border-black rounded-xl p-[15px]">
               <img
-                src={`https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/${profile.image_pembeli}`}
-                className="w-[139px] h-[121px] md:w-[189px] md:h-[155px] lg:w-80 lg:h-72"
+                src={`${imageUrl}${profile.image_pembeli}`}
+                className="w-[139px] h-[121px] md:w-[189px] md:h-[155px] lg:w-80 lg:h-72 object-contain"
                 alt="profile_photo"
               />
               <div style={{ height: 25 }}></div>
