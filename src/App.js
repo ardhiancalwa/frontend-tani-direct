@@ -40,6 +40,7 @@ import StepTwo from "./pages/biodata/step2";
 import StepThree from "./pages/biodata/step3";
 import ProductIn from "./pages/product_information";
 import MyProduct from "./pages/my_product";
+import TestPage from "./pages/test";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
           <Route path="/stepone" element={<StepOne />} />
           <Route path="/steptwo" element={<StepTwo />} />
           <Route path="/stepthree" element={<StepThree />} />
+          <Route path="/test" element={<TestPage />} />
+
 
           {/* Protected Routes for Pembeli */}
           <Route
