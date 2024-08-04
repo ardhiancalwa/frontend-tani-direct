@@ -66,8 +66,8 @@ const PembeliLoginPage = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/pembeli/register", {
+    request
+      .post("/pembeli/register", {
         email_pembeli: email,
         password_pembeli: password,
         nama_pembeli: nama,
