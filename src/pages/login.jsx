@@ -44,8 +44,9 @@ const PembeliLoginPage = () => {
         email_pembeli: email,
         password_pembeli: password,
       })
-      .then((res) => {
-        const { token, pembeliID } = res.data.data;
+      .then(async (res) => {
+        const { token, pembeliID } = await res.data.data;
+        console.log(res.data.data);
         cookies.set("token_pembeli", token, { path: "/" });
         cookies.set("pembeliID", pembeliID, { path: "/" });
         setSuccess("Login successful! Redirecting to home...");
