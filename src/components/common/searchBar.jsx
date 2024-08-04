@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SearchIcon from "../../assets/images/search.svg";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 

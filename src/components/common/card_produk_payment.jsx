@@ -4,14 +4,15 @@ import TrashIcon from "../../assets/images/sampah.svg"; // Update with your actu
 
 const ProductCardPayment = ({ product, quantity, onRemove }) => {
   // Determine the height based on the quantity of products
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   return (
     <div className={`lg:h-[100px] mb-10`}>
       <div className="flex flex-row justify-between md:border-none border border-gray lg:p-0 rounded-[5px]">
         <div className="flex flex-row">
           <img
-            src={product.image_produk}
-            className="lg:border border-gray border-opacity-20 rounded-xl w-[85px] h-[62px] md:w-[170px] md:h-[120px]"
+            src={`${imageUrl}${product.image_produk}`}
+            className="lg:border border-gray border-opacity-20 rounded-xl w-[85px] h-[62px] md:w-[170px] md:h-[120px] object-cover"
             alt="carrot"
           />
           <div style={{ width: 15 }}></div>

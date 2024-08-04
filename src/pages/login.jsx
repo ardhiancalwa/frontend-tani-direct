@@ -33,14 +33,14 @@ const PembeliLoginPage = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    request
+    await request
       // .post(`https://api-tani-direct.vercel.app/pembeli/login`, {
       //   email_pembeli: email,
       //   password_pembeli: password,
       // })
-      .post(`/pembeli/login/`, {
+      .post(`/pembeli/login`, {
         email_pembeli: email,
         password_pembeli: password,
       })

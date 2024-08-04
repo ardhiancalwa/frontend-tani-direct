@@ -10,6 +10,7 @@ const CardProduct = ({ product }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [loading, setLoading] = useState(true);
   const cloudinaryBaseURL = process.env.REACT_APP_IMAGE_URL;
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const handleBookmarkClick = () => {
     const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
@@ -73,10 +74,10 @@ const CardProduct = ({ product }) => {
       >
         <img
           // src={`/static/${product.image_produk}`}
-          src={`https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/${product.image_produk}`}
+          src={`${imageUrl}${product.image_produk}`}
           alt={product.nama_produk}
           // onError={handleImageError}
-          className="w-[100px] h-[84px] md:w-[158px] md:h-[118px] lg:w-[350px] lg:h-[305px]"
+          className="w-[100px] h-[84px] md:w-[158px] md:h-[118px] lg:w-[350px] lg:h-[305px] object-cover"
         />
       </button>
       <div className="py-[5px] px-[5px] md:px-[15px] md:py-[10px] lg:px-6">

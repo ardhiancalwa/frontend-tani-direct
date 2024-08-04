@@ -4,12 +4,13 @@ import ImageDummy from "../../assets/images/sayur.jpg";
 import BookmarkFill from "../../assets/images/bookmark_fill.svg";
 
 const CardWishList = ({ product }) => {
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/"
   return (
     <div className="lg:py-[25px] md:py-4 py-[10px]">
       <div className="min-w-full w-[350px] h-[85px] md:w-[604px] md:h-[141px] lg  :w-[1240px] lg:h-[260px] flex flex-row md:p-2 row-auto border border-gray border-opacity-50 rounded-xl overflow-hidden">
         <div className="flex items-center px-[15px] py-[10px]">
           <img
-            src={product.image_produk}
+            src={`${imageUrl}${product.image_produk}`}
             alt="sayur"
             className="lg:w-[350px] lg:h-[212px] md:w-[170px] md:h-[121px] w-[85px] h-[62px] object-fill"
           />

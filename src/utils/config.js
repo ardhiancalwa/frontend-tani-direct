@@ -9,7 +9,7 @@ const request = axios.create({
   // baseURL: `http://localhost:4000`,
   timeout: 10000,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/json, multipart/form-data",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Methods": "*",

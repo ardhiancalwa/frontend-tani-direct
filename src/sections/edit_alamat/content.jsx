@@ -4,6 +4,7 @@ import DropdownValue from "../../components/common/dropdown_value";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 
@@ -75,15 +76,8 @@ const ContentEditAlamat = () => {
 
     const fetchData = async () => {
       try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userToken}`,
-          },
-        };
-
-        const res = await axios.get(
-          `http://localhost:4000/pembeli/${pembeliID}`,
-          config
+        const res = await request.get(
+          `/pembeli/${pembeliID}`
         );
         console.log("Received data:", res.data.data);
         setUpdatedAlamat(res.data.data);

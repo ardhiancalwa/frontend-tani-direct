@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderMarketPrice from "../../sections/market_price/header";
+// import HeaderMarketPrice from "../../sections/market_price/header";
 import ContentArticle from "../../sections/market_price/content_article";
 import NavbarPetani from "../../components/specific/navbar_seller";
 import Header from "../../components/common/header";

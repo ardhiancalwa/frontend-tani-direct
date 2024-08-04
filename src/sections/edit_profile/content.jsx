@@ -4,6 +4,7 @@ import DropdownValue from "../../components/common/dropdown_value";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import request from "../../utils/config";
 
 const cookies = new Cookies();
 
@@ -37,13 +38,8 @@ const ContentEditProfile = () => {
     const userToken = cookies.get("token_pembeli");
     const fetchData = (token) => {
       const pembeliID = cookies.get("pembeliID");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      axios
-        .get(`http://localhost:4000/pembeli/${pembeliID}`, config)
+      request
+        .get(`/pembeli/${pembeliID}`)
         .then((res) => {
           const data = res.data.data;
           console.log("Received data:", data);

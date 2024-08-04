@@ -6,6 +6,7 @@ import ButtonWeightProduct from "../../components/common/button_weight_product";
 import PlusMinusProduct from "../../components/common/button_plusminus_product";
 import StatusPrice from "../../components/common/status_price";
 import DetailImage from "../../components/common/detail_image";
+import request from "../../utils/config";
 
 import CartIcon from "../../assets/images/keranjang.svg";
 import axios from "axios";
@@ -20,18 +21,13 @@ const ContentDetailProduct = () => {
   const [calculatedPrice, setCalculatedPrice] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [productDetails, setProductDetails] = useState({});
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   useEffect(() => {
     const fetchData = async (token) => {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
       try {
-        const response = await axios.get(
-          `http://localhost:4000/produk/${produkID}`,
-          config
+        const response = await request.get(
+          `/produk/${produkID}`
         );
         setProduct(response.data.data);
         console.log(response.data.data);
@@ -132,8 +128,8 @@ const ContentDetailProduct = () => {
             alt="productimage"
           /> */}
           <img
-            src="http://localhost:4000/uploads/image_produk-1722679327131-59551793.jpeg"
-            class="border border-gray border-opacity-50 md:rounded-lg lg:rounded-2xl w-[350px] h-[222px] lg:w-[700px] lg:h-[434px] "
+            src={`${imageUrl}${product.image_produk}`}
+            class="border border-gray border-opacity-50 md:rounded-lg lg:rounded-2xl w-[350px] h-[222px] lg:w-[700px] lg:h-[434px] object-cover"
             alt="productimage"
           ></img>
           <DetailImage />

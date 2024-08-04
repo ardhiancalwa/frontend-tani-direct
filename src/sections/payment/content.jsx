@@ -8,6 +8,7 @@ import DropdownIcon from "../../assets/images/dropdown.svg";
 import DropdownUpIcon from "../../assets/images/dropdown_up2.svg";
 import ProductCardPayment from "../../components/common/card_produk_payment";
 import axios from "axios";
+import request from "../../utils/config";
 
 const options = [
   {
@@ -36,32 +37,6 @@ const options = [
   },
 ];
 
-// const products = [
-//   // Example data
-//   {
-//     name: "Carrot",
-//     description: "Lorem ipsum dolor sit amet blablalalblballllaf",
-//     weight: "10 kg",
-//     price: "Rp 100.000",
-//     originalPrice: "Rp 150.000",
-//   },
-//   {
-//     name: "Carrot",
-//     description: "Lorem ipsum dolor sit amet blablalalblballllaf",
-//     weight: "10 kg",
-//     price: "Rp 100.000",
-//     originalPrice: "Rp 150.000",
-//   },
-//   {
-//     name: "Carrot",
-//     description: "Lorem ipsum dolor sit amet blablalalblballllaf",
-//     weight: "10 kg",
-//     price: "Rp 100.000",
-//     originalPrice: "Rp 150.000",
-//   },
-//   // Add more products if needed
-// ];
-
 const ContentPayment = ({ setShippingCost }) => {
   const cookies = new Cookies();
   const [pembeli, setPembeli] = useState({});
@@ -70,6 +45,7 @@ const ContentPayment = ({ setShippingCost }) => {
   const [productItems, setProductItems] = useState([]);
   const containerHeight = productItems.length > 1 ? "h-[300px]" : "h-[120px]";
   const [checkedProducts, setCheckedProducts] = useState([]);
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   useEffect(() => {
     const storedProducts =
@@ -85,13 +61,8 @@ const ContentPayment = ({ setShippingCost }) => {
 
   const fetchData = (token) => {
     const pembeliID = cookies.get("pembeliID");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    axios
-      .get(`http://localhost:4000/pembeli/${pembeliID}`, config)
+    request
+      .get(`/pembeli/${pembeliID}`)
       .then((res) => {
         setPembeli(res.data.data);
         console.log(res.data.data);

@@ -8,6 +8,7 @@ const ContainerCart = ({ item, onItemCheck, onQuantityChange }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [quantity, setQuantity] = useState(item.jumlah);
   const [calculatedPrice, setCalculatedPrice] = useState(item.calculatedPrice);
+  const imageURl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const handleClick = () => {
     // setIsChecked(!isChecked);
@@ -47,9 +48,9 @@ const ContainerCart = ({ item, onItemCheck, onQuantityChange }) => {
             <div className="flex flex-row">
               <div className="flex items-center">
                 <img
-                  // src={item.image_produk}
-                  src={CartImage}
-                  className="lg:h-[180px] lg:w-[200px]  h-[66px] w-[71px] md:w-[122px] md:h-[79px] "
+                  src={`${imageURl}${item.image_produk}`}
+                  // src={CartImage}
+                  className="lg:h-[180px] lg:w-[200px]  h-[66px] w-[71px] md:w-[122px] md:h-[79px] object-contain"
                   alt="carrot"
                 />
               </div>
