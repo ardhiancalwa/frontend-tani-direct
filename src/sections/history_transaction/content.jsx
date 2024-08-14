@@ -1,6 +1,13 @@
 import React from "react";
 
-const ContentHistoryTransaction = () => {
+const ContentHistoryTransaction = ({ transaksi }) => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Menambahkan 1 karena getMonth() mengembalikan bulan dari 0-11
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
   return (
     <div>
       <div className="overflow-x-auto py-4 md:py-10">
@@ -19,14 +26,18 @@ const ContentHistoryTransaction = () => {
             </tr>
           </thead>
           <tbody className="font-inter font-medium text-black text-[10px] md:text-[14px] lg:text-[20px] ">
-            {[...Array(9)].map((_, index) => (
-              <tr key={index} className="border-b">
+            {transaksi.map((transaksi) => (
+              <tr className="border-b" key={transaksi.no_transaksi}>
                 <td className="px-3 md:px-6 py-6 flex items-center">
-                  Difa Rindang Utari
+                  {transaksi.nama_pembeli}
                 </td>
-                <td className="px-3 md:px-6 py-6">Transfer Bank</td>
-                <td className="px-3 md:px-6 py-6">06 July 2024</td>
-                <td className="px-3 md:px-6 py-6">Rp 100.000</td>
+                <td className="px-3 md:px-6 py-6">
+                  {transaksi.metode_pembayaran}
+                </td>
+                <td className="px-3 md:px-6 py-6">
+                  {formatDate(transaksi.tanggal_transaksi)}
+                </td>
+                <td className="px-3 md:px-6 py-6">Rp {(transaksi.total_harga).toLocaleString('id-ID')}</td>
               </tr>
             ))}
           </tbody>

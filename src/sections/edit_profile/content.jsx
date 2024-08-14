@@ -4,7 +4,9 @@ import DropdownValue from "../../components/common/dropdown_value";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import request from "../../utils/config";
+import request from "../../utils/request";
+import toast from "react-hot-toast";
+import LoadingScreen from "../../components/common/loading";
 
 const cookies = new Cookies();
 
@@ -31,13 +33,15 @@ const years = Array.from({ length: 100 }, (_, i) => ({
 const ContentEditProfile = () => {
   // const [profile, setProfile] = useState({});
   const [updatedProfile, setUpdatedProfile] = useState({});
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const userToken = cookies.get("token_pembeli");
-    const fetchData = (token) => {
+    const fetchData = () => {
       const pembeliID = cookies.get("pembeliID");
+      setLoading(true);
       request
         .get(`/pembeli/${pembeliID}`)
         .then((res) => {
@@ -53,12 +57,14 @@ const ContentEditProfile = () => {
               year: date.getUTCFullYear(),
             },
           });
+          setLoading(false);
         })
         .catch((error) => {
           console.log("Error fetching data:", error);
           setErrorMessage(
             error.response ? error.response.data.message : error.message
           );
+          setLoading(false);
         });
     };
 
@@ -69,10 +75,8 @@ const ContentEditProfile = () => {
     }
   }, []);
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    const token = cookies.get("token_pembeli");
-    const pembeliID = cookies.get("pembeliID");
 
     if (!updatedProfile) {
       console.error("Updated profile is undefined");
@@ -88,38 +92,30 @@ const ContentEditProfile = () => {
       day
     ).padStart(2, "0")}T00:00:00.000Z`;
 
-    const dataToUpdate = {
-      ...updatedProfile,
-      tanggal_lahir: formattedDate,
-    };
+    // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
+    const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedProfile;
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    axios
-      .put(`http://localhost:4000/pembeli/${pembeliID}`, dataToUpdate, config)
+    // Add the formatted date to the dataToUpdate
+    dataToUpdate.tanggal_lahir = formattedDate;
+    await axios
+      .put(
+        `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
+        // `http://localhost:4000/pembeli/${pembeliID}`,
+        dataToUpdate
+      )
       .then((response) => {
         const dataUser = response.data.data;
-        console.log("Updated profile response:", dataUser);
-        console.log(response.data.data);
-        setUpdatedProfile(response.data);
-        enqueueSnackbar("Profile updated successfully", { variant: "success" });
-        setErrorMessage("Successfully updated");
+        // console.log("Updated profile response:", dataUser);
+        // console.log(response);
+        setUpdatedProfile(dataUser);
+        // setErrorMessage("Successfully updated");
+        toast.success("Successfully updated");
       })
       .catch((error) => {
-        enqueueSnackbar("Error updating profile", { variant: "error" });
-        if (error.message === "Network Error") {
-          setErrorMessage(
-            "Network error. Please check your internet connection."
-          );
-        } else {
-          setErrorMessage(
-            error.response ? error.response.data.message : error.message
-          );
-        }
+        setLoading(false);
+        toast.error(
+          error.response ? error.response.data.message : error.message
+        );
         console.log(error);
       });
   };
@@ -142,118 +138,123 @@ const ContentEditProfile = () => {
     }));
   };
 
-  if (!updatedProfile) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
-      <div className="h-[20px] lg:h-10"></div>
-      <TextfieldProfile
-        title={"Nama Lengkap"}
-        placeholder={updatedProfile.nama_pembeli || ""}
-        type={"text"}
-        readOnly={false}
-        name={"nama_pembeli"}
-        value={updatedProfile?.nama_pembeli || ""}
-        onChange={handleInputChange}
-        className={
-          "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[350px] md:w-[700px] lg:w-[1400px]"
-        }
-      />
-      <TextfieldProfile
-        title={"Email"}
-        placeholder={updatedProfile.email_pembeli || ""}
-        type={"email"}
-        readOnly={false}
-        name={"email_pembeli"}
-        value={updatedProfile?.email_pembeli || ""}
-        onChange={handleInputChange}
-        className={
-          "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[350px] md:w-[700px] lg:w-[1400px]"
-        }
-      />
-      <TextfieldProfile
-        title={"Contact Number"}
-        placeholder={updatedProfile.kontak_pembeli || ""}
-        type={"text"}
-        readOnly={false}
-        name={"kontak_pembeli"}
-        value={updatedProfile?.kontak_pembeli || ""}
-        onChange={handleInputChange}
-        className={
-          "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[350px] md:w-[700px] lg:w-[1400px]"
-        }
-      />
-      <div className="flex flex-row md:w-[700px] lg:w-[1525px] justify-between">
-        <DropdownValue
-          title={"Tanggal lahir"}
-          placeholder={updatedProfile.tanggal_lahir?.day || ""}
-          name="tanggal_lahir.day"
-          options={Array.from({ length: 31 }, (_, i) => ({
-            label: i + 1,
-            value: i + 1,
-          }))}
-          value={updatedProfile.tanggal_lahir?.day || ""}
-          onChange={(value) => handleDateChange("day", value)}
-          className={"relative w-[104px] md:w-[184px] lg:w-[400px] "}
-        />
-        <DropdownValue
-          title={"Bulan lahir"}
-          placeholder={updatedProfile.tanggal_lahir?.month || ""}
-          name="tanggal_lahir.month"
-          options={months}
-          value={updatedProfile.tanggal_lahir?.month || ""}
-          onChange={(value) => handleDateChange("month", value)}
-          className={"relative w-[104px] md:w-[184px] lg:w-[400px] "}
-          paddingLeft={"md:pl-24 lg:pl-0"}
-        />
-        <DropdownValue
-          title={"Tahun lahir"}
-          placeholder={updatedProfile.tanggal_lahir?.year || ""}
-          name="tanggal_lahir.year"
-          options={years}
-          value={updatedProfile.tanggal_lahir?.year || ""}
-          onChange={(value) => handleDateChange("year", value)}
-          className={"relative w-[104px] md:w-[184px] lg:w-[400px] pb-[10px]"}
-          paddingLeft={"md:pl-24 lg:pl-0"}
-        />
-      </div>
-      <div className="lg:h-[20px]"></div>
-      <TextfieldProfile
-        title={"Password"}
-        placeholder={"*************"}
-        type={"password"}
-        readOnly={false}
-        name="password_pembeli"
-        value={updatedProfile.password_pembeli || ""}
-        onChange={handleInputChange}
-        className={
-          "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[350px] md:w-[700px] lg:w-[1400px]"
-        }
-      />
-      <div className="h-[10px] lg:h-[26px]"></div>
-      <div className="flex flex-row justify-start">
-        <button
-          className="flex items-center justify-center border-2 border-primary rounded-md w-[110px] h-[40px] md:w-[142px] md:h-[45px] lg:w-[180px] lg:h-[55px] md:px-[33px] lg:px-11 py-2 font-inter font-medium text-primary text-[16px] md:text-[20px] lg:text-[28px] "
-          onClick={() => window.history.back()}
-        >
-          Cancel
-        </button>
-        <div className="w-[24px] lg:w-10"></div>
-        <button
-          className="flex items-center justify-center bg-primary rounded-md w-[110px] h-[40px] md:w-[142px] md:h-[45px] lg:w-[180px] lg:h-[55px] md:px-[33px] lg:px-11 py-2 font-inter font-medium text-white text-[16px] md:text-[20px] lg:text-[28px]"
-          onClick={handleUpdate}
-        >
-          Save
-        </button>
-        {errorMessage && (
-          <div className="text-red-600 mt-4 text-[16px] md:text-[20px] lg:text-[28px]">
-            {errorMessage}
+      {loading ? (
+        <div>
+          <LoadingScreen />
+        </div>
+      ) : (
+        <div>
+          <div className="h-[20px] lg:h-10"></div>
+          <TextfieldProfile
+            title={"Nama Lengkap"}
+            placeholder={updatedProfile.nama_pembeli || ""}
+            type={"text"}
+            readOnly={false}
+            name={"nama_pembeli"}
+            value={updatedProfile?.nama_pembeli || ""}
+            onChange={handleInputChange}
+            className={
+              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+            }
+          />
+          <TextfieldProfile
+            title={"Email"}
+            placeholder={updatedProfile.email_pembeli || ""}
+            type={"email"}
+            readOnly={false}
+            name={"email_pembeli"}
+            value={updatedProfile?.email_pembeli || ""}
+            onChange={handleInputChange}
+            className={
+              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+            }
+          />
+          <TextfieldProfile
+            title={"Contact Number"}
+            placeholder={updatedProfile.kontak_pembeli || ""}
+            type={"text"}
+            readOnly={false}
+            name={"kontak_pembeli"}
+            value={updatedProfile?.kontak_pembeli || ""}
+            onChange={handleInputChange}
+            className={
+              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+            }
+          />
+          <div className="flex flex-row md:w-[620px] lg:w-[750px] 2xl:w-[1500px] justify-between">
+            <DropdownValue
+              title={"Tanggal lahir"}
+              placeholder={updatedProfile.tanggal_lahir?.day || ""}
+              name="tanggal_lahir.day"
+              options={Array.from({ length: 31 }, (_, i) => ({
+                label: i + 1,
+                value: i + 1,
+              }))}
+              value={updatedProfile.tanggal_lahir?.day || ""}
+              onChange={(value) => handleDateChange("day", value)}
+              className={
+                "relative w-[104px] md:w-[130px] lg:w-[50px] 2xl:w-[700px] "
+              }
+            />
+            <DropdownValue
+              title={"Bulan lahir"}
+              placeholder={updatedProfile.tanggal_lahir?.month || ""}
+              name="tanggal_lahir.month"
+              options={months}
+              value={updatedProfile.tanggal_lahir?.month || ""}
+              onChange={(value) => handleDateChange("month", value)}
+              className={
+                "relative w-[104px] md:w-[130px] lg:w-[50px] 2xl:w-[700px] pl-"
+              }
+              paddingLeft={"md:pl-28 lg:pl-[82px] 2xl:pl-0"}
+            />
+            <DropdownValue
+              title={"Tahun lahir"}
+              placeholder={updatedProfile.tanggal_lahir?.year || ""}
+              name="tanggal_lahir.year"
+              options={years}
+              value={updatedProfile.tanggal_lahir?.year || ""}
+              onChange={(value) => handleDateChange("year", value)}
+              className={
+                "relative w-[104px] md:w-[135px] lg:w-[30px] 2xl:w-[700px] pb-[10px]"
+              }
+              paddingLeft={"md:pl-28 lg:pl-26 2xl:pl-0"}
+            />
           </div>
-        )}
-      </div>
-      <div className="h-[174px] md:h-[80px] lg:h-0 "></div>
+          <div className="lg:h-[20px]"></div>
+          <TextfieldProfile
+            title={"Password"}
+            placeholder={"*************"}
+            type={"password"}
+            readOnly={false}
+            name="password_pembeli"
+            value={updatedProfile.password_pembeli || ""}
+            onChange={handleInputChange}
+            className={
+              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+            }
+          />
+          <div className="h-[10px] lg:h-[0px]"></div>
+          <div className="flex flex-row justify-start lg:py-10">
+            <button
+              className="flex items-center justify-center border-2 border-primary rounded-md w-[110px] h-[40px] md:w-[142px] md:h-[45px] lg:w-[180px] lg:h-[55px] md:px-[33px] lg:px-11 py-2 font-inter font-medium text-primary text-[16px] md:text-[20px] lg:text-[28px] "
+              onClick={() => window.history.back()}
+            >
+              Cancel
+            </button>
+            <div className="w-[24px] lg:w-10"></div>
+            <button
+              className="flex items-center justify-center bg-primary rounded-md w-[110px] h-[40px] md:w-[142px] md:h-[45px] lg:w-[180px] lg:h-[55px] md:px-[33px] lg:px-11 py-2 font-inter font-medium text-white text-[16px] md:text-[20px] lg:text-[28px]"
+              onClick={handleUpdate}
+            >
+              Save
+            </button>
+          </div>
+          <div className="h-[174px] md:h-[80px] lg:h-0 "></div>
+        </div>
+      )}
     </div>
   );
 };

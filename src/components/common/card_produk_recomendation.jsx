@@ -1,39 +1,47 @@
 import React from "react";
+
 import imageDummy from "../../assets/images/sayur.jpg";
 
-const CardProductRecomendations = ({ title, isActive }) => {
-  const cardClass = isActive
-    ? "w-[100px] h-[85px] md:w-[151px] md:h-[122px] lg:w-[300px] lg:h-[245px] scale-100 transition-transform duration-300 ease-in-out"
-    : "w-[84px] h-[67px] md:w-[130px] md:h-[100px] lg:w-[226px] lg:h-[200px] scale-75 transition-transform duration-300 ease-in-out";
-
-  const borderClass = isActive
-    ? "h-[190px] lg:w-[350px] lg:h-[474px]"
-    : "h-[165px] w-[95px] lg:w-[276px] lg:h-[397px]";
+const CardProductRecomendations = ({ title, isActive, cardRef }) => {
+  const cardStyle = isActive
+    ? {
+        transform: "scale(1)",
+        zIndex: 30,
+        transition: "transform 0.35s ease-in-out",
+        filter: "drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2))",
+      }
+    : {
+        transform: "scale(0.8)",
+        zIndex: 1,
+        transition: "transform 0.35s ease-in-out",
+      };
 
   return (
-    <div className="px-[5px] md:px-[14px] lg:px-10">
-      <div
-        className={`w-[120px] md:w-[181px] lg:w-[300px] ${borderClass} bg-white border border-gray border-opacity-20 rounded-md lg:rounded-xl`}
-      >
+    <div
+      className="lg:px-3 md:px-1 w-[95px] h-[156px] md:w-[180px] md:h-[219px] lg:w-[270px] 2xl:w-[500px] 2xl:h-[600px] "
+      style={cardStyle}
+      ref={cardRef}
+    >
+      <div className="lg:max-w-sm 2xl:max-w-full w-auto bg-white border border-gray border-opacity-30 rounded-md p-1  md:rounded-xl overflow-hidden  ">
         <div className="flex items-center justify-center">
           <img
             src={imageDummy}
-            className={`p-1 md:p-[15px] lg:p-6 ${cardClass}`}
+            className="lg:p-6 xl:w-[400px] xl:h-[400px] md:p-0 md:object-contain "
             alt="sayur"
           />
         </div>
-        <div className="flex flex-col p-1 md:p-[15px] lg:p-[20px]">
-          <div className="font-bold w-[85px] h-[20px] md:w-[151px] md:h-[24px] lg:w-[300px] lg:h-[46px]  text-black font-inter text-start text-[7px] md:text-[10px] lg:text-[24px]">
+        <div className="flex flex-col lg:p-6 md:p-3 ">
+          <div className="font-bold text-black font-inter text-start text-[7px] md:text-[12px] lg:text-[20px] xl:text-[30px]">
             {title}
           </div>
-          <div className="py-[5px] lg:py-[7px]">
-            <div className="flex items-center justify-center bg-greenLight rounded-sm lg:rounded-md w-[36px] h-[14px] md:w-[40px] md:h-[15px] lg:w-[58px] lg:h-[26px]">
-              <div className="font-inter font-normal text-primary text-[6px] md:text-[8px] lg:text-[12px]">
-                Quality
-              </div>
+          <div style={{ height: 5 }}></div>
+          <div className="flex items-center  justify-center bg-greenLight rounded-md md:w-[58px] md:h-[26px] w-[40px] h-[16px] ">
+            <div className="font-inter font-normal text-primary  md:text-[16px] text-[8px] ">
+              Quality
             </div>
           </div>
-          <div className="w-[85px] h-[31px] md:w-[130px] md:h-[42px] lg:w-[226px] lg:h-[64px]  text-start font-inter font-normal text-[6px] md:text-[8px] lg:text-[14px]">
+          <div style={{ height: 7 }}></div>
+          <div className="text-start font-inter font-normal lg:text-[14px] text-[5px] xl:text-[16px]  md:text-[11px] ">
             Produk (x) ini memiliki keunggulan dalam (x) menurut (x) pengguna
             dan telah terjual (x) dalam kurung waktu x minggu
           </div>

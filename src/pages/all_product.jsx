@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarPembeli from "../components/specific/navbar";
+import Navbar from "../components/specific/navbar";
 
 import HeaderAllProducts from "../sections/allproducts/header";
 import Products from "../sections/allproducts/content";
@@ -14,8 +14,8 @@ import Logo from "../assets/images/logo.png";
 
 const AllProducts = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-screen-md lg:max-w-full px-5 md:px-[10px] lg:px-[240px]">
-      <NavbarPembeli />
+    <div className="max-w-screen-sm md:max-w-full px-[25px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px]">
+      <Navbar />
       {/* <HeaderAllProducts /> */}
       <Products />
       <div className="h-[80px] md:h-[0px] lg:h-0"></div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BlogArticle from "../../components/common/blog_article";
 import Skeleton from "../../components/common/skeleton";
+import LoadingScreen from "../../components/common/loading";
 
 const ContentArticle = () => {
   const [loading, setLoading] = useState(true);
@@ -43,24 +44,20 @@ const ContentArticle = () => {
 
   return (
     <div>
-      {loading
-        ? Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} className="mt-10">
-              <Skeleton className="h-6 w-3/4 mb-2" />
-              <Skeleton className="h-4 w-full mb-2" />
-              <Skeleton className="h-4 w-5/6 mb-2" />
-              <Skeleton className="h-4 w-4/6 mb-4" />
-              <Skeleton className="h-4 w-2/4" />
-            </div>
-          ))
-        : articles.map((article, index) => (
-            <BlogArticle
-              key={index}
-              title={article.title}
-              text={article.text}
-              time={article.time}
-            />
-          ))}
+      {loading ? (
+        <div>
+          <LoadingScreen />
+        </div>
+      ) : (
+        articles.map((article, index) => (
+          <BlogArticle
+            key={index}
+            title={article.title}
+            text={article.text}
+            time={article.time}
+          />
+        ))
+      )}
     </div>
   );
 };

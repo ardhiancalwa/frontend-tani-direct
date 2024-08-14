@@ -5,6 +5,7 @@ import AddImagesIcon from "../../assets/images/add_image2.png";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { useSnackbar } from "notistack";
+import toast from "react-hot-toast";
 // import request from "../../utils/config";
 const cookies = new Cookies();
 
@@ -23,7 +24,7 @@ const ContentUploadProduct = () => {
 
   const handleUploadProduct = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append("nama_produk", namaProduk);
     formData.append("deskripsi_produk", deskripsiProduk);
@@ -32,31 +33,44 @@ const ContentUploadProduct = () => {
     if (selectedFile) {
       formData.append("image_produk", selectedFile);
     }
-
+  
     // Retrieve petaniID from cookies
     const petaniID = cookies.get("petaniID");
     formData.append("petaniID", petaniID);
-
+  
     const token = cookies.get("token_petani");
-
-    axios
-      .post(`http://localhost:4000/produk`, formData, {
+  
+    const uploadPromise = axios.post(
+      `https://backend-tanidirect-production.up.railway.app/produk`,
+      formData,
+      {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
-      })
-      .then((res) => {
-        enqueueSnackbar("Product uploaded successfully", {
-          variant: "success",
-        });
-        window.location.href = "/profileseller";
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("upload failed");
-        enqueueSnackbar("Error uploading product", { variant: "error" });
-      });
+      }
+    );
+  
+    toast.promise(
+      uploadPromise,
+      {
+        loading: "Uploading product...",
+        success: "Product uploaded successfully!",
+        error: "Failed to upload product.",
+      },
+      {
+        success: {
+          duration: 4000,
+        },
+      }
+    );
+  
+    try {
+      const res = await uploadPromise;
+      window.location.href = "/menupesanan";
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleFileChange = (event) => {
@@ -70,12 +84,12 @@ const ContentUploadProduct = () => {
     <div>
       <div className="py-3">
         <div className="flex flex-col items-start">
-          <div className="font-inter font-semibold text-gray text-[16px] md:text-[20px]">
+          <div className="font-inter font-semibold text-gray text-[16px] lg:text-[20px] 2xl:text-[24px]">
             Product Name
           </div>
           <div style={{ height: 7 }}></div>
-          <form className="flex flex-row items-center justify-start w-[350px] md:w-[602px] lg:w-[1300px]">
-            <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray w-[350px] h-[34px] md:w-[604px] lg:w-[1300px] md:h-[46px] ">
+          <form className="flex flex-row items-center justify-start w-[365px] md:w-[668px] lg:w-[904px] 2xl:w-[1895px]">
+            <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray w-full h-auto  md:h-[46px] ">
               <img src={AddProductIcon} className="pr-2" alt="add_product" />
               <input
                 type={"text"}
@@ -90,12 +104,12 @@ const ContentUploadProduct = () => {
       </div>
       <div className="py-3">
         <div className="flex flex-col items-start">
-          <div className="font-inter font-semibold text-gray text-[16px] md:text-[20px]">
+          <div className="font-inter font-semibold text-gray text-[16px] lg:text-[20px] 2xl:text-[24px]">
             Product Images
           </div>
           <div style={{ height: 7 }}></div>
           <button
-            className="flex flex-col h-[206px] md:h-[263px] lg:h-[300px] md:w-[604px] w-[226px] lg:w-[1300px] items-center justify-center border-4 border-dashed border-gray border-opacity-30 rounded-xl"
+            className="flex flex-col h-[206px] md:h-[263px] lg:h-[300px] md:w-[668px] w-[226px] lg:w-[904px] 2xl:w-[1895px] items-center justify-center border-4 border-dashed border-gray border-opacity-30 rounded-xl"
             onClick={handleButtonClick}
           >
             <img
@@ -122,22 +136,22 @@ const ContentUploadProduct = () => {
       </div>
       <div className="py-3">
         <div className="flex flex-col items-start">
-          <div className="flex flex-row justify-between w-[350px] md:w-[604px] lg:w-[1300px]">
-            <div className="font-inter font-semibold text-gray text-[16px] md:text-[20px]">
+          <div className="flex flex-row justify-between w-[365px] md:w-[668px] lg:w-[904px] 2xl:w-[1895px]">
+            <div className="font-inter font-semibold text-gray text-[16px] lg:text-[20px] 2xl:text-[24px]">
               Product Description
             </div>
             <div className="flex items-end font-inter font-light text-gray text-[10px] md:text-[13px]">
-              0/800
+              {(deskripsiProduk?.length || 0)}/800
             </div>
           </div>
           <div style={{ height: 7 }}></div>
           <form className="flex items-center justify-start ">
-            <span className="flex items-start justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray  w-[350px] md:w-[604px] lg:w-[1300px] h-[64px] md:h-[142px]">
+            <span className="flex items-start justify-start rounded-md ring-1 ring-gray p-2 2xl:p-5 ring-opacity-50 focus:ring-gray  w-[365px] md:w-[668px] lg:w-[904px] 2xl:w-[1895px] h-auto overflow-y-scroll ">
               <textarea
                 placeholder="A detailed description of the product helps customers to learn more about the product."
                 value={deskripsiProduk}
                 onChange={(e) => setDeskripsiProduk(e.target.value)}
-                className="font-inter font-medium focus:outline-none text-[12px] lg:text-[24px] w-[325px] md:w-[580px] lg:w-[1285px] resize-none"
+                className="font-inter font-medium focus:outline-none text-[12px] lg:text-[16px] 2xl:text-[20px] w-full resize-none"
                 readOnly={false}
               />
             </span>

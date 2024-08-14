@@ -3,44 +3,46 @@ import { useEffect, useState } from "react";
 import SearchIcon from "../../assets/images/search.svg";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import request from "../../utils/config";
+import request from "../../utils/request";
 
 const cookies = new Cookies();
 
 const SearchBar = ({ setProducts }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const tokenPetani = cookies.get("token_petani");
     const tokenPembeli = cookies.get("token_pembeli");
 
     const fetchProducts = async (token) => {
+      setLoading(true);
       try {
-        const url = searchTerm
-          ? "http://localhost:4000/produk/search"
-          : "http://localhost:4000/produk";
+        const url = searchTerm ? "https://backend-tanidirect-production.up.railway.app/produk/search" : "https://backend-tanidirect-production.up.railway.app/produk";
         const params = searchTerm ? { nama_produk: searchTerm } : {};
 
         const response = await axios.get(url, {
           params,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         });
 
         console.log(response.data.data);
         setProducts(response.data.data);
+        setLoading(false);
       } catch (error) {
         console.log(error.message);
+        setLoading(false);
       }
     };
 
     if (tokenPembeli) {
       fetchProducts(tokenPembeli);
+      setLoading(false);
     } else if (tokenPetani) {
       fetchProducts(tokenPetani);
+      setLoading(false);
     } else {
       console.log("No token found");
+      setLoading(false);
     }
   }, [searchTerm, setProducts]);
 
@@ -58,7 +60,7 @@ const SearchBar = ({ setProducts }) => {
         onSubmit={handleSubmit}
         className="w-[235px] h-[34px] md:w-[368px] md:h-[44px] lg:w-[633px] lg:h-[58px] flex items-center rounded-md lg:rounded-xl"
       >
-        <span className="flex items-center justify-center w-full h-full rounded-[7px] lg:rounded-xl ring-[1px] ring-black ring-opacity-50 pl-5 pr-5 transition-all duration-300 ease-in-out focus-within:ring-opacity-100 hover:ring-opacity-100 hover:ring-gray-700">
+        <span className="flex items-center justify-center w-full h-full rounded-[7px] lg:rounded-xl ring-[1px] ring-gray ring-opacity-40 pl-5 pr-5 transition-all duration-300 ease-in-out focus-within:ring-opacity-100 hover:ring-opacity-100 hover:ring-gray-700">
           <input
             type="text"
             placeholder="Search"

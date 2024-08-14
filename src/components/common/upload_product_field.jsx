@@ -12,14 +12,13 @@ const UploadProductField = ({
     <div className="py-3">
       <div className="flex flex-col items-start">
         <div
-          className="font-inter font-semibold text-gray"
-          style={{ fontSize: 20 }}
+          className="font-inter font-semibold text-gray text-[16px] lg:text-[20px] 2xl:text-[24px]"
         >
           {title}
         </div>
         <div style={{ height: 7 }}></div>
         <form className="flex flex-row items-center justify-start">
-          <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray w-[350px] h-[34px] md:w-[604px] lg:w-[1300px] md:h-[46px]">
+          <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray w-[365px] h-[34px] md:w-[668px] lg:w-[904px] 2xl:w-[1895px] md:h-[46px]">
             <input
               type={type}
               placeholder={placeholder}

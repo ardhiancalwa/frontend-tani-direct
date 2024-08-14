@@ -71,7 +71,7 @@ const stepsVertical = [
     icon: (
       <img
         src={TerkirimIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Terkirim"
       />
     ),
@@ -84,7 +84,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSampaiVerticalIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px]lg:w-[25px] lg:h-[25px]"
         alt="Pesanan Sampai"
       />
     ),
@@ -97,7 +97,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSampaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Pesanan Sampai"
       />
     ),
@@ -110,7 +110,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananDiterimaIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Pesanan Diterima"
       />
     ),
@@ -123,7 +123,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSelesaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Pesanan Selesai"
       />
     ),
@@ -136,7 +136,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSelesaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Pesanan Selesai"
       />
     ),
@@ -149,7 +149,7 @@ const stepsVertical = [
     icon: (
       <img
         src={DikemasIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px]  md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Sedang Dikemas"
       />
     ),
@@ -162,7 +162,7 @@ const stepsVertical = [
     icon: (
       <img
         src={DibuatIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[40px] lg:h-[40px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
         alt="Pesan Dibuat"
       />
     ),
@@ -181,7 +181,7 @@ const ContentTrackingOrder = ({ currentStep }) => {
             className="flex-1 flex flex-col items-center relative"
           >
             <div
-              className={`w-[45px] h-[45px] lg:w-16 lg:h-16 p-[10px] lg:p-3 rounded-full flex items-center justify-center z-10 border-4 border-white ${
+              className={`w-[40px] h-[40px] md:w-[45px] md:h-[45px] lg:w-14 lg:h-14 2xl:w-16 2xl:h-16 p-[10px] lg:p-3 rounded-full flex items-center justify-center z-10 border-4 border-white ${
                 index <= currentStep ? "bg-primary" : "bg-primary"
               }`}
             >
@@ -189,23 +189,22 @@ const ContentTrackingOrder = ({ currentStep }) => {
             </div>
             <div style={{ height: 3 }}></div>
             <span
-              className={`font-inter font-semibold text-[8px] lg:text-[16px] ${
+              className={`font-inter font-semibold text-[10px] lg:text-[16px] ${
                 index <= currentStep ? "text-gray" : "text-black"
               }`}
             >
               {step.label}
             </span>
             {index < steps.length - 1 && (
-              <div className="absolute top-[24px] lg:top-8 left-4 md:left-14 lg:left-28 w-full border-t-[1px] lg:border-t-2 border-primary"></div>
+              <div className="absolute top-[24px] lg:top-8 left-4 md:left-14 2xl:left-40 w-full border-t-[1px] lg:border-t-2 border-primary"></div>
             )}
           </div>
         ))}
       </div>
       <div className="h-[20px] md:h-[28px] lg:h-[40px]"></div>
-      <div className="flex flex-col lg:flex-row justify-between">
+      <div className="flex flex-col lg:flex-row space-x-10 justify-between">
         <div
-          className="hidden lg:flex lg:border border-gray border-opacity-50 rounded-xl"
-          style={{ width: 490, height: 658 }}
+          className="hidden lg:flex lg:border lg:w-[280px] 2xl:w-[550px] 2xl:h-[658px] border-gray border-opacity-50 rounded-xl"
         >
           <div className="hidden lg:flex flex-col items-start pl-5 pr-5 pt-8">
             <div
@@ -215,7 +214,7 @@ const ContentTrackingOrder = ({ currentStep }) => {
               Lacak
             </div>
             <div className="h-4"></div>
-            <hr className="w-[400px] border border-gray border-opacity-50" />
+            <hr className="lg:w-full 2xl:w-[500px] border border-gray border-opacity-50" />
             <div className="h-7"></div>
             <DetailOrder title={"Nomor resi"} value={"SPXID091232829212"} />
             <DetailOrder title={"Pengirim"} value={"Nama Petani"} />
@@ -243,18 +242,17 @@ const ContentTrackingOrder = ({ currentStep }) => {
         </div>
 
         <div className="pt-[30px] md:pt-[40px] lg:pt-0">
-          <div className="border border-gray border-opacity-50  lg:pt-0 rounded-xl ">
-            <div className="flex flex-col items-start w-[350px] h-[480px] md:w-[700px] md:h-[480px] lg:w-[865px] lg:h-[658px] p-[22px] lg:p-8">
+          <div className="border border-gray border-opacity-50 lg:pt-0 rounded-xl ">
+            <div className="flex flex-col items-start w-auto h-auto 2xl:w-[1300px] 2xl:h-[658px] p-[22px] lg:p-8">
               <div
-                className="font-inter font-bold text-black"
-                style={{ fontSize: 20 }}
+                className="font-inter font-bold text-[16px] lg:text-[20px] text-black"
               >
                 Delivered
               </div>
               <div className="pb-[15px] md:h-[15px] lg:h-7"></div>
-              <hr className="w-[350px] md:w-full border-[1px] border-gray border-opacity-50" />
+              <hr className="w-full border-[1px] border-gray border-opacity-50" />
               <div className="pt-[15px] lg:h-7"></div>
-              <div className="w-[350px] md:w-full rounded-xl">
+              <div className="w-auto rounded-xl">
                 {stepsVertical.map((step, index) => (
                   <div
                     key={index}
@@ -274,8 +272,8 @@ const ContentTrackingOrder = ({ currentStep }) => {
                             : "bg-primary"
                         } ${
                           step.isBlank
-                            ? "w-[30px] h-[30px] lg:w-11 lg:h-11"
-                            : "w-[30px] h-[30px] lg:w-11 lg:h-11"
+                            ? "w-[30px] h-[30px] lg:w-10 lg:h-10 scale-[0.65] 2xl:w-11 2xl:h-11"
+                            : "w-[30px] h-[30px] lg:w-10 lg:h-10 2xl:w-11 2xl:h-11"
                         }`}
                       >
                         {step.isBlank ? " " : step.icon}

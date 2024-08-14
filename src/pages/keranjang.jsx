@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NavbarPembeli from "../components/specific/navbar";
+import Navbar from "../components/specific/navbar";
 import HeaderCart from "../sections/keranjang/header";
 import ContentCart from "../sections/keranjang/contentCart";
 import FooterCart from "../sections/keranjang/footer";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -57,8 +58,10 @@ const CartPage = () => {
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     setItemToRemove(null); // Close the modal after removing the item
-    alert("Item(s) successfully removed!"); // Show alert
-    window.location.reload();
+    toast("Item's successfully removed!", {icon: "🗑️"}); // Show alert
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   const handleCheckout = () => {
@@ -67,7 +70,7 @@ const CartPage = () => {
     );
     localStorage.setItem("checkedProducts", JSON.stringify(checkedProducts));
     // Redirect to payment page or perform any other actions
-    window.location.href = "/payment";
+    window.location.href = "/userpayment";
   };
 
   const isAnyChecked = Object.values(checkedItems).some(
@@ -75,8 +78,8 @@ const CartPage = () => {
   );
   return (
     <div>
-      <div className="max-w-screen-sm md:max-w-screen-md lg:max-w-full px-5 md:px-[10px] lg:px-[240px]">
-        <NavbarPembeli />
+      <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
+        <Navbar />
         <HeaderCart
           item={isAnyChecked}
           onRemoveItem={() => setItemToRemove(true)}

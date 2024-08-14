@@ -4,7 +4,7 @@ import ArrowBack from "../../assets/images/arrow_back3.svg";
 const HeaderCart = ({ item, onRemoveItem, isAnyChecked }) => {
   return (
     <div>
-      <div className="h-[30px] md:h-[70px] lg:h-[70px] "></div>
+      <div className="h-[50px] md:h-[85px] lg:h-[70px] "></div>
       <div className="flex flex-row justify-between">
         <div className="flex flex-row row-auto items-center ">
           <button
@@ -13,20 +13,20 @@ const HeaderCart = ({ item, onRemoveItem, isAnyChecked }) => {
           >
             <img
               src={ArrowBack}
-              className="w-5 h-5 lg:w-[45px] lg:h-[45px]"
+              className="w-5 h-5 lg:w-[35px] lg:h-[35px] 2xl:w-[45px] 2xl:h-[45px]"
               alt="arrow back"
             />
           </button>
           <div className="w-2 lg:w-5"></div>
-          <div className="font-inter font-semibold text-black text-[16px] md:text-[20px] lg:text-[35px]">
+          <div className="font-inter font-semibold text-black text-[16px] md:text-[20px] lg:text-[28px] 2xl:text-[35px]">
             Keranjang Belanja
           </div>
         </div>
         {isAnyChecked && (
-          <div className="flex items-center pr-5">
+          <div className="flex items-center 2xl:pr-5">
             <button
               onClick={() => onRemoveItem(item.produkID)}
-              className="block text-white lg:w-[106px] lg:h-[44px] bg-red-600 hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="flex items-center justify-center text-white w-16 h-[28px] md:w-20 md:h-[30px] lg:w-[106px] lg:h-[44px] bg-red-600 hover:bg-red-700 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-md 2xl:rounded-lg text-[12px] lg:text-[14px] 2xl:text-sm 2xl:px-5 py-2.5 text-center"
             >
               Hapus
             </button>

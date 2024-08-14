@@ -1,76 +1,84 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import CarrotImage from "../../assets/images/carrot2.png";
 import SlideLeft from "../../assets/images/slide_left.svg";
 import SlideRight from "../../assets/images/slide_right.svg";
+import "react-horizontal-scrolling-menu/dist/styles.css";
+import request from "../../utils/request"
+import { useParams } from "react-router-dom";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
+const LeftArrow = () => {
+  var el = document.getElementById("slider");
+  el.scrollLeft = el.scrollLeft - 200;
+};
+
+const RightArrow = () => {
+  var el = document.getElementById("slider");
+  el.scrollLeft = el.scrollLeft + 200;
+};
 
 const DetailImage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const { produkID } = useParams();
+  const [product, setProduct] = useState({});
+  const [images, setImages] = useState([]);
 
-  const handleLeftClick = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setScrollPosition(scrollPosition - 170);
-    }
-  };
+  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
-  const handleRightClick = () => {
-    if (currentIndex < 3) {
-      setCurrentIndex(currentIndex + 1);
-      setScrollPosition(scrollPosition + 170);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await request.get(`/produk/${produkID}`);
+        setProduct(response.data.data);
+        const imageData = response.data.data;
+        const duplicatedImages = Array(10).fill(imageData); 
+        setImages(duplicatedImages);
+        console.log(response.data.data.image_produk);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const tokenPembeli = cookies.get("token_pembeli");
+    const tokenPetani = cookies.get("token_petani");
+
+    if (tokenPembeli) {
+      fetchData(tokenPembeli);
+    } else if (tokenPetani) {
+      fetchData(tokenPetani);
+    } else {
+      console.log("No token found");
     }
-  };
+  }, [produkID]);
 
   return (
     <div>
-      <div className="h-[10px] lg:h-[25px] "></div>
-      <div className="relative flex flex-row row-auto w-[350px] h-[70px] lg:w-[701px] lg:h-[171px] ">
-        <div className=" absolute flex justify-between w-[350px] lg:w-[701px]">
-          <div className="p-1">
-            <button
-              className="hidden lg:flex items-center rounded-l-lg bg-gray bg-opacity-20 px-1 lg:px-2 h-[70px] lg:h-[171px] "
-              onClick={handleLeftClick}
-            >
-              <img src={SlideLeft} alt="slide_left" />
-            </button>
-          </div>
-          <div className="p-1">
-            <button
-              className="flex items-center rounded-r-lg bg-gray bg-opacity-20 px-1 lg:px-2 h-[70px] lg:h-[171px] "
-              onClick={handleRightClick}
-            >
-              <img src={SlideRight} alt="slide_right" />
-            </button>
-          </div>
+      <div className="h-[10px] lg:h-[25px]"></div>
+      <div className="relative flex items-center ">
+        <div className="pb-1">
+        <button onClick={LeftArrow} className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-l-xl">
+          <img src={SlideLeft} className="w-10 h-10 md:w-7 md:h-7 opacity-50 hover:opacity-100" alt="" />
+        </button>
         </div>
-        <div className="p-1">
-          <img
-            src={CarrotImage}
-            className="border border-gray border-opacity-50 rounded-lg w-[80px] h-[70px] lg:w-[170px] lg:h-[170px]"
-            alt="carrot"
-          />
+        <div
+          id="slider"
+          className="w-[600px] md:w-[350px] 2xl:w-[745px] h-full overflow-x-scroll scroll whitespace-nowrap  scroll-smooth scrollbar-hide"
+        >
+          {images.map((item) => (
+            <div key={item.produkID} className="inline-block p-2">
+              <img
+                src={`${imageUrl}${item.image_produk}`}
+                className=" border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-[80px] h-[70px] lg:w-[80px] lg:h-[80px] 2xl:w-[170px] 2xl:h-[170px]"
+                alt={item.nama_produk}
+              />
+            </div>
+          ))}
         </div>
-        <div className="p-1">
-          <img
-            src={CarrotImage}
-            className="border border-gray border-opacity-50 rounded-lg w-[80px] h-[70px] lg:w-[170px] lg:h-[170px] "
-            alt="carrot"
-          />
-        </div>
-        <div className="p-1">
-          <img
-            src={CarrotImage}
-            className="border border-gray border-opacity-50 rounded-lg w-[80px] h-[70px] lg:w-[170px] lg:h-[170px]"
-            alt="carrot"
-          />
-        </div>
-        <div className="p-1">
-          <img
-            src={CarrotImage}
-            className="border border-gray border-opacity-50 rounded-xl w-[80px] h-[70px] lg:w-[170px] lg:h-[170px]"
-            alt="carrot"
-          />
+        <div className="pb-1">
+        <button onClick={RightArrow} className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-r-md">
+          <img src={SlideRight} className="w-10 h-10 md:w-7 md:h-7 opacity-80 hover:opacity-100" alt="" />
+        </button>
         </div>
       </div>
     </div>
