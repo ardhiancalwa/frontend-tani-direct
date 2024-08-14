@@ -3,7 +3,7 @@ import Avatar from "../../sections/biodata/avatar";
 
 const StepOne = () => {
   return (
-    <div className="md:max-w-full px-6  sm:px-15 md:px-20  lg:px-[100px] 2xl:px-[230px]   xl:px-[80px]  ">
+    <div className="max-w-screen-sm md:max-w-full px-[25px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px] ">
       <Avatar />
     </div>
   );

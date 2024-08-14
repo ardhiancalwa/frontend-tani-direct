@@ -5,112 +5,112 @@ import love from "../../assets/images/love.svg";
 import eye from "../../assets/images/eye.svg";
 import cart from "../../assets/images/cart_box.svg";
 import layers from "../../assets/images/stock.svg";
+import ButtonWeightProduct from "./button_weight_product";
 
-const CardProduct = () => {
+const CardMyProduct = ({ product }) => {
+  const imageUrl =
+    "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
+
   return (
-    <div className="lg:py-6 py-2 border-b ">
-      <div className="min-w-full flex flex-row row-automd:p-2 lg:pb-4 py-2 pb-3 ">
-        <div className="flex items-center lg:border lg:border-gray">
+    <div className="lg:py-6 md:py-4 py-2 border-b ">
+      <div className="min-w-full flex flex-row row-automd:p-2 lg:pb-4 ">
+        <div className="flex items-center">
           <img
-            src={ImageDummy}
-            className="lg:w-[350px] lg:h-[212px] w-[200px]  h-[100px] object-fill"
+            src={`${imageUrl}${product.image_produk}`}
+            className="lg:w-[350px] lg:border border-gray border-opacity-30 rounded-xl lg:h-[212px] md:w-[250px] md:h-[150px] w-[150px] h-[100px] object-cover"
             alt="sayur"
           />
         </div>
-        <div className="flex flex-col w-full lg:p-6 p-3 ">
+        <div className="flex flex-col w-full lg:px-6 lg:py-0 2xl:py-6 2xl:px-10 p-3 ">
           <div className="flex flex-row justify-between gap-2">
             <div
-              className="font-inter font-semibold text-black lg:text-[32px] md:text-[23px] text-[14px] text-start "
+              className="w-full h-auto font-inter font-semibold text-black 2xl:text-[34px] lg:text-[32px] md:text-[20px] text-[14px] text-start "
               style={{ lineHeight: 1.2 }}
             >
-              Nama product loren ipsum ddee
+              {product.nama_produk}
             </div>
           </div>
-          <div className="lg:block hidden" style={{ height: 12 }}></div>
-          <div className="font-inter font-semibold text-black text-start lg:text-[17px] text-[10px] mt-1 md:text-[0.9rem] ">
-            Lorem ipsum dolor sit amet consectetur. In in pellentesque Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Velit, alias.
+          <div className="w-full h-auto font-inter font-semibold text-black text-start 2xl:text-[22px] lg:text-[17px] text-[10px] mt-1 md:text-[0.9rem]">
+            {product.deskripsi_produk}
           </div>
-          <div className="lg:block hidden" style={{ height: 12 }}></div>
-          <div className="flex items-center mt-1 justify-start gap-2 mb-1 ">
-            <span className="p-1  lg:w-[91px] lg:h-[34px] w-[35px] md:w-[49px] md:h-[27px] h-[18px] border rounded-md justify-center items-center flex">
-              <p className="text-[10px] md:text-[14px] lg:text-[20px]  font-semibold ">
-                5 kg
-              </p>
-            </span>
-            <span className="p-1  lg:w-[91px] lg:h-[34px] w-[35px] h-[18px] md:w-[49px] md:h-[27px] border rounded-md justify-center items-center flex">
-              <p className="text-[10px] font-semibold  lg:text-[20px] md:text-[14px]">
-                10 kg
-              </p>
-            </span>
-            <span className="p-1  lg:w-[91px] lg:h-[34px] w-[35px] h-[18px]  md:w-[49px] md:h-[27px] border rounded-md justify-center items-center flex">
-              <p className="text-[10px] font-semibold  lg:text-[20px] md:text-[14px]">
-                15 kg
-              </p>
-            </span>
-            <span className="p-1  lg:w-[91px] lg:h-[34px] w-[35px] h-[18px] md:w-[49px] md:h-[27px] border rounded-md justify-center items-center flex">
-              <p className="text-[10px] font-semibold  lg:text-[20px] md:text-[14px]">
-                20 kg
-              </p>
-            </span>
+          <div className="flex flex-row row-auto 2xl:pt-2">
+            {[20, 50, 75, 100].map((weight) => (
+              <ButtonWeightProduct
+                key={weight}
+                weight={weight}
+                // isSelected={selectedWeight === weight}
+                // onClick={onWeightClick}
+              />
+            ))}
           </div>
-          <div className="flex flex-row row-auto items-center">
-            <div className="font-inter font-bold text-primary  lg:text-[30px] text-[12px]  md:text-[20px]  ">
-              Rp. 100.000
+          <div className="flex flex-row row-auto items-center pt-2">
+            <div className="font-inter font-bold text-primary  lg:text-[30px] text-[14px]  md:text-[20px]  ">
+            Rp {product.harga.toLocaleString('id-ID')}
             </div>
-            <div style={{ width: 10 }}></div>
-            <div className="font-inter font-normal text-gray text-opacity-50 line-through lg:text-[20px] text-[8px] md:text-[15px] ">
-              Rp. 150.000
+            <div className="w-[5px] md:w-[10px]"></div>
+            <div className="font-inter font-normal text-gray text-opacity-50 line-through lg:text-[20px] text-[10px] md:text-[15px] ">
+            Rp {(product.harga + 150000).toLocaleString('id-ID')}
             </div>
           </div>
         </div>
       </div>
-      <div className="">
-        <div className="flex justify-between  items-center flex-wrap gap-3 ">
-          <div className="flex md:flex-row w-[130px] items-center gap-2 ">
-            <img
-              src={eye}
-              alt=""
-              className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] "
-            />
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              Dilihat
-            </p>
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              1033
-            </p>
+      <div className="md:py-2">
+        <div className="flex flex-col md:flex-row justify-between md:justify-between items-center flex-wrap gap-3 ">
+          <div className="flex flex-row justify-between w-full md:w-[300px] lg:w-[400px] 2xl:w-[800px]">
+            <div className="flex md:  flex-row w-auto items-center gap-2 ">
+              <img
+                src={eye}
+                alt=""
+                className="w-[15px] h-[15px] md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[30px]"
+              />
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                Dilihat
+              </p>
+              <p className="text-[10px] md:text-[15px]  lg:text-[20px] 2xl:text-[25px] font-semibold">
+                302
+              </p>
+            </div>
+            <div className="flex items-center gap-2 w-auto">
+              <img
+                src={love}
+                alt=""
+                className="w-[15px] h-[15px] md:w-[25px] md:h-[25px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[30px] "
+              />
+              <p className="text-[10px] md:text-[15px]  lg:text-[20px] 2xl:text-[25px] font-semibold">
+                Favorite
+              </p>
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                300
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-2 w-[130px]">
-            <img
-              src={love}
-              alt=""
-              className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] "
-            />
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              Dilihat
-            </p>
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              1033
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 w-[130px]">
-            <img
-              src={layers}
-              alt=""
-              className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] "
-            />
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              Dilihat
-            </p>
-            <p className="text-[10px] md:text-[15px] lg:text-[25px] font-semibold">
-              1033
-            </p>
-          </div>
-          <div className="flex items-center gap-2 w-[130px]">
-            <img src={cart} alt="" className="md:w-[30px] md:h-[30px] " />
-            <p className="text-[10px] md:text-[15px] font-semibold">Dilihat</p>
-            <p className="text-[10px] md:text-[15px] font-semibold">1033</p>
+          <div className="flex flex-row justify-between w-full md:w-[300px] lg:w-[400px] 2xl:w-[800px] ">
+            <div className="flex items-center gap-2 w-auto">
+              <img
+                src={layers}
+                alt=""
+                className="w-[15px] h-[15px] md:w-[25px] md:h-[25px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[30px] "
+              />
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                Stok
+              </p>
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                {product.jumlah_stok}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 w-auto">
+              <img
+                src={cart}
+                alt=""
+                className="w-[15px] h-[15px] md:w-[25px] md:h-[25px] lg:h-[30px] 2xl:w-[40px] 2xl:h-[30px]"
+              />
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                Terjual
+              </p>
+              <p className="text-[10px] md:text-[15px] lg:text-[20px] 2xl:text-[25px] font-semibold">
+                {product.totalSold}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -118,4 +118,4 @@ const CardProduct = () => {
   );
 };
 
-export default CardProduct;
+export default CardMyProduct;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 import ProductImage from "../../assets/images/carrot.jpg";
 import ButtonWeightProduct from "../../components/common/button_weight_product";
 import PlusMinusProduct from "../../components/common/button_plusminus_product";
-import StatusPrice from "../../components/common/status_price";
 import DetailImage from "../../components/common/detail_image";
-import request from "../../utils/config";
+import request from "../../utils/request";
 
 import CartIcon from "../../assets/images/keranjang.svg";
 import axios from "axios";
@@ -14,185 +14,118 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-const ContentDetailProduct = () => {
-  const { produkID } = useParams();
-  const [selectedWeight, setSelectedWeight] = useState(null);
-  const [product, setProduct] = useState({});
-  const [calculatedPrice, setCalculatedPrice] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const [productDetails, setProductDetails] = useState({});
-  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
+const ContentDetailProduct = ({
+  product,
+  selectedWeight,
+  calculatedPrice,
+  quantity,
+  onWeightClick,
+  onQuantityChange,
+  onBuyClick,
+  onAddToCartClick,
+}) => {
+  const imageUrl =
+    "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
+  const [worthBuying, setWorthBuying] = useState(true);
 
   useEffect(() => {
-    const fetchData = async (token) => {
-      try {
-        const response = await request.get(
-          `/produk/${produkID}`
-        );
-        setProduct(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.error(error);
+    if (calculatedPrice !== undefined && selectedWeight !== null) {
+      let isWorth = true;
+
+      if (
+        (selectedWeight === 20 && calculatedPrice > 1000000) ||
+        (selectedWeight === 50 && calculatedPrice > 1500000) ||
+        (selectedWeight === 75 && calculatedPrice > 1800000) ||
+        (selectedWeight === 100 && calculatedPrice > 2500000)
+      ) {
+        isWorth = false;
       }
-    };
 
-    const tokenPembeli = cookies.get("token_pembeli");
-    const tokenPetani = cookies.get("token_petani");
-
-    if (tokenPembeli) {
-      fetchData(tokenPembeli);
-    } else if (tokenPetani) {
-      fetchData(tokenPetani);
-    } else {
-      console.log("No token found");
+      setWorthBuying(isWorth);
     }
-  }, [produkID]);
-
-  useEffect(() => {
-    if (product) {
-      let price = product.harga;
-      if (selectedWeight === 25) {
-        price *= 1;
-      } else if (selectedWeight === 50) {
-        price *= 1.25; // Naik 25% untuk berat 50
-      } else if (selectedWeight === 75) {
-        price *= 1.5; // Naik 50% untuk berat 75
-      } else if (selectedWeight === 100) {
-        price *= 1.75; // Naik 75% untuk berat 100
-      }
-      setCalculatedPrice(price);
-    }
-  }, [selectedWeight, product]);
-
-  useEffect(() => {
-    if (product) {
-      setProductDetails({
-        product,
-        quantity,
-        selectedWeight,
-        calculatedPrice,
-      });
-    }
-  }, [product, quantity, selectedWeight, calculatedPrice, setProductDetails]);
-
-  const handleQuantityChange = (newQuantity) => {
-    setQuantity(newQuantity);
-  };
-
-  const handleBuyClick = () => {
-    const checkedProducts =
-      JSON.parse(localStorage.getItem("checkedProducts")) || [];
-    const updatedProducts = [
-      ...checkedProducts,
-      {
-        ...product,
-        jumlah: quantity,
-        selectedWeight: selectedWeight,
-        calculatedPrice: calculatedPrice,
-      },
-    ];
-    localStorage.setItem("checkedProducts", JSON.stringify(updatedProducts));
-    window.location.href = "/payment";
-  };
-
-  const handleWeightClick = (weight) => {
-    setSelectedWeight(weight);
-  };
-
-  const handleAddToCartClick = () => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const updatedCart = [
-      ...cart,
-      {
-        ...product,
-        jumlah: quantity,
-        selectedWeight: selectedWeight,
-        calculatedPrice: calculatedPrice,
-      },
-    ];
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    alert("Produk berhasil ditambahkan ke keranjang!");
-    window.location.reload();
-  };
+  }, [calculatedPrice, selectedWeight]);
 
   return (
     <div key={product.produkID}>
       <div className="h-[30px] lg:h-[20px]"></div>
       <div className="flex flex-col md:flex-row row-auto">
         <div>
-          {/* <img
-            // src={product?.image_produk}
-            // src={ProductImage}
-
-            className="border border-gray border-opacity-50 md:rounded-lg lg:rounded-2xl w-[350px] h-[222px] lg:w-[700px] lg:h-[434px] "
-            alt="productimage"
-          /> */}
           <img
             src={`${imageUrl}${product.image_produk}`}
-            class="border border-gray border-opacity-50 md:rounded-lg lg:rounded-2xl w-[350px] h-[222px] lg:w-[700px] lg:h-[434px] object-cover"
+            class="border border-gray border-opacity-30 rounded-lg shadow-lg md:rounded-lg lg:rounded-2xl w-[370px] h-[222px] lg:w-[800px] lg:h-[300px] 2xl:w-[800px] 2xl:h-[500px] object-cover"
             alt="productimage"
           ></img>
           <DetailImage />
         </div>
-        <div style={{ width: 36 }}></div>
-        <div className="flex flex-col col-auto items-start h-[275px] lg:w-[505px] lg:h-[434px]">
-          <div className="pt-[15px] lg:w-[505px] h-[150px] md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[32px]">
+        <div className="w-[36px] 2xl:w-[150px]"></div>
+        <div className="flex flex-col col-auto items-start h-[275px] lg:w-full 2xl:w-screen lg:h-[434px]">
+          <div className="pt-[0px] lg:w-[505px] 2xl:w-[900px] h-auto w-full  md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[24px] 2xl:text-[40px]">
             {product.nama_produk}
           </div>
-          <div className="py-[6px] lg:py-2 font-inter font-semibold text-black text-start text-[14px] md:text-[16px] lg:text-[26px]">
+          <div className="py-[6px] lg:py-2 font-inter font-semibold text-black text-start text-[14px] md:text-[16px] lg:text-[20px] 2xl:text-[30px]">
             Description
           </div>
-          <div className="font-inter lg:w-[505px] lg:h-[96px] font-medium text-black text-start text-[12px] lg:text-[20px] break-words">
+          <div className="font-inter w-[290px] h-auto lg:w-[505px] 2xl:w-[900px] font-medium text-black text-start text-[12px] lg:text-[16px] 2xl:text-[25px] break-words">
             {product.deskripsi_produk}
           </div>
-          <div className="flex flex-row row-auto md:pt-2 lg:pt-20">
+          <div className="flex flex-row row-auto md:pt-2 2xl:pt-2">
             {[20, 50, 75, 100].map((weight) => (
               <ButtonWeightProduct
                 key={weight}
                 weight={weight}
                 isSelected={selectedWeight === weight}
-                onClick={handleWeightClick}
+                onClick={() => onWeightClick(weight)}
               />
             ))}
           </div>
           <PlusMinusProduct
             quantity={quantity}
-            onQuantityChange={handleQuantityChange}
+            onQuantityChange={onQuantityChange}
             maxQuantity={product.jumlah_stok}
           />
-          <StatusPrice />
+          <div>
+            <div
+              className={`flex items-center justify-center rounded-full font-inter text-[10px] lg:text-[14px] 2xl:text-[20px] font-medium ${
+                worthBuying
+                  ? "bg-greenLight w-[96px] h-[28px] lg:w-[100px] lg:h-[35px] 2xl:w-[155px] 2xl:h-[54px]  text-primary"
+                  : "bg-danger bg-opacity-20 w-[105px] h-[28px] lg:w-[130px] lg:h-[35px] 2xl:w-[180px] 2xl:h-[54px]  text-danger"
+              }`}
+            >
+              {worthBuying ? "Worth to buy" : "Not worth to buy"}{" "}
+            </div>
+          </div>
           <div className="flex flex-col lg:pt-[10px] lg:h-[172px] col-auto p-1">
             <div className="flex flex-row row-auto items-center md:pt-[0px]">
-              <span className="font-inter text-[20px] lg:text-[40px] font-bold text-primary">
+              <span className="font-inter text-[20px] lg:text-[26px] 2xl:text-[40px] font-bold text-primary">
                 {calculatedPrice !== undefined
-                  ? `Rp ${(calculatedPrice * 1).toLocaleString()}`
+                  ? `Rp ${(calculatedPrice * 1).toLocaleString("id-ID")}`
                   : "Loading..."}
               </span>
               <div style={{ width: 10 }}></div>
-              <span className="font-inter text-[16px] md:text-[10px] lg:text-[25px] font-normal text-gray text-opacity-50 line-through">
+              <span className="font-inter text-[14px] md:text-[10px] lg:text-[16px] 2xl:text-[25px] font-normal text-gray text-opacity-50 line-through">
                 {calculatedPrice !== undefined
-                  ? `Rp ${(calculatedPrice + 150000).toLocaleString()}`
+                  ? `Rp ${(calculatedPrice + 150000).toLocaleString("id-ID")}`
                   : "Loading..."}
               </span>
             </div>
             <div className="flex items-start py-[8px]">
-              <div className="font-inter text-[14px] md:text-[12px] lg:text-[25px] font-semibold text-black">
+              <div className="font-inter text-[14px] md:text-[12px] lg:text-[18px] 2xl:text-[25px] font-semibold text-black">
                 Stok: {product.jumlah_stok}
               </div>
             </div>
-            <div className="hidden md:flex flex-row row-auto">
+            <div className="hidden md:flex flex-row row-auto 2xl:py-5">
               <button
-                className="bg-primary md:rounded lg:rounded-xl md:w-[170px] md:h-[34px] lg:w-[300px] lg:h-[64px] "
-                onClick={handleBuyClick}
+                className="bg-primary md:rounded lg:rounded-xl md:w-[180px] md:h-[34px] lg:w-[250px] lg:h-[55px] 2xl:w-[850px] 2xl:h-[64px] "
+                onClick={onBuyClick}
               >
                 <div className="flex items-start justify-center text-white font-inter font-semibold md:text-[10px] lg:text-[20px]">
                   Buy
                 </div>
               </button>
-              <div style={{ width: 25 }}></div>
+              <div style={{ width: 35 }}></div>
               <button
-                className="flex flex-row row-auto items-center justify-center bg-white border border-primary md:rounded lg:rounded-xl md:w-[180px] md:h-[34px] lg:w-[350px] lg:h-[64px]"
-                onClick={handleAddToCartClick}
+                className="flex flex-row row-auto items-center justify-center bg-white border border-primary md:rounded lg:rounded-xl md:w-full md:h-[34px] lg:w-full lg:h-[55px] 2xl:h-[64px] 2xl:w-full"
+                onClick={onAddToCartClick}
               >
                 <img
                   src={CartIcon}

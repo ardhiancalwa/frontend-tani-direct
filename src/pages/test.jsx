@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import request from "../utils/config";
+import request from "../utils/request";
 import axios from "axios";
 
 const TestPage = () => {

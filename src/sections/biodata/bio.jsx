@@ -55,15 +55,15 @@ const Bio = () => {
           <h2 className="text-[15px] font-bold text-start mt-5 md:text-[28px] ">
             Profil Singkat Petani
           </h2>
-          <input
+          <textarea
             type="text"
-            className="w-[309px] h-[138px] md:w-[604px] md:h-[239px]  size-9 border block placehorder:text-start relative placehorder:text-gray-500 placeholder:w-auto placeholder:h-auto border-black border-opacity-50 rounded-md mt-4 p-2 "
+            className="w-[309px] h-[138px] text-[20px] font-inter md:w-[604px] md:h-[239px]  size-9 border block placehorder:text-start relative placehorder:text-gray-500 placeholder:w-auto placeholder:h-auto border-black border-opacity-50 rounded-md mt-4 p-2 "
             placeholder="Narasi singkat "
           />
         </div>
       </div>
       <div className="w-full  mt-10  md:w-[563px]">
-        <button className="w-full bg-[#002C18] p-[10px] lg:py-3 text-white rounded-md font-semibold flex justify-center items-center mb-18 lg:mb-10 ">
+        <button className="w-full bg-[#002C18] p-[10px] lg:py-3 text-white rounded-md font-semibold flex justify-center items-center mb-18 lg:mb-10 " onClick={() => window.location.href="/home"}>
           <p className="  text-[15px] md:text-[30px]">Next</p>
         </button>
       </div>

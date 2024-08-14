@@ -8,7 +8,7 @@ import DropdownIcon from "../../assets/images/dropdown.svg";
 import DropdownUpIcon from "../../assets/images/dropdown_up2.svg";
 import ProductCardPayment from "../../components/common/card_produk_payment";
 import axios from "axios";
-import request from "../../utils/config";
+import request from "../../utils/request";
 
 const options = [
   {
@@ -182,10 +182,10 @@ const ContentPayment = ({ setShippingCost }) => {
                         <div>{option.label}</div>
                         <div className="flex flex-row">
                           <div className="ml-2">
-                            Rp {option.price.toLocaleString()}
+                            Rp {option.price.toLocaleString('id-ID')}
                           </div>
                           <div className="ml-2 line-through text-gray text-opacity-30 text-[14px] lg:text-[20px]">
-                            Rp {(option.price + 20000).toLocaleString()}
+                            Rp {(option.price + 20000).toLocaleString('id-ID')}
                           </div>
                         </div>
                       </div>

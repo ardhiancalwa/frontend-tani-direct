@@ -17,7 +17,7 @@ const HeaderDetailBlog = () => {
             alt="arrow back"
           />
         </button>
-        <div className="w-2 lg:w-3"></div>
+        <div className="w-5 md:w-3"></div>
         <div className="flex flex-col items-start">
           <div className="font-inter font-semibold text-black text-[16px] md:text-[20px] lg:text-[30px] text-start">
             Musim El Nino: Pengancam Harga Pasar Indonesia

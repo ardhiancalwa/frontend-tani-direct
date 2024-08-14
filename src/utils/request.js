@@ -6,7 +6,7 @@ const cookies = new Cookies();
 const request = axios.create({
    baseURL: `https://backend-tanidirect-production.up.railway.app`,
    // uncomment baseURL dibawah ketika running di local, dan comment baseURL dibawah ketika push ke gihtub
-    //  baseURL: `http://localhost:4000`,
+   //   baseURL: `http://localhost:4000`,
    timeout: 10000,
    headers: {
       'Content-Type': 'application/json',

@@ -19,6 +19,7 @@ const Textfield = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      
     />
   );
 };

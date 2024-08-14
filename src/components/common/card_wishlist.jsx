@@ -3,46 +3,53 @@ import React from "react";
 import ImageDummy from "../../assets/images/sayur.jpg";
 import BookmarkFill from "../../assets/images/bookmark_fill.svg";
 
-const CardWishList = ({ product }) => {
-  const imageUrl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/"
+const CardWishList = ({ product, onRemoveBookmark }) => {
+  const handleRemoveBookmark = () => {
+    onRemoveBookmark(product.produkID);
+  };
+  const imageUrl =
+    "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
   return (
-    <div className="lg:py-[25px] md:py-4 py-[10px]">
-      <div className="min-w-full w-[350px] h-[85px] md:w-[604px] md:h-[141px] lg  :w-[1240px] lg:h-[260px] flex flex-row md:p-2 row-auto border border-gray border-opacity-50 rounded-xl overflow-hidden">
-        <div className="flex items-center px-[15px] py-[10px]">
+    <div className="2xl:py-[25px] md:py-4 py-[10px]">
+      <div className="min-w-full w-[300px] h-[85px] md:w-[604px] md:h-[141px] lg:w-[900px] lg:h-[200px] 2xl:w-[1240px] 2xl:h-[260px] flex flex-row md:p-2 row-auto border border-gray border-opacity-50 rounded-xl shadow-md overflow-hidden">
+        <div className="flex items-center px-[15px] py-[0px]">
           <img
             src={`${imageUrl}${product.image_produk}`}
             alt="sayur"
-            className="lg:w-[350px] lg:h-[212px] md:w-[170px] md:h-[121px] w-[85px] h-[62px] object-fill"
+            className="2xl:w-[350px] 2xl:h-[212px] rounded-md lg:w-[200px] lg:h-[150px] md:w-[170px] md:h-[105px] w-[85px] h-[62px] object-cover"
           />
         </div>
-        <div className="flex flex-col w-full lg:p-6 p-3">
+        <div className="flex flex-col w-full lg:p-4 2xl:p-6 p-3">
           <div className="flex flex-row justify-between gap-2">
             <h2
-              className="font-inter font-semibold text-black lg:text-[32px] md:text-[16px] text-[14px] text-start"
+              className="w-full h-auto font-inter font-semibold text-black lg:text-[22px] 2xl:text-[32px] md:text-[16px] text-[14px] text-start"
               style={{ lineHeight: 1.2 }}
             >
               {product.nama_produk}
             </h2>
-            <div className="flex items-center justify-center bg-gray bg-opacity-15 rounded-full sm:p-[5px] lg:w-[40px] lg:h-[40px] md:w-[25px] md:h-[25px] w-[20px] h-[20px] md:p-[7px]  p-[5px]">
+            <button
+              className="flex items-center justify-center hover:bg-gray hover:bg-opacity-15 rounded-full hover:shadow-md sm:p-[5px] 2xl:w-[50px] 2xl:h-[50px] lg:w-[40px] lg:h-[40px] md:w-[25px] md:h-[25px] w-[20px] active:scale-95 h-[20px] md:p-[7px] p-[5px]"
+              onClick={handleRemoveBookmark}
+            >
               <img
                 src={BookmarkFill}
-                className="w-[8px] h-[8px] md:w-[10px] md:h-[10px] lg:w-[15px] lg:h-[15px]"
+                className="w-[8px] h-[8px] md:w-[10px] md:h-[10px] lg:w-[15px] lg:h-[15px] 2xl:w-[22px] 2xl:h-[22px]"
                 alt="bookmark fill"
               />
-            </div>
+            </button>
           </div>
           <div className="lg:block hidden" style={{ height: 12 }} />
-          <p className="font-inter font-medium w-[195px] h-[24px] md:w-[390px] md:h-[51px] lg:w-[746px] lg:h-[121px] text-black text-start lg:text-[20px] text-[10px] mt-1 md:text-[0.9rem]  overflow-hidden">
+          <p className="font-inter font-medium w-full h-auto text-black text-start lg:text-[20px] text-[10px] mt-1 md:text-[0.9rem]  overflow-hidden">
             {product.deskripsi_produk}
           </p>
           <div className="lg:block hidden" style={{ height: 12 }} />
           <div className="flex flex-row row-auto items-center">
-            <span className="font-inter font-bold text-primary  lg:text-[30px] text-[12px]  md:text-[20px]">
-              Rp {product.harga.toLocaleString()}
+            <span className="font-inter font-bold text-primary lg:text-[22px] 2xl:text-[30px] text-[12px]  md:text-[18px]">
+              Rp {product.harga.toLocaleString('id-ID')}
             </span>
             <div style={{ width: 10 }} />
-            <span className="font-inter font-normal text-gray text-opacity-50 line-through lg:text-[20px] text-[10px] md:text-[16px]">
-              Rp {(product.harga + 150000).toLocaleString()}
+            <span className="font-inter font-normal text-gray text-opacity-50 line-through lg:text-18px 2xl:text-[20px] text-[10px] md:text-[14px]">
+              Rp {(product.harga + 150000).toLocaleString('id-ID')}
             </span>
           </div>
         </div>

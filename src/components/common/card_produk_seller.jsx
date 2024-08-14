@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import imageDummy from "../../assets/images/sayur.jpg";
+// import imageDummy from "../../assets/images/sayur.jpg";
 import starIcon from "../../assets/images/star.svg";
 import buyIcon from "../../assets/images/buy.svg";
 import bookmarkIcon from "../../assets/images/bookmark.svg";
@@ -27,11 +27,11 @@ const PetaniCardProduct = ({ product }) => {
         </div>
         <div className="flex flex-row row-auto items-center">
           <div className="font-inter font-semibold text-primary text-[8px] md:text-[12px] lg:text-[25px] lg:leading-normal">
-            Rp {product.harga.toLocaleString()}
+            Rp {product.harga.toLocaleString('id-ID')}
           </div>
           <div className="w-[5px] lg:w-[10px] "></div>
           <div className="font-inter text-[6px] md:text-[10px] lg:text-[20px] lg:leading-normal font-semibold text-gray opacity-50 line-through">
-            Rp {(product.harga + 50000).toLocaleString()}
+            Rp {(product.harga + 50000).toLocaleString('id-ID')}
           </div>
         </div>
         <div className="lg:h-[12px] h-[5px] "></div>

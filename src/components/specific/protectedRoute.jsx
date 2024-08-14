@@ -10,7 +10,7 @@ const ProtectedRoute = ({ element: Component, allowedUserTypes, ...rest }) => {
   }
   if (!allowedUserTypes.includes(userType)) {
     return (
-      <Navigate to={`/${userType === "pembeli" ? "home" : "homeseller"}`} />
+      <Navigate to={`/home`} />
     );
   }
   return <Component {...rest} />;

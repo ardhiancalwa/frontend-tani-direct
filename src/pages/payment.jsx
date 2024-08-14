@@ -45,7 +45,7 @@ const Payment = () => {
                 Subtotal untuk Produk
               </div>
               <div className="font-inter font-medium text-gray text-[13px] lg:text-[20px]">
-                Rp {subtotal.toLocaleString()}
+                Rp {subtotal.toLocaleString('id-ID')}
               </div>
             </div>
             <div className="flex flex-row justify-between">
@@ -53,7 +53,7 @@ const Payment = () => {
                 Subtotal Pengiriman{" "}
               </div>
               <div className="font-inter font-medium text-gray text-[13px] lg:text-[20px]">
-                Rp {shippingCost.toLocaleString()}
+                Rp {shippingCost.toLocaleString('id-ID')}
               </div>
             </div>
             <div className="flex flex-row justify-between">
@@ -61,7 +61,7 @@ const Payment = () => {
                 Total Pembayaran{" "}
               </div>
               <div className="font-inter font-medium text-black text-[13px] lg:text-[20px]">
-                Rp {totalPayment.toLocaleString()}
+                Rp {totalPayment.toLocaleString('id-ID')}
               </div>
             </div>
           </div>
