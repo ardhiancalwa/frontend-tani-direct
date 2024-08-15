@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextfieldProfile from "../../components/common/textfieldProfile";
-// import DropdownValue from "../../components/common/dropdown_value";
 import Cookies from "universal-cookie";
 import axios from "axios";
-// import { useSnackbar } from "notistack";
 import request from "../../utils/request";
 import toast from "react-hot-toast";
 import DropdownValueAlamat from "../../components/common/dropdown_value_alamat";
@@ -11,61 +9,24 @@ import LoadingScreen from "../../components/common/loading";
 
 const cookies = new Cookies();
 
-const provinces = [
-  { label: "Aceh", value: "Aceh" },
-  { label: "Bali", value: "Bali" },
-  { label: "East Java", value: "East Java" },
-  { label: "West Java", value: "West Java" },
-  { label: "Central Java", value: "Central Java" },
-  { label: "Yogyakarta", value: "Yogyakarta" },
-  { label: "North Sumatra", value: "North Sumatra" },
-  { label: "South Sulawesi", value: "South Sulawesi" },
-  { label: "Papua", value: "Papua" },
-  { label: "Riau", value: "Riau" },
-];
-
-const cities = [
-  { label: "Pekanbaru", value: "Pekanbaru" },
-  { label: "Dumai", value: "Dumai" },
-  { label: "Bengkalis", value: "Bengkalis" },
-  { label: "Rokan Hulu", value: "Rokan Hulu" },
-  { label: "Siak", value: "Siak" },
-  { label: "Kampar", value: "Kampar" },
-  { label: "Indragiri Hulu", value: "Indragiri Hulu" },
-  { label: "Kuantan Singingi", value: "Kuantan Singingi" },
-  { label: "Pelalawan", value: "Pelalawan" },
-  { label: "Rokan Hilir", value: "Rokan Hilir" },
-];
-
-const districts = [
-  { label: "Pekanbaru Kota", value: "Pekanbaru Kota" },
-  { label: "Sail", value: "Sail" },
-  { label: "Tenayan Raya", value: "Tenayan Raya" },
-  { label: "Marpoyan Damai", value: "Marpoyan Damai" },
-  { label: "Rumbai", value: "Rumbai" },
-  { label: "Rumbai Pesisir", value: "Rumbai Pesisir" },
-  { label: "Bukit Raya", value: "Bukit Raya" },
-  { label: "Tampan", value: "Tampan" },
-  { label: "Sukajadi", value: "Sukajadi" },
-  { label: "Lima Puluh", value: "Lima Puluh" },
-];
-
-const postalCodes = [
-  { label: "28111", value: "28111" },
-  { label: "28112", value: "28112" },
-  { label: "28113", value: "28113" },
-  { label: "28114", value: "28114" },
-  { label: "28115", value: "28115" },
-  { label: "28116", value: "28116" },
-  { label: "28117", value: "28117" },
-  { label: "28118", value: "28118" },
-  { label: "28119", value: "28119" },
-  { label: "28121", value: "28121" },
-];
+// const postalCodes = [
+//   { label: "28111", value: "28111" },
+//   { label: "28112", value: "28112" },
+//   { label: "28113", value: "28113" },
+//   { label: "28114", value: "28114" },
+//   { label: "28115", value: "28115" },
+//   { label: "28116", value: "28116" },
+//   { label: "28117", value: "28117" },
+//   { label: "28118", value: "28118" },
+//   { label: "28119", value: "28119" },
+//   { label: "28121", value: "28121" },
+// ];
 
 const ContentEditAlamatSeller = () => {
   const [updatedAlamat, setUpdatedAlamat] = useState({});
-  // const { enqueueSnackbar } = useSnackbar();
+  const [provinces, setProvinces] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [districts, setDistricts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -94,8 +55,98 @@ const ContentEditAlamatSeller = () => {
       }
     };
 
+    const fetchProvinces = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`https://ardhiancalwa.github.io/api-wilayah-indonesia/api/provinces.json`);
+        console.log(response);
+        setProvinces(
+          response.data.map((province) => ({
+            label: province.name,
+            value: province.id,
+          }))
+        );
+        setLoading(false);
+      } catch (error) {
+        console.log("Error fetching provinces:", error);
+        setErrorMessage(
+          error.response? error.response.data.message : error.message
+        );
+        setLoading(false);
+      }
+    }
+
     fetchData();
+    fetchProvinces();
   }, []);
+
+  const fetchCities = async (provinceId) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`https://ardhiancalwa.github.io/api-wilayah-indonesia/api/regencies/${provinceId}.json`)
+      console.log(response);
+      setCities(
+        response.data.map((city) => ({
+          label: city.name,
+          value: city.id,
+        }))
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log("Error fetching cities:", error);
+      setErrorMessage(
+        error.response? error.response.data.message : error.message
+      );
+      setLoading(false);
+    }
+  }
+
+  const fetchDistricts = async (regencyId) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`https://ardhiancalwa.github.io/api-wilayah-indonesia/api/districts/${regencyId}.json`)
+      console.log(response);
+      setDistricts(
+        response.data.map((district) => ({
+          label: district.name,
+          value: district.id,
+        }))
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log("Error fetching cities:", error);
+      setErrorMessage(
+        error.response? error.response.data.message : error.message
+      );
+      setLoading(false);
+    }
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedAlamat((prevProfile) => ({
+      ...prevProfile,
+      [name]: value,
+    }));
+
+    if (name === "provinsi") {
+      fetchCities(value);
+    } else if (name === "kota") {
+      fetchDistricts(value);
+    }
+  };
+
+  const handleInputDropdownChange = (name, value) => {
+    setUpdatedAlamat((prevProfile) => ({
+      ...prevProfile,
+      [name]: value,
+    }));
+    if (name === "provinsi") {
+      fetchCities(value);
+    } else if (name === "kota") {
+      fetchDistricts(value);
+    }
+  };
 
   const handleUpdateAlamat = async (e) => {
     e.preventDefault();
@@ -123,20 +174,31 @@ const ContentEditAlamatSeller = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedAlamat((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }));
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+    
+  //   if (name === "provinsi") {
+  //     fetchCities(value);
+  //   } else if (name === "kota") {
+  //     fetchDistricts(value);
+  //   }
+  // };
 
-  const handleInputDropdownChange = (name, value) => {
-    setUpdatedAlamat((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }));
-  };
+  // const handleInputDropdownChange = (name, value) => {
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+  //   if (name === "provinsi") {
+  //     fetchCities(value);
+  //   } else if (name === "kota") {
+  //     fetchDistricts(value);
+  //   }
+  // };
 
   return (
     <div>
@@ -207,7 +269,7 @@ const ContentEditAlamatSeller = () => {
                 }
                 className="relative w-[163px] md:w-[140px] lg:w-[258px] "
                 placeholder={updatedAlamat.kode_pos || "Select Postal Code"}
-                options={postalCodes}
+                // options={postalCodes}
               />
             </div>
             <div className="flex md:hidden lg:hidden flex-row justify-between">
@@ -215,7 +277,9 @@ const ContentEditAlamatSeller = () => {
                 title="Provinsi"
                 name="provinsi"
                 value={updatedAlamat.provinsi || ""}
-                onChange={handleInputDropdownChange}
+                onChange={(value) =>
+                  handleInputDropdownChange("provinsi", value)
+                }
                 placeholder={updatedAlamat.provinsi || "Select Province"}
                 options={provinces}
                 className="relative w-[163px] 2xl:w-[292px]"
@@ -224,7 +288,9 @@ const ContentEditAlamatSeller = () => {
                 title="Kota"
                 name="kota"
                 value={updatedAlamat.kota || ""}
-                onChange={handleInputDropdownChange}
+                onChange={(value) =>
+                  handleInputDropdownChange("kota", value)
+                }
                 placeholder={updatedAlamat.kota || "Select City"}
                 options={cities}
                 className="relative w-[163px] 2xl:w-[292px]"
@@ -236,7 +302,9 @@ const ContentEditAlamatSeller = () => {
                 title="Kecamatan"
                 name="kecamatan"
                 value={updatedAlamat.kecamatan || ""}
-                onChange={handleInputDropdownChange}
+                onChange={(value) =>
+                  handleInputDropdownChange("kecamatan", value)
+                }
                 placeholder={updatedAlamat.kecamatan || "Select District"}
                 options={districts}
                 className="relative w-[163px] 2xl:w-[292px]"
@@ -245,9 +313,11 @@ const ContentEditAlamatSeller = () => {
                 title="Kode Pos"
                 name="kode_pos"
                 value={updatedAlamat.kode_pos || ""}
-                onChange={handleInputDropdownChange}
+                onChange={(value) =>
+                  handleInputDropdownChange("kode_pos", value)
+                }
                 placeholder={updatedAlamat.kode_pos || "Select Postal Code"}
-                options={postalCodes}
+                // options={postalCodes}
                 className="relative w-[163px] 2xl:w-[292px]"
               />
             </div>

@@ -6,16 +6,14 @@ import DropdownUpIcon from "../../assets/images/dropdown_up2.svg";
 const DropdownValueAlamat = ({
   title,
   textColor,
-  options,
+  options = [],
   placeholder,
   className,
   value,
   onChange,
   paddingLeft,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(
-    options.find((option) => option.value === value) || null
-  );
+  const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

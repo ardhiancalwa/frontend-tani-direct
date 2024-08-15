@@ -2,7 +2,7 @@ import React from "react";
 
 import imageDummy from "../../assets/images/sayur.jpg";
 
-const CardProductRecomendations = ({ title, isActive, cardRef }) => {
+const CardProductRecomendations = ({ image, title, totalSold, isActive, cardRef }) => {
   const cardStyle = isActive
     ? {
         transform: "scale(1)",
@@ -22,11 +22,11 @@ const CardProductRecomendations = ({ title, isActive, cardRef }) => {
       style={cardStyle}
       ref={cardRef}
     >
-      <div className="lg:max-w-sm 2xl:max-w-full w-auto bg-white border border-gray border-opacity-30 rounded-md p-1  md:rounded-xl overflow-hidden  ">
-        <div className="flex items-center justify-center">
+      <div className="lg:max-w-sm 2xl:max-w-full w-auto bg-white border border-gray border-opacity-30 rounded-2xl p-1  md:rounded-xl overflow-hidden  ">
+        <div className="lg:p-6 flex items-center justify-center rounded-xl">
           <img
-            src={imageDummy}
-            className="lg:p-6 xl:w-[400px] xl:h-[400px] md:p-0 md:object-contain "
+            src={image}
+            className="2xl:w-[500px] 2xl:h-96 2xl:rounded-2xl md:p-0 md:object-cover "
             alt="sayur"
           />
         </div>
@@ -42,8 +42,7 @@ const CardProductRecomendations = ({ title, isActive, cardRef }) => {
           </div>
           <div style={{ height: 7 }}></div>
           <div className="text-start font-inter font-normal lg:text-[14px] text-[5px] xl:text-[16px]  md:text-[11px] ">
-            Produk (x) ini memiliki keunggulan dalam (x) menurut (x) pengguna
-            dan telah terjual (x) dalam kurung waktu x minggu
+            Produk {title} ini terjual sebanyak {totalSold} dalam kurun waktu kurang dari 1 minggu.
           </div>
         </div>
       </div>
