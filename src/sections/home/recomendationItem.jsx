@@ -3,19 +3,16 @@ import React, { useState, useEffect, useRef } from "react";
 import CardProductRecomendations from "../../components/common/card_produk_recomendation";
 import ArrowRight from "../../assets/images/arrow_right.svg";
 import ArrowLeft from "../../assets/images/arrow_left.svg";
+import request from "../../utils/request";
 
 const Recomendation = () => {
-  const [currentCard, setCurrentCard] = useState(1);
-  const cards = [
-    { id: 1, image: "image1", title: "Card 1" },
-    { id: 2, image: "image2", title: "Card 2" },
-    { id: 3, image: "image3", title: "Card 3" },
-
-    // Tambahkan kartu lainnya jika perlu
-  ];
-
+  const [currentCard, setCurrentCard] = useState(0);
+  const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
+  const imageUrl =
+    "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const handleNextCard = () => {
     setCurrentCard((prevCard) => (prevCard + 1) % cards.length);
@@ -24,6 +21,23 @@ const Recomendation = () => {
   const handlePreviousCard = () => {
     setCurrentCard((prevCard) => (prevCard - 1 + cards.length) % cards.length);
   };
+
+  useEffect(() => {
+    const fetchTopSellingProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await request.get("/transaksi/recomendations/top-selling-products");
+        setCards(response.data.data);
+        console.log(response);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching top-selling products:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchTopSellingProducts();
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -66,11 +80,12 @@ const Recomendation = () => {
           ref={containerRef}
         >
           <div className="flex flex-wrap items-center flex-row w-max">
-            {cards.map((card, index) => (
+          {cards.slice(0,3).map((card, index) => (
               <CardProductRecomendations
                 key={card.id}
-                image={card.image}
-                title={card.title}
+                image={`${imageUrl}${card.image_produk}`} 
+                title={card.nama_produk}
+                totalSold={card.totalSold} 
                 isActive={index === currentCard}
                 cardRef={(el) => (cardRefs.current[index] = el)}
               />

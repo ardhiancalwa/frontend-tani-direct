@@ -14,7 +14,7 @@ const PenjualSection = ({seller}) => {
         <div className="flex flex-row row-auto">
           <img
             src={`${imageUrl}${seller?.image_petani}`}
-            className="w-[35px] h-[35px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px] 2xl:w-[100px] 2xl:h-[100px] "
+            className="w-[35px] h-[35px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px] 2xl:w-[100px] 2xl:h-[100px] rounded-full object-cover"
             alt="profile_penjual"
           />
           <div className="flex flex-col items-start justify-center  pl-8">

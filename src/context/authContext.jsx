@@ -1,8 +1,6 @@
-// src/contexts/AuthContext.js
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, { createContext, useState, useContext} from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-// import { isTokenExpired } from '../utils/token';
 
 const cookies = new Cookies();
 
@@ -19,21 +17,6 @@ export const AuthProvider = ({ children }) => {
       ? "petani"
       : null
   );
-
-  // useEffect(() => {
-  //   // Check token validity on mount
-  //   const tokenPembeli = cookies.get("token_pembeli");
-  //   const tokenPetani = cookies.get("token_petani");
-
-  //   if (isTokenExpired(tokenPembeli) || isTokenExpired(tokenPetani)) {
-  //     const currentPath = window.location.pathname;
-  //     // Only logout if the current path is not login or registration
-  //     if (currentPath !== "/login" && currentPath !== "/register" && currentPath !== "/loginseller" && currentPath !== "/register") {
-  //       logout(); // Redirect to login if token is expired
-  //       // window.location.href = "/login";
-  //     }
-  //   }
-  // }, []);
 
   const loginPembeli = async (email, password) => {
     try {

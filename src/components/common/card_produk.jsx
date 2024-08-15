@@ -41,7 +41,7 @@ const CardProduct = ({ product }) => {
 
   return (
     <div
-      className="w-auto h-auto bg-white border md:border-2 border-gray border-opacity-40 rounded-lg md:rounded-xl 2xl:rounded-[30px] transition-transform duration-300 ease-in-out hover:scale-[1.03] cursor-pointer"
+      className="w-auto h-auto bg-white border md:border-2 border-gray border-opacity-40 rounded-lg md:rounded-xl 2xl:rounded-[30px] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
     >
       <button className="p-[6px] md:p-3 lg:p-6">
         <img

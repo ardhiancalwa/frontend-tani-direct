@@ -188,39 +188,12 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
     }
   };
 
-  // const handleUpdateImage = async () => {
-  //   const petaniID = cookies.get("petaniID");
-  //   setLoading(true);
-    
-  //   const formData = new FormData();
-  //   formData.append("image_petani", selectedFile);
-    
-  //   try {
-  //     const response = await request.put(`/petani/${petaniID}`, formData);
-  //     setProfile(response.data.data);
-  //     setLoading(false);
-  //     console.log("Profile updated successfully", response);
-  //   } catch (error) {
-  //     setLoading(false);
-  //     console.error("Error updating profile:", error);
-  //   }
-  // };
-  
-
   const handleInputDropdownChange = (name, value) => {
     setUpdatedAlamat((prevProfile) => ({
       ...prevProfile,
       [name]: value,
     }));
   };
-
-  // const handleModalSave = () => {
-  //   setProfile((prevProfile) => ({
-  //     ...prevProfile,
-  //     ...updatedAlamat,
-  //   }));
-  //   closeModalAddress();
-  // };
 
   return (
     <div className="lg:pl-16 py-10" key={profileDataPetani.petaniID}>
@@ -264,7 +237,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
               <div className="lg:w-[270px] 2xl:w-96 hidden lg:flex lg:flex-col">
                 <div className="py-1">
                   <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-400 ease-in-out hover:bg-gray-100 hover:shadow-md active:bg-gray active:bg-opacity-10 active:scale-95"
                     onClick={() => (window.location.href = "/editprofiletoko")}
                   >
                     <div
@@ -277,7 +250,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                 </div>
                 <div className="py-1">
                   <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-400 ease-in-out hover:bg-gray-100 hover:shadow-md active:bg-gray active:bg-opacity-10 active:scale-95"
                     onClick={() => (window.location.href = "/menupesanan")}
                   >
                     <div
@@ -290,7 +263,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                 </div>
                 <div className="py-1">
                   <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-400 ease-in-out hover:bg-gray-100 hover:shadow-md active:bg-gray active:bg-opacity-10 active:scale-95"
                     // onClick={openModalAddress}
                     onClick={() => window.location.href = "/editalamatseller"}
                   >
@@ -302,35 +275,9 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                     </div>
                   </button>
                 </div>
-                {/* <div className="py-1">
-                  <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
-                    onClick={() => (window.location.href = "/myproduct")}
-                  >
-                    <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
-                    >
-                      My Product
-                    </div>
-                  </button>
-                </div> */}
                 <div className="py-1">
                   <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
-                    onClick={() => (window.location.href = "/informasiproduct")}
-                  >
-                    <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
-                    >
-                      Information of Product
-                    </div>
-                  </button>
-                </div>
-                <div className="py-1">
-                  <button
-                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                    className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-400 ease-in-out hover:bg-gray-100 hover:shadow-md active:bg-gray active:bg-opacity-10 active:scale-95"
                     onClick={() =>
                       (window.location.href = "/historytransaction")
                     }
