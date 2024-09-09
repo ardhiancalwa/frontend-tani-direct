@@ -27,7 +27,7 @@ const Navbar = ({ className }) => {
   };
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center ">
       <nav className={`bg-white fixed z-50 ${className} max-w-full mx-auto`}>
         <div className=" flex row-auto py-4 items-center justify-between md:border-b border-gray md:pb-3 lg:pb-5 lg:px-3 ">
           <a href={"/home"}>

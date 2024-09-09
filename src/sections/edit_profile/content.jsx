@@ -145,97 +145,99 @@ const ContentEditProfile = () => {
           <LoadingScreen />
         </div>
       ) : (
-        <div>
+        <div className="inline-flex flex-col w-full ">
           <div className="h-[20px] lg:h-10"></div>
-          <TextfieldProfile
-            title={"Nama Lengkap"}
-            placeholder={updatedProfile.nama_pembeli || ""}
-            type={"text"}
-            readOnly={false}
-            name={"nama_pembeli"}
-            value={updatedProfile?.nama_pembeli || ""}
-            onChange={handleInputChange}
-            className={
-              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
-            }
-          />
-          <TextfieldProfile
-            title={"Email"}
-            placeholder={updatedProfile.email_pembeli || ""}
-            type={"email"}
-            readOnly={false}
-            name={"email_pembeli"}
-            value={updatedProfile?.email_pembeli || ""}
-            onChange={handleInputChange}
-            className={
-              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
-            }
-          />
-          <TextfieldProfile
-            title={"Contact Number"}
-            placeholder={updatedProfile.kontak_pembeli || ""}
-            type={"text"}
-            readOnly={false}
-            name={"kontak_pembeli"}
-            value={updatedProfile?.kontak_pembeli || ""}
-            onChange={handleInputChange}
-            className={
-              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
-            }
-          />
-          <div className="flex flex-row md:w-[620px] lg:w-[750px] 2xl:w-[1500px] justify-between">
-            <DropdownValue
-              title={"Tanggal lahir"}
-              placeholder={updatedProfile.tanggal_lahir?.day || ""}
-              name="tanggal_lahir.day"
-              options={Array.from({ length: 31 }, (_, i) => ({
-                label: i + 1,
-                value: i + 1,
-              }))}
-              value={updatedProfile.tanggal_lahir?.day || ""}
-              onChange={(value) => handleDateChange("day", value)}
+          <div className="inline-flex flex-col w-full justify-start items-start">
+            <TextfieldProfile
+              title={"Nama Lengkap"}
+              placeholder={updatedProfile.nama_pembeli || ""}
+              type={"text"}
+              readOnly={false}
+              name={"nama_pembeli"}
+              value={updatedProfile?.nama_pembeli || ""}
+              onChange={handleInputChange}
               className={
-                "relative w-[104px] md:w-[130px] lg:w-[50px] 2xl:w-[700px] "
+                "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-[1200px]"
               }
             />
-            <DropdownValue
-              title={"Bulan lahir"}
-              placeholder={updatedProfile.tanggal_lahir?.month || ""}
-              name="tanggal_lahir.month"
-              options={months}
-              value={updatedProfile.tanggal_lahir?.month || ""}
-              onChange={(value) => handleDateChange("month", value)}
+            <TextfieldProfile
+              title={"Email"}
+              placeholder={updatedProfile.email_pembeli || ""}
+              type={"email"}
+              readOnly={false}
+              name={"email_pembeli"}
+              value={updatedProfile?.email_pembeli || ""}
+              onChange={handleInputChange}
               className={
-                "relative w-[104px] md:w-[130px] lg:w-[50px] 2xl:w-[700px] pl-"
+                "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-[1200px]"
               }
-              paddingLeft={"md:pl-28 lg:pl-[82px] 2xl:pl-0"}
             />
-            <DropdownValue
-              title={"Tahun lahir"}
-              placeholder={updatedProfile.tanggal_lahir?.year || ""}
-              name="tanggal_lahir.year"
-              options={years}
-              value={updatedProfile.tanggal_lahir?.year || ""}
-              onChange={(value) => handleDateChange("year", value)}
+            <TextfieldProfile
+              title={"Contact Number"}
+              placeholder={updatedProfile.kontak_pembeli || ""}
+              type={"text"}
+              readOnly={false}
+              name={"kontak_pembeli"}
+              value={updatedProfile?.kontak_pembeli || ""}
+              onChange={handleInputChange}
               className={
-                "relative w-[104px] md:w-[135px] lg:w-[30px] 2xl:w-[700px] pb-[10px]"
+                "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-[1200px]"
               }
-              paddingLeft={"md:pl-28 lg:pl-26 2xl:pl-0"}
+            />
+            <div className="flex flex-row md:w-[620px] lg:w-[750px] 2xl:w-[1000px] gap-5 justify-between">
+              <DropdownValue
+                title={"Tanggal lahir"}
+                placeholder={updatedProfile.tanggal_lahir?.day || ""}
+                name="tanggal_lahir.day"
+                options={Array.from({ length: 31 }, (_, i) => ({
+                  label: i + 1,
+                  value: i + 1,
+                }))}
+                value={updatedProfile.tanggal_lahir?.day || ""}
+                onChange={(value) => handleDateChange("day", value)}
+                className={
+                  " w-[104px] md:w-[130px] 2xl:w-[400px]  inline-flex lg:w-[280px]  "
+                }
+              />
+              <DropdownValue
+                title={"Bulan lahir"}
+                placeholder={updatedProfile.tanggal_lahir?.month || ""}
+                name="tanggal_lahir.month"
+                options={months}
+                value={updatedProfile.tanggal_lahir?.month || ""}
+                onChange={(value) => handleDateChange("month", value)}
+                className={
+                  " w-[110px]  text-[12px] md:w-[130px]  2xl:w-[400px]  inline-flex lg:w-[280px]  "
+                }
+                // paddingLeft={"md:pl-28 lg:pl-[82px] 2xl:pl-0"}
+              />
+              <DropdownValue
+                title={"Tahun lahir"}
+                placeholder={updatedProfile.tanggal_lahir?.year || ""}
+                name="tanggal_lahir.year"
+                options={years}
+                value={updatedProfile.tanggal_lahir?.year || ""}
+                onChange={(value) => handleDateChange("year", value)}
+                className={
+                  " w-[104px] md:w-[135px] lg:w-[280px] 2xl:w-[400px]  inline-flex  pb-[10px]"
+                }
+                // paddingLeft={"md:pl-28 lg:pl-26 2xl:pl-0"}
+              />
+            </div>
+            <div className="lg:h-[20px]"></div>
+            <TextfieldProfile
+              title={"Password"}
+              placeholder={"*************"}
+              type={"password"}
+              readOnly={false}
+              name="password_pembeli"
+              value={updatedProfile.password_pembeli || ""}
+              onChange={handleInputChange}
+              className={
+                "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-[1200px]"
+              }
             />
           </div>
-          <div className="lg:h-[20px]"></div>
-          <TextfieldProfile
-            title={"Password"}
-            placeholder={"*************"}
-            type={"password"}
-            readOnly={false}
-            name="password_pembeli"
-            value={updatedProfile.password_pembeli || ""}
-            onChange={handleInputChange}
-            className={
-              "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
-            }
-          />
           <div className="h-[10px] lg:h-[0px]"></div>
           <div className="flex flex-row justify-start lg:py-10">
             <button

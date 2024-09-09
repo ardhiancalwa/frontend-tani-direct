@@ -2,7 +2,13 @@ import React from "react";
 
 import imageDummy from "../../assets/images/sayur.jpg";
 
-const CardProductRecomendations = ({ image, title, totalSold, isActive, cardRef }) => {
+const CardProductRecomendations = ({
+  image,
+  title,
+  totalSold,
+  isActive,
+  cardRef,
+}) => {
   const cardStyle = isActive
     ? {
         transform: "scale(1)",
@@ -42,7 +48,8 @@ const CardProductRecomendations = ({ image, title, totalSold, isActive, cardRef 
           </div>
           <div style={{ height: 7 }}></div>
           <div className="text-start font-inter font-normal lg:text-[14px] text-[5px] xl:text-[16px]  md:text-[11px] ">
-            Produk {title} ini terjual sebanyak {totalSold} dalam kurun waktu kurang dari 1 minggu.
+            Produk {title} ini terjual sebanyak {totalSold} dalam kurun waktu
+            kurang dari 1 minggu.
           </div>
         </div>
       </div>

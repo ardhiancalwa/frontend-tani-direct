@@ -130,9 +130,12 @@ const ContentProfile = (profileData) => {
           <LoadingScreen />
         </div>
       ) : (
-        <div className="lg:pl-16" key={profileData.pembeliID}>
+        <div
+          className="lg:pl-16 2xl:px-5  w-full  "
+          key={profileData.pembeliID}
+        >
           <div className="h-[20px] md:h-[30px]"></div>
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row items-center xl:gap-5 2xl:gap-0  ">
             <div className="flex flex-col items-center">
               <div className="flex flex-col w-[173px] md:w-[223px] lg:w-[270px] 2xl:w-96 items-center border border-gray rounded-md 2xl:rounded-xl p-[15px]">
                 <img
@@ -219,23 +222,23 @@ const ContentProfile = (profileData) => {
                 </div>
               </div>
             </div>
-            <div style={{ width: 50 }}></div>
-            <div className="max-w-full">
-              <div className="flex flex-col">
+            {/* <div style={{ width: 50 }}></div> */}
+            <div className="w-full">
+              <div className="inline-flex flex-col w-max ">
                 <TextfieldProfile
                   title="Nama"
                   placeholder={profile.nama_pembeli}
                   type="text"
                   readOnly={true}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px] "
+                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:min-w-[900px] "
                   }
                 />
                 <TextfieldProfile
                   title="Email"
                   placeholder={profile.email_pembeli}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px]"
+                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:min-w-[900px]"
                   }
                   type="email"
                   readOnly={true}
@@ -244,7 +247,7 @@ const ContentProfile = (profileData) => {
                   title="Contact Number"
                   placeholder={profile.kontak_pembeli}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px]"
+                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:min-w-[900px]"
                   }
                   type="text"
                   readOnly={true}
@@ -257,7 +260,7 @@ const ContentProfile = (profileData) => {
                       : "Tanggal tidak tersedia"
                   }
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px]"
+                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:min-w-[900px]"
                   }
                   type="text"
                   readOnly={true}
@@ -266,7 +269,7 @@ const ContentProfile = (profileData) => {
                   title="Password"
                   placeholder="*************"
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px]"
+                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:min-w-[900px]"
                   }
                   type="password"
                   readOnly={true}

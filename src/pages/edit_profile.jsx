@@ -7,7 +7,7 @@ import Header from "../components/common/header";
 
 const EditProfile = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
+    <div className="max-w-screen-sm md:max-w-full px-[15px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
       <Navbar />
       <Header title={"Edit Profile"} onClick={() => window.history.back()} />
       <ContentEditProfile />
