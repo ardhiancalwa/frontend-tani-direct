@@ -159,7 +159,7 @@ const ContentEditAlamat = () => {
               name="nama_pembeli"
               value={updatedAlamat.nama_pembeli || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
             />
             <TextfieldProfile
               title="Contact Number"
@@ -168,9 +168,9 @@ const ContentEditAlamat = () => {
               name="kontak_pembeli"
               value={updatedAlamat.kontak_pembeli || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
             />
-            <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] 2xl:w-[1750px]">
+            <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] 2xl:w-full  ">
               <DropdownValueAlamat
                 title="Provinsi"
                 name="provinsi"
@@ -178,7 +178,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("provinsi", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[258px]"
+                className="relative w-[163px] md:w-[140px] 2xl:w-[100px] bg-red"
                 placeholder={updatedAlamat.provinsi || "Select Province"}
                 options={provinces}
               />
@@ -187,7 +187,7 @@ const ContentEditAlamat = () => {
                 name="kota"
                 value={updatedAlamat.kota || ""}
                 onChange={(value) => handleInputDropdownChange("kota", value)}
-                className="relative w-[163px] md:w-[140px] 2xl:w-[258px]"
+                className="relative w-[163px] md:w-[140px] 2xl:w-[100px]"
                 placeholder={updatedAlamat.kota || "Select City"}
                 options={cities}
               />
@@ -198,7 +198,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("kecamatan", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[258px]"
+                className="relative w-[163px] md:w-[140px] 2xl:w-[100px]"
                 placeholder={updatedAlamat.kecamatan || "Select District"}
                 options={districts}
               />
@@ -235,7 +235,7 @@ const ContentEditAlamat = () => {
               />
             </div>
             <div className="h-[15px]"></div>
-            <div className="flex md:hidden lg:hidden flex-row justify-between">
+            <div className="flex md:hidden lg:hidden flex-row justify-between ">
               <DropdownValueAlamat
                 title="Kecamatan"
                 name="kecamatan"
@@ -265,22 +265,22 @@ const ContentEditAlamat = () => {
               type="text"
               className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
             />
-            <div className="pb-[25px]">
+            <div className="pb-[25px] ">
               <div className="flex flex-col items-start">
                 <div className="font-inter font-semibold text-black text-[14px] md:text-[20px] lg:text-[26px]">
                   Nama Jalan, Gedung atau Rumah
                 </div>
                 <div style={{ height: 7 }}></div>
-                <form className="flex items-center justify-start">
-                  <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 w-full ring-opacity-50 focus:ring-gray">
+                <form className="flex items-center justify-start w-full">
+                  <div className="flex items-center justify-start rounded-md ring-1 ring-gray p-5  ring-opacity-50 focus:ring-gray w-full">
                     <textarea
                       placeholder={updatedAlamat.nama_alamat || ""}
-                      className="font-inter font-medium focus:outline-none text-[12px] md:text-[16px] lg:text-[24px] h-[67px] lg:h-[189px] resize-none w-[325px] md:w-[627px] lg:w-[862px] 2xl:w-[1850px]"
+                      className="font-inter font-medium focus:outline-none text-[12px] md:text-[16px] lg:text-[24px] h-[67px] lg:h-[189px] resize-none w-[325px] md:w-[627px] lg:w-[862px] 2xl:w-full"
                       name="nama_alamat"
                       value={updatedAlamat.nama_alamat || ""}
                       onChange={handleInputChange}
                     />
-                  </span>
+                  </div>
                 </form>
               </div>
             </div>

@@ -17,8 +17,10 @@ const TextfieldProfile = ({
           {title}
         </div>
         <div style={{ height: 7 }}></div>
-        <form className="flex items-center justify-start max-w-screen-sm lg:max-w-full">
-          <span className={`flex items-center justify-start rounded-md ring-1 ring-gray p-5 ring-opacity-50 focus:ring-gray lg:max-w-full h-[26px] md:h-[40px] lg:h-[70px]`}>
+        <form className="flex items-center justify-start max-w-screen-sm lg:min-w-full ">
+          <div
+            className={`flex items-center justify-start rounded-md ring-1  ring-gray w-full p-5 ring-opacity-50 focus:ring-gray h-[26px] md:h-[40px] lg:h-[70px]`}
+          >
             <input
               type={type}
               placeholder={placeholder}
@@ -28,7 +30,7 @@ const TextfieldProfile = ({
               name={name}
               readOnly={readOnly}
             />
-          </span>
+          </div>
         </form>
       </div>
     </div>

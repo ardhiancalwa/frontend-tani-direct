@@ -127,7 +127,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
       });
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     const userToken = cookies.get("token_petani");
     if (userToken) {
       fetchData(userToken);
@@ -141,7 +141,6 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
       handleUpdateImage();
     }
   }, [selectedFile]);
-  
 
   // const handleFileChange = (event) => {
   //   const file = event.target.files[0];
@@ -166,19 +165,23 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
   const handleUpdateImage = async () => {
     const petaniID = cookies.get("petaniID");
     setLoading(true);
-    
+
     const formData = new FormData();
     if (selectedFile) {
       formData.append("image_petani", selectedFile);
     }
-  
+
     try {
-      const response = await axios.put(`https://backend-tanidirect-production.up.railway.app/petani/${petaniID}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-  
+      const response = await axios.put(
+        `https://backend-tanidirect-production.up.railway.app/petani/${petaniID}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       setProfile(response.data.data);
       setLoading(false);
       console.log("Profile updated successfully", response);
@@ -265,7 +268,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   <button
                     className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-400 ease-in-out hover:bg-gray-100 hover:shadow-md active:bg-gray active:bg-opacity-10 active:scale-95"
                     // onClick={openModalAddress}
-                    onClick={() => window.location.href = "/editalamatseller"}
+                    onClick={() => (window.location.href = "/editalamatseller")}
                   >
                     <div
                       className="font-inter font-semibold text-black text-start"
@@ -294,7 +297,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
             </div>
             <div style={{ width: 50 }}></div>
             <div className="max-w-full">
-              <div className="flex flex-col">
+              <div className="inline-flex flex-col">
                 <TextfieldProfile
                   title="Nama Toko"
                   placeholder={profile.nama_petani}
@@ -331,6 +334,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                     "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[322px] md:w-[626px] lg:w-[480px] 2xl:w-[1380px]"
                   }
                 />
+
                 <TextfieldProfile
                   title="Email"
                   placeholder={profile.email_petani}

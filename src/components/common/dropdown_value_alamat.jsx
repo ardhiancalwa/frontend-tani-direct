@@ -32,7 +32,7 @@ const DropdownValueAlamat = ({
   };
 
   return (
-    <div className={`flex flex-col items-start ${paddingLeft}`}>
+    <div className={`flex flex-col items-start ${paddingLeft} w-full`}>
       <div
         className={`font-inter font-semibold ${textColor} text-[14px] md:text-[20px] lg:text-[26px]`}
       >
