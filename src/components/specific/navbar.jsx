@@ -16,7 +16,7 @@ const Navbar = ({ className }) => {
     setCartItemCount(cart.length);
   }, []);
 
-  const isActive = (path) => {
+  const isActive = (path) => { 
     return location.pathname === path
       ? "sm:border-b-2 lg:border-b-4 border-primary "
       : "";

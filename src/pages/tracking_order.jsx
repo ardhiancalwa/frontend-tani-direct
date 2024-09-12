@@ -7,13 +7,13 @@ import Header from "../components/common/header";
 
 const TrackingOrder = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
+    <div className="max-w-screen-sm md:max-w-full px-[10px] md:px-[50px] lg:px-[90px] xl:px-[90px] 2xl:px-[120px]">
       <Navbar />
       <Header title={"Tracking Order"} onClick={() => window.history.back()} />
       <ContentTrackingOrder />
       <Footer />
     </div>
   );
-};
+}; 
 
 export default TrackingOrder;
