@@ -33,10 +33,8 @@ const CardReview = () => {
             </div>
           </div>
           <div className="md:h-4" />
-          <div className="text-start font-normal font-inter text-black text-[8px] md:text-[12px] lg:text-[14px] 2xl:text-[20px] lg:leading-snug overflow-y-auto">
-            Produk dikemas dengan baik tanpa ada kerusakan. Kualitas pangannya
-            sangat bagus tanpa ada bau pestisida dan hama serangga. Harga produk
-            sangat sesuai dengan jarak pengiriman produk.
+          <div className="text-start font-normal font-inter text-black text-[8px] md:text-[12px] lg:text-[14px] 2xl:text-[20px] lg:leading-snug overflow-y-auto ">
+            Produk dikemas dengan baik tanpa ada kerusakan. Kualitas pangannya sangat bagus tanpa ada bau pestisida dan hama serangga. Harga produk sangat sesuai dengan jarak pengiriman produk.
           </div>
         </div>
       </div>

@@ -4,12 +4,11 @@ import starIcon from "../../assets/images/star.svg";
 import buyIcon from "../../assets/images/buy.svg";
 import bookmarkIcon from "../../assets/images/bookmark.svg";
 import bookmarkIconFilled from "../../assets/images/bookmark_fill2.svg";
-import Skeleton from "../../components/common/skeleton";
 import toast from "react-hot-toast";
 
 const CardProduct = ({ product }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const cloudinaryBaseURL = process.env.REACT_APP_IMAGE_URL;
+  // const cloudinaryBaseURL = process.env.REACT_APP_IMAGE_URL;
   const imageUrl =
     "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
@@ -44,11 +43,13 @@ const CardProduct = ({ product }) => {
       className="w-auto h-auto bg-white border md:border-2 border-gray border-opacity-40 rounded-lg md:rounded-xl 2xl:rounded-[30px] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
     >
       <button className="p-[6px] md:p-3 lg:p-6">
-        <img
-          src={`${imageUrl}${product.image_produk}`}
-          alt={product.nama_produk}
+        {product.image_produk.slice(0,1).map((image, index)=> (
+          <img
+          src={`${imageUrl}${image}`}
+          alt={`${product.nama_produk} ${index + 1}`}
           className="w-[100px] h-[84px] md:w-[158px] md:h-[118px] lg:w-[300px] lg:h-[200px] 2xl:w-[350px] 2xl:h-[305px] rounded-md md:rounded-lg 2xl:rounded-[20px] object-cover"
         />
+        ))}
       </button>
       <div className="py-[0px] px-[7px] md:px-[15px] md:py-[0px] lg:px-6">
         <h2 className="w-[100px] md:w-[158px] lg:w-[230px] h-auto  2xl:h-[100px] overflow-auto font-inter text-[8px] md:text-[14px] lg:text-[25px] 2xl:text-[30px] text-black font-semibold text-start">

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import imageDummy from "../../assets/images/sayur.jpg";
+import React from "react";
 import starIcon from "../../assets/images/star.svg";
 import buyIcon from "../../assets/images/buy.svg";
 import bookmarkIcon from "../../assets/images/bookmark.svg";
@@ -12,11 +11,13 @@ const CardProductAll = ({ product, onBookmarkClick, isBookmarked }) => {
   return (
     <div className="flex flex-col w-auto bg-white lg:w-full transition-all border border-gray border-opacity-30 hover:border-opacity-50 rounded-lg md:rounded-xl 2xl:rounded-[25px] duration-300 ease-in-out transform hover:scale-[1.01]">
       <div className="2xl:p-7 md:p-3 lg:p-4 p-2">
-        <img
-          src={`${imageUrl}${product.image_produk}`}
-          alt={product.nama_produk}
-          className="w-[150px] h-[150px] md:w-[158px] md:h-[118px] lg:w-[300px] lg:h-[150px] xl:h-[185px] 2xl:w-[295px] 2xl:h-[280px] rounded-lg md:rounded-xl 2xl:rounded-[18px] object-cover"
-        />
+        {product.image_produk.slice(0, 1).map((image, index) => (
+          <img
+            src={`${imageUrl}${image}`}
+            alt={`${product.nama_produk} ${index + 1}`}
+            className="w-[100px] h-[84px] md:w-[158px] md:h-[118px] lg:w-[300px] lg:h-[200px] 2xl:w-[350px] 2xl:h-[305px] rounded-md md:rounded-lg 2xl:rounded-[20px] object-cover"
+          />
+        ))}
         <div className="py-2 md:py-0 md:pt-2 md:pb-0 lg:px-1 lg:py-0 lg:pt-3 lg:pb-0 2xl:p-2">
           <div className="font-inter text-[14px] md:text-[16px] lg:text-[22px] xl:text-[20px] 2xl:text-[25px] text-black font-semibold text-start line-clamp-1">
             {product.nama_produk}
@@ -29,7 +30,7 @@ const CardProductAll = ({ product, onBookmarkClick, isBookmarked }) => {
                   : "text-[10px] md:text-[10px] lg:text-[16px] 2xl:text-[24px] lg:leading-normal"
               }`}
             >
-              Rp {product.harga.toLocaleString('id-ID')}
+              Rp {product.harga.toLocaleString("id-ID")}
             </div>
             <div className="w-[5px] 2xl:w-[10px] "></div>
             <div
@@ -39,7 +40,7 @@ const CardProductAll = ({ product, onBookmarkClick, isBookmarked }) => {
                   : "text-[10px] lg:text-[12px] 2xl:text-[15px] lg:leading-normal"
               } line-through`}
             >
-              Rp {(product.harga + 50000).toLocaleString('id-ID')}
+              Rp {(product.harga + 50000).toLocaleString("id-ID")}
             </div>
           </div>
           <div className="2xl:h-[12px] lg:h-[8px] h-[5px] "></div>

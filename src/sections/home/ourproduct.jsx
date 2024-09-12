@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CardProduct from "../../components/common/card_produk";
-import axios from "axios";
 import Cookies from "universal-cookie";
 import request from "../../utils/request";
 import LoadingScreen from "../../components/common/loading";

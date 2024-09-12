@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HeaderChat from "../sections/chat/header";
 import ContentChat from "../sections/chat/content_chat";
-import TextKeyboard from "../sections/chat/textKey";
+// import TextKeyboard from "../sections/chat/textKey";
 import Navbar from "../components/specific/navbar";
 
 const ChatPage = () => {

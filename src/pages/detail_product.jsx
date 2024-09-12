@@ -20,7 +20,7 @@ const cookies = new Cookies();
 const DetailProduct = () => {
   const isLg = useMediaQuery({ minWidth: 768 });
   const { produkID } = useParams();
-  const [selectedWeight, setSelectedWeight] = useState(null);
+  const [selectedWeight, setSelectedWeight] = useState(20);
   const [product, setProduct] = useState({});
   const [seller, setSeller] = useState(null);
   const [calculatedPrice, setCalculatedPrice] = useState(null);
@@ -34,9 +34,9 @@ const DetailProduct = () => {
       try {
         const response = await request.get(`/produk/${produkID}`);
         setProduct(response.data.data);
-        // console.log(response.data.data.PetaniProduk[0].Petani);
         setSeller(response.data.data.PetaniProduk[0].Petani);
         setLoading(false);
+        console.log(response);
       } catch (error) {
         console.error(error);
         setLoading(false);
@@ -58,14 +58,14 @@ const DetailProduct = () => {
   useEffect(() => {
     if (product) {
       let price = product.harga;
-      if (selectedWeight === 25) {
+      if (selectedWeight === 20) {
         price *= 1;
       } else if (selectedWeight === 50) {
-        price *= 1.25; // Increase 25% for weight 50
+        price *= 1.25; 
       } else if (selectedWeight === 75) {
-        price *= 1.5; // Increase 50% for weight 75
+        price *= 1.5; 
       } else if (selectedWeight === 100) {
-        price *= 1.75; // Increase 75% for weight 100
+        price *= 1.75;
       }
       setCalculatedPrice(price);
     }
@@ -113,7 +113,7 @@ const DetailProduct = () => {
       {
         ...product,
         jumlah: quantity,
-        selectedWeight: selectedWeight,
+        selectexdWeight: selectedWeight,
         calculatedPrice: calculatedPrice,
       },
     ];
