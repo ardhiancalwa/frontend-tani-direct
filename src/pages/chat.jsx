@@ -5,11 +5,11 @@ import TextKeyboard from "../sections/chat/textKey";
 import Navbar from "../components/specific/navbar";
 
 const ChatPage = () => {
-  const [isLG, setIsLG] = useState(window.innerWidth >= 1024);
+  const [isLG, setIsLG] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLG(window.innerWidth >= 1024);
+      setIsLG(window.innerWidth >= 768);
     };
 
     window.addEventListener("resize", handleResize);
@@ -21,7 +21,7 @@ const ChatPage = () => {
   }, []);
 
   return (
-    <div className="h-screen grid grid-rows-[2fr,auto,1fr] max-w-screen-sm md:max-w-screen-md lg:max-w-full px-5 md:px-[70px] lg:px-[240px] py-2">
+    <div className="h-screen grid grid-rows-[2fr,auto,1fr] max-w-screen-sm md:max-w-screen-md lg:max-w-full px-5 md:px-[70px] lg:px-[125px] py-2">
       {isLG ? <HeaderChat /> : <Navbar />}
       <div className="pt-[10px] lg:pt-0 "></div>
       <ContentChat />

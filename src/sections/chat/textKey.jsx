@@ -30,7 +30,7 @@ const TextKeyboard = () => {
       messages.length > 0 &&
       messages[messages.length - 1].sender === "buyer"
     ) {
-      const botReply = "Terima kasih sudah menghubungi kami!";
+      const botReply = "Selamat Siang Kak! Silahkan dilihat-lihat produk segar kami. Untuk pemesanan, silahkan melakukan pembayaran terlebih dahulu. Pesanan akan segara diproses ke dalam pengiriman.";
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -58,7 +58,7 @@ const TextKeyboard = () => {
               <div>
                 <img
                   src={ProfilePenjual}
-                  className="w-7 h-7 lg:w-10 lg:h-10"
+                  className="w-9 h-9 lg:w-10 lg:h-10"
                   alt="profile_penjual"
                 />
               </div>
@@ -72,7 +72,7 @@ const TextKeyboard = () => {
                 <div className="bg-primary w-2 rounded-l-full"></div>
               )}
               <div
-                className="p-2 lg:p-6 text-xs md:text-[14px] leading-normal text-start lg:text-xl font-medium font-inter max-w-64 lg:max-w-2xl"
+                className="p-2 lg:p-6 text-xs md:text-[14px] leading-normal text-start lg:text-xl font-medium font-inter max-w-52 md:max-w-96 lg:max-w-2xl"
                 style={{ wordWrap: "break-word" }}
               >
                 {message.text}
@@ -86,7 +86,7 @@ const TextKeyboard = () => {
               <div>
                 <img
                   src={ProfilePembeli}
-                  className="w-7 h-7 lg:w-10 lg:h-10"
+                  className="w-9 h-9 lg:w-10 lg:h-10"
                   alt="profile_pembeli"
                 />
               </div>
@@ -95,30 +95,30 @@ const TextKeyboard = () => {
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <div style={{ height: 52 }}></div>
+      <div className="h-10 md:h-[46px] lg:h-[52px]"></div>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center rounded-xl h-11 md:h-14 lg:h-28 mb-5"
+        className="flex items-center rounded-lg h-11 md:h-14 lg:h-28 mb-5 md:mb-8"
       >
-        <span className="flex items-center justify-center w-full h-full rounded-xl ring-2 ring-black pr-5 bg-gray-100">
+        <span className="flex items-center justify-center w-full h-full rounded-xl ring-2 ring-black pr-3 lg:pr-7 pl-1 space-x-2 lg:space-x-4 bg-gray-100">
           <input
             type="text"
             placeholder="Type a new message here"
             value={searchTerm}
             onChange={handleInputChange}
-            className="flex-1 px-2 lg:px-6 lg:py-2 text-xs md:text-xl lg:text-2xl font-semibold text-black opacity-70 font-inter rounded-none focus:outline-none placeholder-black"
+            className="flex-1 px-2 lg:px-6 lg:py-2 text-base md:text-xl lg:text-2xl font-semibold text-black opacity-70 font-inter rounded-none focus:outline-none placeholder-black"
           />
           <button type="submit">
             <img
               src={OpenFileIcon}
-              className="w-6 h-6 md:w-9 md:h-9"
+              className="md:w-9 md:h-9 lg:w-14 lg:h-14 w-7 h-7"
               alt="send icon"
             />
           </button>
           <button type="submit">
             <img
               src={SendIcon}
-              className="w-6 h-6 md:w-9 md:h-9"
+              className="md:w-9 md:h-9 lg:w-14 lg:h-14 w-7 h-7"
               alt="send icon"
             />
           </button>

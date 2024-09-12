@@ -34,7 +34,7 @@ const Wishlist = () => {
       ) : (
         <p>No bookmarked products</p>
       )}
-      {/* <Footer /> */}
+      {/* <Footer /> */} 
     </div>
   );
 };
