@@ -11,8 +11,6 @@ const ContainerCart = ({ item, onItemCheck, onQuantityChange }) => {
   const imageURl = "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
 
   const handleClick = () => {
-    // setIsChecked(!isChecked);
-    // onItemCheck(item.produkID, !isChecked);
     const newIsChecked = !isChecked;
     setIsChecked(newIsChecked);
     onItemCheck(item.produkID, newIsChecked, item.calculatedPrice * quantity);

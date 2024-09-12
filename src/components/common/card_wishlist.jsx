@@ -1,6 +1,6 @@
 import React from "react";
 
-import ImageDummy from "../../assets/images/sayur.jpg";
+// import ImageDummy from "../../assets/images/sayur.jpg";
 import BookmarkFill from "../../assets/images/bookmark_fill.svg";
 
 const CardWishList = ({ product, onRemoveBookmark }) => {

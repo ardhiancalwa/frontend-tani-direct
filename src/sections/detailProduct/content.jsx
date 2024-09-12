@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
-import ProductImage from "../../assets/images/carrot.jpg";
 import ButtonWeightProduct from "../../components/common/button_weight_product";
 import PlusMinusProduct from "../../components/common/button_plusminus_product";
 import DetailImage from "../../components/common/detail_image";
-import request from "../../utils/request";
-
 import CartIcon from "../../assets/images/keranjang.svg";
-import axios from "axios";
-import Cookies from "universal-cookie";
-
-const cookies = new Cookies();
-
 const ContentDetailProduct = ({
   product,
   selectedWeight,
@@ -50,22 +40,25 @@ const ContentDetailProduct = ({
       <div className="h-[30px] lg:h-[20px]"></div>
       <div className="flex flex-col md:flex-row row-auto">
         <div>
-          <img
-            src={`${imageUrl}${product.image_produk}`}
-            class="border border-gray border-opacity-30 rounded-lg shadow-lg md:rounded-lg lg:rounded-2xl w-[370px] h-[222px] lg:w-[800px] lg:h-[300px] 2xl:w-[800px] 2xl:h-[500px] object-cover"
-            alt="productimage"
-          ></img>
+          {product.image_produk?.slice(0,1).map((image, index) => (
+            <img
+              key={index}
+              src={`${imageUrl}${image}`}
+              className="border border-gray border-opacity-30 rounded-lg shadow-lg md:rounded-lg lg:rounded-2xl w-[370px] h-[222px] lg:w-[800px] lg:h-[300px] 2xl:w-[800px] 2xl:h-[500px] object-cover"
+              alt={`${product.nama_produk} ${index + 1}`}
+            />
+          ))} 
           <DetailImage />
         </div>
         <div className="w-[36px] 2xl:w-[150px]"></div>
-        <div className="flex flex-col col-auto items-start h-[275px] lg:w-full 2xl:w-screen lg:h-[434px]">
-          <div className="pt-[0px] lg:w-[505px] 2xl:w-[900px] h-auto w-full  md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[24px] 2xl:text-[40px]">
+        <div className="flex flex-col col-auto items-start h-[275px] lg:w-full 2xl:w-full lg:h-[434px]">
+          <div className="pt-[0px] lg:w-[505px] 2xl:w-[900px] md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[24px] 2xl:text-[40px]">
             {product.nama_produk}
           </div>
           <div className="py-[6px] lg:py-2 font-inter font-semibold text-black text-start text-[14px] md:text-[16px] lg:text-[20px] 2xl:text-[30px]">
             Description
           </div>
-          <div className="font-inter w-[290px] h-auto lg:w-[505px] 2xl:w-[900px] font-medium text-black text-start text-[12px] lg:text-[16px] 2xl:text-[25px] break-words">
+          <div className="font-inter font-medium text-black text-start text-[12px] lg:text-[16px] 2xl:text-[25px] ">
             {product.deskripsi_produk}
           </div>
           <div className="flex flex-row row-auto md:pt-2 2xl:pt-2">
