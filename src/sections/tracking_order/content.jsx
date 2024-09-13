@@ -73,7 +73,7 @@ const stepsVertical = [
     icon: (
       <img
         src={TerkirimIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Terkirim"
       />
     ),
@@ -88,7 +88,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSampaiVerticalIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px]lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[18px] lg:h-[18px]"
         alt="Pesanan Sampai"
       />
     ),
@@ -153,7 +153,7 @@ const stepsVertical = [
     icon: (
       <img
         src={DikemasIcon}
-        className="w-[20px] h-[20px] md:w-[25px]  md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px]  md:h-[25px] lg:w-[18px] lg:h-[18px]"
         alt="Sedang Dikemas"
       />
     ),
@@ -166,7 +166,7 @@ const stepsVertical = [
     icon: (
       <img
         src={DibuatIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesan Dibuat"
       />
     ),
@@ -201,7 +201,7 @@ const ContentTrackingOrder = ({ currentStep }) => {
               {step.label}
             </span>
             {index < steps.length - 1 && (
-              <div className="absolute top-[24px] lg:top-8 left-4 md:left-14 2xl:left-40 w-full border-t-[1px] lg:border-t-2 border-primary"></div>
+              <div className="absolute top-[24px] lg:top-8 left-4 md:left-14 lg:left-32 w-full border-t-[1px] lg:border-t-2 border-primary"></div>
             )}
           </div>
         ))}
