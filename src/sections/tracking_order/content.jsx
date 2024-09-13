@@ -88,7 +88,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSampaiVerticalIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[18px] lg:h-[18px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesanan Sampai"
       />
     ),
@@ -101,7 +101,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSampaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesanan Sampai"
       />
     ),
@@ -114,7 +114,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananDiterimaIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesanan Diterima"
       />
     ),
@@ -127,7 +127,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSelesaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesanan Selesai"
       />
     ),
@@ -140,7 +140,7 @@ const stepsVertical = [
     icon: (
       <img
         src={PesananSelesaiIcon}
-        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[25px] lg:h-[25px]"
+        className="w-[20px] h-[20px] md:w-[25px] md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Pesanan Selesai"
       />
     ),
@@ -153,7 +153,7 @@ const stepsVertical = [
     icon: (
       <img
         src={DikemasIcon}
-        className="w-[20px] h-[20px] md:w-[25px]  md:h-[25px] lg:w-[18px] lg:h-[18px]"
+        className="w-[20px] h-[20px] md:w-[25px]  md:h-[25px] lg:w-[15px] lg:h-[15px]"
         alt="Sedang Dikemas"
       />
     ),
@@ -179,11 +179,11 @@ const ContentTrackingOrder = ({ currentStep }) => {
   return (
     <div className="flex flex-col">
       <div className="h-[23px] md:h-[28px] lg:h-[40px]"></div>
-      <div className="flex justify-between items-center w-full md:border border-gray border-opacity-50 rounded-xl md:p-[15px] lg:p-9">
+      <div className="flex lg:w-full items-center w-full md:border border-gray border-opacity-50 rounded-xl md:p-[15px] lg:py-9">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="flex-1 flex flex-col items-center relative"
+            className="flex-1 flex justify-between flex-col items-center relative lg:w-full"
           >
             <div
               className={`w-[40px] h-[40px] md:w-[45px] md:h-[45px] lg:w-14 lg:h-14 2xl:w-16 2xl:h-16 p-[5px] lg:p-3 rounded-full flex items-center justify-center z-10 border-4 border-white ${
@@ -246,16 +246,16 @@ const ContentTrackingOrder = ({ currentStep }) => {
           </div>
         </div>
 
-        <div className="pt-[25px] md:pt-[35px] lg:pt-0">
-          <div className="border border-gray border-opacity-50 lg:pt-0 rounded-xl ">
-            <div className="flex flex-col items-start w-auto h-auto lg:w-[865px] 2xl:w-[1300px] 2xl:h-[658px] pt-5 p-3 md:p-[22px] lg:p-8 lg:pl-5 lg:pt-5">
+        <div className="pt-[25px] md:pt-[35px] lg:pt-0 lg:w-full">
+          <div className="border border-gray border-opacity-50 lg:pt-0 rounded-xl">
+            <div className="flex flex-col items-start w-auto h-auto 2xl:h-[658px] pt-5 p-3 md:p-[22px] lg:p-8 lg:pl-5 lg:pt-5">
               <div
                 className="font-inter font-bold text-[16px] lg:text-[20px] text-black"
               >
                 Delivered
               </div>
               <div className="pb-[15px] md:h-[15px] lg:h-7"></div>
-              <hr className="w-[335px] md:w-[600px] lg:w-[833px] border-[1px] border-gray border-opacity-50" />
+              <hr className="w-[335px] md:w-[600px] lg:w-full border-[1px] border-gray border-opacity-50" />
               <div className="pt-[15px] lg:h-7"></div>
               <div className="w-auto rounded-xl">
                 {stepsVertical.map((step, index) => (
