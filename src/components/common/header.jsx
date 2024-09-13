@@ -6,7 +6,7 @@ const Header = ({ onClick, title }) => {
   return (
     <div>
       <div className="h-[40px] md:h-[80px] lg:h-[70px] "></div>{" "}
-      <div className="flex flex-row row-auto items-center py-3 lg:pt-4 lg:pb-8">
+      <div className="flex flex-row row-auto items-center py-3">
         <button className="flex items-center justify-center active:scale-95" onClick={onClick}>
           <img
             src={ArrowBack}
