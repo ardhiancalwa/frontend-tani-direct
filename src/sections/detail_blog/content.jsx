@@ -4,11 +4,11 @@ const ContentBlog = () => {
   return (
     <div className="lg:pl-14 py-[15px] lg:py-6">
       <div className="flex flex-col items-start">
-        <div className="font-inter font-semibold text-black text-[14px] md:text-[16px] lg:text-[20px]">
+        <div className="font-inter font-semibold text-black text-[14px] md:text-[16px] lg:text-[24px]">
           What is the issue?
         </div>
         <div className="h-[5] lg:h-[10px] "></div>
-        <div className="font-inter font-medium text-black text-start text-[12px] md:text-[12px] lg:text-[15px] lg:leading-normal">
+        <div className="font-inter font-medium text-black text-start text-[12px] md:text-[12px] lg:text-[18px] lg:leading-normal">
           Musim El Nino merupakan fenomena alam yang ditandai oleh pemanasan
           suhu permukaan laut di wilayah Pasifik bagian tengah dan timur.
           Fenomena ini sering kali membawa dampak besar pada pola cuaca global,
@@ -16,7 +16,7 @@ const ContentBlog = () => {
           bentuk perubahan curah hujan dan suhu, tetapi juga berdampak
           signifikan pada sektor pertanian.
         </div>
-        <div className="font-inter font-medium text-black text-start py-2 text-[12px] md:text-[12px] lg:text-[15px] lg:leading-normal">
+        <div className="font-inter font-medium text-black text-start py-2 text-[12px] md:text-[12px] lg:text-[18px] lg:leading-normal">
           Musim El Nino meyebabkan 3 dampak utama bagi pertanian yaitu,
           penurunan curah hujan, kenaikan suhu, dan ketidakseimbangan pola
           tanam. Tiga dampak ini mengakibatkan satu masalah yaitu kelangkaan
@@ -30,7 +30,7 @@ const ContentBlog = () => {
           produk yang dijual sangat mahal sehingga kestabilan ekonomi akan
           hancur.
         </div>
-        <div className="font-inter font-medium text-black text-start py-2  text-[12px] md:text-[12px] lg:text-[15px] lg:leading-normal">
+        <div className="font-inter font-medium text-black text-start py-2  text-[12px] md:text-[12px] lg:text-[18px] lg:leading-normal">
           Suatu permasalahan tentunya ada solusi. Langkah yang bisa dilakukan
           adalah diversifikasi tanaman. Diversifikasi tanaman yang dimaksud ini
           adalah dengan memilih variestas tanaman yang produksinya terjaga saat
@@ -41,7 +41,7 @@ const ContentBlog = () => {
           untuk menjaga kesetabilan pertanian. Pemerintah juga dapat menjalin
           kerjasama internasional meliputi sharing session serta bantuan.
         </div>
-        <div className="font-inter font-medium text-black text-start py-2  text-[12px] md:text-[12px] lg:text-[15px] lg:leading-normal">
+        <div className="font-inter font-medium text-black text-start py-2  text-[12px] md:text-[12px] lg:text-[18px] lg:leading-normal">
           Musim El Nino adalah ancaman nyata bagi sektor pertanian dan harga
           pasar produk pertanian. Namun, dengan langkah-langkah yang tepat,
           dampaknya dapat diminimalkan. Penerapan langkah solusi yang tepat

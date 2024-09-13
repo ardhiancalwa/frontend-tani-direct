@@ -41,13 +41,13 @@ const HeaderMarketPrice = () => {
             <div className="hidden lg:flex flex-col items-start">
               <div
                 className="font-inter font-semibold text-black"
-                style={{ fontSize: 25 }}
+                style={{ fontSize: 27 }}
               >
                 Blog Harga Pasar
               </div>
               <div
                 className="font-inter font-medium text-black"
-                style={{ fontSize: 15 }}
+                style={{ fontSize: 13 }}
               >
                 Update-an harga pasar dari hasil pangan petani
               </div>
