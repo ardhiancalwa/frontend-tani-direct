@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import TextfieldProfile from "../../components/common/textfieldProfile";
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 import axios from "axios";
 import request from "../../utils/request";
 import LoadingScreen from "../../components/common/loading";
@@ -97,7 +97,7 @@ const ContentEditProfileToko = () => {
         </div>
       ) : (
         <div>
-          <div key={updatedProfile.petaniID}>
+          <div key={updatedProfile.petaniID}>``
             <div className="h-[20px] lg:h-10"></div>
             <TextfieldProfile
               title={"Nama Toko"}
