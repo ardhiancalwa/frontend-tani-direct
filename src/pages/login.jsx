@@ -96,7 +96,7 @@ const PembeliLoginPage = () => {
           setLoading(false);
           setError("");
           setTimeout(() => {
-            window.location.href = "/stepone";
+            window.location.href = "/home";
           }, 2000);
         }
       })
