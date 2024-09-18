@@ -298,11 +298,6 @@ const ContentEditAlamat = () => {
               >
                 Save
               </button>
-              {errorMessage && (
-                <div className="text-red-600 mt-4 text-[16px] md:text-[20px] lg:text-[28px]">
-                  {errorMessage}
-                </div>
-              )}
             </div>
           </div>
           <div className="h-[40px]"></div>

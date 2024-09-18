@@ -93,7 +93,7 @@ const PetaniLoginPage = () => {
           setLoading(false);
           setError("");
           setTimeout(() => {
-            window.location.href = "/homeseller";
+            window.location.href = "/home";
           }, 2000);
         }
       })
