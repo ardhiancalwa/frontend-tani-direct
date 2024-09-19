@@ -135,7 +135,7 @@ const ContentProfile = (profileData) => {
           key={profileData.pembeliID}
         >
           <div className="h-[20px] md:h-[30px]"></div>
-          <div className="flex flex-col lg:flex-row lg:gap-5 ">
+          <div className="flex flex-col lg:flex-row lg:gap-10 ">
             <div className="flex flex-col items-center ">
               <div className="flex flex-col w-[173px] md:w-[223px] lg:w-[270px] 2xl:w-96 items-center border border-gray rounded-md 2xl:rounded-xl p-[15px]">
                 <img

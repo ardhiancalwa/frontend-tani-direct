@@ -132,8 +132,6 @@ const ContentEditAlamat = () => {
     fetchData();
   }, []);
 
-
-
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
   //   setUpdatedAlamat((prevProfile) => ({
@@ -156,7 +154,7 @@ const ContentEditAlamat = () => {
   //     [name]: value,
   //   }));
   // };
-  
+
   // const handleInputDropdownChange = (name, value) => {
   //   setUpdatedAlamat((prevProfile) => ({
   //     ...prevProfile,
@@ -178,7 +176,6 @@ const ContentEditAlamat = () => {
       [name]: value,
     }));
   };
-  
 
   // const handleUpdateAlamat = async (e) => {
   //   e.preventDefault();
@@ -211,14 +208,14 @@ const ContentEditAlamat = () => {
 
   // const handleUpdateAlamat = async (e) => {
   //   e.preventDefault();
-  
+
   //   if (!updatedAlamat) {
   //     console.error("Updated alamat is undefined");
   //     return;
   //   }
-  
+
   //   const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedAlamat;
-  
+
   //   try {
   //     const res = await axios.put(
   //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
@@ -271,7 +268,6 @@ const ContentEditAlamat = () => {
       toast.error(error.response?.data?.message || error.message);
     }
   };
-  
 
   return (
     <div>
@@ -290,7 +286,7 @@ const ContentEditAlamat = () => {
               name="nama_pembeli"
               value={updatedAlamat.nama_pembeli || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-full md:w-[627px] lg:w-[900px] 2xl:w-full"
             />
             <TextfieldProfile
               title="Contact Number"
@@ -301,7 +297,7 @@ const ContentEditAlamat = () => {
               onChange={handleInputChange}
               className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
             />
-            <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] 2xl:w-full  ">
+            <div className="hidden md:flex  flex-row  justify-between md:w-full lg:min-w-full xl:w-full   ">
               <DropdownValueAlamat
                 title="Provinsi"
                 name="provinsi"
@@ -309,7 +305,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("provinsi", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[100px] bg-red"
+                className="relative w-[163px] md:w-[140px] "
                 placeholder={updatedAlamat.provinsi || "Select Province"}
                 options={provinces}
               />
@@ -329,7 +325,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("kecamatan", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[100px]"
+                className="relative w-[163px] md:w-[140px] lg:w-[200px]  "
                 placeholder={updatedAlamat.kecamatan || "Select District"}
                 options={districts}
               />
@@ -340,12 +336,12 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("kode_pos", value)
                 }
-                className="relative w-[163px] md:w-[140px] lg:w-[258px] "
+                className="relative w-[163px] md:w-[140px] lg:w-[150px] "
                 placeholder={updatedAlamat.kode_pos || "Select Postal Code"}
                 options={postalCodes}
               />
             </div>
-            <div className="flex md:hidden lg:hidden flex-row justify-between">
+            <div className="flex md:hidden lg:hidden gap-2 flex-row justify-between">
               <DropdownValueAlamat
                 title="Provinsi"
                 name="provinsi"
@@ -366,7 +362,7 @@ const ContentEditAlamat = () => {
               />
             </div>
             <div className="h-[15px]"></div>
-            <div className="flex md:hidden lg:hidden flex-row justify-between ">
+            <div className="flex md:hidden lg:hidden gap-2 flex-row justify-between ">
               <DropdownValueAlamat
                 title="Kecamatan"
                 name="kecamatan"
@@ -394,7 +390,7 @@ const ContentEditAlamat = () => {
               value={updatedAlamat.detail_alamat || ""}
               onChange={handleInputChange}
               type="text"
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className="font-inter  font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
             />
             <div className="pb-[25px] ">
               <div className="flex flex-col items-start">

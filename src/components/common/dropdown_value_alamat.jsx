@@ -32,7 +32,7 @@ const DropdownValueAlamat = ({
   };
 
   return (
-    <div className={`flex flex-col items-start ${paddingLeft} w-full`}>
+    <div className={`flex flex-col items-start ${paddingLeft}`}>
       <div
         className={`font-inter font-semibold ${textColor} text-[14px] md:text-[20px] lg:text-[26px]`}
       >
@@ -41,7 +41,7 @@ const DropdownValueAlamat = ({
       <div style={{ height: 7 }}></div>
       <div className={className}>
         <div
-          className={`h-[35px] lg:w-[192px] lg:h-[70px] md:h-[44px] 2xl:w-[400px] flex flex-row justify-between items-center border-[1px] border-gray border-opacity-50 bg-white rounded-md lg:rounded-xl px-[10px] cursor-pointer`}
+          className={`h-[35px] lg:h-[70px] md:h-[44px] xl:w-full  flex flex-row justify-between items-center border-[1px] border-gray border-opacity-50  rounded-md lg:rounded-xl px-[10px] cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <div className="h-18 pr-[5px] lg:mr-0 flex justify-start items-center font-medium font-inter text-[14px] lg:text-[26px]">

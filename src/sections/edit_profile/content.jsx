@@ -89,7 +89,7 @@ const ContentEditProfile = () => {
         .then((res) => {
           const data = res.data.data;
           const date = new Date(data.tanggal_lahir);
-          
+
           // Simpan data asli di originalProfile
           setOriginalProfile({
             ...data,
@@ -130,27 +130,27 @@ const ContentEditProfile = () => {
   // const handleUpdate = (e) => {
   //   e.preventDefault();
   //   setLoading(true);
-  
+
   //   if (!updatedProfile) {
   //     console.error("Updated profile is undefined");
   //     return;
   //   }
-  
+
   //   console.log("Updated profile before update:", updatedProfile);
-  
+
   //   const { day, month, year } = updatedProfile.tanggal_lahir;
-  
+
   //   // Format date to "YYYY-MM-DD"
   //   const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
   //     day
   //   ).padStart(2, "0")}`;
-  
+
   //   // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
   //   const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
-  
+
   //   // Add the formatted date back to dataToUpdate
   //   dataToUpdate.tanggal_lahir = formattedDate;
-  
+
   //   axios
   //     .put(
   //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
@@ -187,7 +187,8 @@ const ContentEditProfile = () => {
     ).padStart(2, "0")}`;
 
     // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
-    const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
+    const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } =
+      updatedProfile;
 
     // Add the formatted date back to dataToUpdate
     dataToUpdate.tanggal_lahir = formattedDate;
@@ -265,7 +266,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.nama_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-full lg:w-full 2xl:w-full"
                 }
               />
               <TextfieldProfile
@@ -277,7 +278,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.email_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-full lg:w-full 2xl:w-full"
                 }
               />
               <TextfieldProfile
@@ -289,7 +290,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.kontak_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-full lg:w-full 2xl:w-full"
                 }
               />
             </div>
@@ -344,7 +345,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile.password_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-full lg:w-full 2xl:w-full"
                 }
               />
             </div>
