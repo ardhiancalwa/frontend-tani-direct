@@ -30,11 +30,54 @@ const years = Array.from({ length: 100 }, (_, i) => ({
 }));
 
 const ContentEditProfile = () => {
-  // const [profile, setProfile] = useState({});
+  // // const [profile, setProfile] = useState({});
+  // const [updatedProfile, setUpdatedProfile] = useState({});
+  // // const { enqueueSnackbar } = useSnackbar();
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [loading, setLoading] = useState(false);
+
   const [updatedProfile, setUpdatedProfile] = useState({});
-  // const { enqueueSnackbar } = useSnackbar();
+  const [originalProfile, setOriginalProfile] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   const userToken = cookies.get("token_pembeli");
+  //   const fetchData = () => {
+  //     const pembeliID = cookies.get("pembeliID");
+  //     setLoading(true);
+  //     request
+  //       .get(`/pembeli/${pembeliID}`)
+  //       .then((res) => {
+  //         const data = res.data.data;
+  //         console.log("Received data:", data);
+  //         const date = new Date(data.tanggal_lahir);
+  //         setUpdatedProfile(res.data.data);
+  //         setUpdatedProfile({
+  //           ...data,
+  //           tanggal_lahir: {
+  //             day: date.getUTCDate(),
+  //             month: date.getUTCMonth() + 1,
+  //             year: date.getUTCFullYear(),
+  //           },
+  //         });
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error fetching data:", error);
+  //         setErrorMessage(
+  //           error.response ? error.response.data.message : error.message
+  //         );
+  //         setLoading(false);
+  //       });
+  //   };
+
+  //   if (userToken) {
+  //     fetchData(userToken);
+  //   } else {
+  //     console.log("No token found");
+  //   }
+  // }, []);
 
   useEffect(() => {
     const userToken = cookies.get("token_pembeli");
@@ -45,9 +88,19 @@ const ContentEditProfile = () => {
         .get(`/pembeli/${pembeliID}`)
         .then((res) => {
           const data = res.data.data;
-          console.log("Received data:", data);
           const date = new Date(data.tanggal_lahir);
-          setUpdatedProfile(res.data.data);
+          
+          // Simpan data asli di originalProfile
+          setOriginalProfile({
+            ...data,
+            tanggal_lahir: {
+              day: date.getUTCDate(),
+              month: date.getUTCMonth() + 1,
+              year: date.getUTCFullYear(),
+            },
+          });
+
+          // Set data untuk di-update di updatedProfile
           setUpdatedProfile({
             ...data,
             tanggal_lahir: {
@@ -74,144 +127,37 @@ const ContentEditProfile = () => {
     }
   }, []);
 
-  // const handleUpdate = async (e) => {
+  // const handleUpdate = (e) => {
   //   e.preventDefault();
   //   setLoading(true);
-
+  
   //   if (!updatedProfile) {
   //     console.error("Updated profile is undefined");
   //     return;
   //   }
-
+  
   //   console.log("Updated profile before update:", updatedProfile);
-
+  
   //   const { day, month, year } = updatedProfile.tanggal_lahir;
-
-  //   // Format date to "YYYY-MM-DDTHH:MM:SS.SSSZ"
+  
+  //   // Format date to "YYYY-MM-DD"
   //   const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
   //     day
-  //   ).padStart(2, "0")}T00:00:00.000Z`;
-
+  //   ).padStart(2, "0")}`;
+  
   //   // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
-  //   const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedProfile;
-
-  //   // Add the formatted date to the dataToUpdate
+  //   const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
+  
+  //   // Add the formatted date back to dataToUpdate
   //   dataToUpdate.tanggal_lahir = formattedDate;
-  //   await axios
+  
+  //   axios
   //     .put(
   //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-  //       // `http://localhost:4000/pembeli/${pembeliID}`,
   //       dataToUpdate
   //     )
   //     .then((response) => {
   //       const dataUser = response.data.data;
-  //       // console.log("Updated profile response:", dataUser);
-  //       // console.log(response);
-  //       setUpdatedProfile(dataUser);
-  //       setLoading(false);
-  //       // setErrorMessage("Successfully updated");
-  //       toast.success("Successfully updated");
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       toast.error(
-  //         error.response ? error.response.data.message : error.message
-  //       );
-  //       console.log(error);
-  //     });
-  // };
-
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  
-  //   const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedProfile;
-  
-  //   // Membuat objek FormData
-  //   const formData = new FormData();
-    
-  //   // Menambahkan setiap key-value dari dataToUpdate ke FormData
-  //   Object.keys(dataToUpdate).forEach((key) => {
-  //     formData.append(key, dataToUpdate[key]);
-  //   });
-  
-  //   try {
-  //     const response = await axios.put(
-  //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-  //       formData, 
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data', // Penting untuk FormData
-  //         },
-  //       }
-  //     );
-  
-  //     const dataUser = response.data.data;
-  //     setUpdatedProfile(dataUser);
-  //     setLoading(false);
-  //     toast.success("Successfully updated");
-  //   } catch (error) {
-  //     setLoading(false);
-  //     toast.error(
-  //       error.response ? error.response.data.message : error.message
-  //     );
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-
-  //   if (!updatedProfile) {
-  //     console.error("Updated profile is undefined");
-  //     return;
-  //   }
-
-  //   console.log("Updated profile before update:", updatedProfile);
-
-  //   const { day, month, year } = updatedProfile.tanggal_lahir;
-
-  //   // Format date to "YYYY-MM-DD"
-  //   const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
-  //     day
-  //   ).padStart(2, "0")}`;
-
-  //   // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
-  //   const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
-
-  //   // Create a new FormData object
-  //   const formData = new FormData();
-
-  //   // Add all fields to formData, except for tanggal_lahir which will be added manually
-  //   Object.keys(dataToUpdate).forEach((key) => {
-  //     // Make sure to exclude undefined values from being appended
-  //     if (dataToUpdate[key] !== undefined) {
-  //       formData.append(key, dataToUpdate[key]);
-  //     }
-  //   });
-
-  //   // Manually add the formatted date to formData
-  //   formData.append("tanggal_lahir", formattedDate);
-
-  //   // Debugging: Log formData values
-  //   console.log("FormData being sent:");
-  //   formData.forEach((value, key) => {
-  //     console.log(key, value);
-  //   });
-
-  //   await axios
-  //     .put(
-  //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-  //       formData,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data',
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       const dataUser = response.data.data;
   //       setUpdatedProfile(dataUser);
   //       setLoading(false);
   //       toast.success("Successfully updated");
@@ -221,131 +167,63 @@ const ContentEditProfile = () => {
   //       toast.error(
   //         error.response ? error.response.data.message : error.message
   //       );
-  //       console.log(error);
   //     });
-  // };
-
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  
-  //   if (!updatedProfile) {
-  //     console.error("Updated profile is undefined");
-  //     setLoading(false);
-  //     toast.error("Profile data is missing");
-  //     return;
-  //   }
-  
-  //   console.log("Updated profile before update:", updatedProfile);
-  
-  //   const { day, month, year } = updatedProfile.tanggal_lahir;
-  
-  //   // Format date to "YYYY-MM-DD"
-  //   const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
-  //     day
-  //   ).padStart(2, "0")}`;
-  
-  //   // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
-  //   const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
-  
-  //   // Create a new FormData object
-  //   const formData = new FormData();
-  
-  //   // Add all fields to formData, except for tanggal_lahir which will be added manually
-  //   Object.keys(dataToUpdate).forEach((key) => {
-  //     if (dataToUpdate[key] !== undefined) {
-  //       formData.append(key, String(dataToUpdate[key])); 
-  //     }
-  //   });
-  
-  //   // Manually add the formatted date to formData
-  //   formData.append("tanggal_lahir", formattedDate);
-  
-  //   // Debugging: Log formData values
-  //   console.log("FormData being sent:");
-  //   formData.forEach((value, key) => {
-  //     console.log(key, value);
-  //   });
-  
-  //   try {
-  //     const response = await axios.put(
-  //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-  //       formData,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data',
-  //         },
-  //       }
-  //     );
-  
-  //     const dataUser = response.data.data;
-  //     setUpdatedProfile(dataUser);
-  //     setLoading(false);
-  //     toast.success("Successfully updated");
-  //   } catch (error) {
-  //     setLoading(false);
-  //     if (error.response) {
-  //       console.error("Server responded with error:", error.response.data);
-  //       toast.error(error.response.data.message || "An error occurred while updating");
-  //     } else if (error.request) {
-  //       console.error("No response received:", error.request);
-  //       toast.error("No response from server. Please try again.");
-  //     } else {
-  //       console.error("Error setting up request:", error.message);
-  //       toast.error("An error occurred. Please try again.");
-  //     }
-  //   }
   // };
 
   const handleUpdate = (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     if (!updatedProfile) {
       console.error("Updated profile is undefined");
       setLoading(false);
-      toast.error("Profile data is missing");
       return;
     }
-  
-    console.log("Updated profile before update:", updatedProfile);
-  
+
+    // Format tanggal lahir
     const { day, month, year } = updatedProfile.tanggal_lahir;
-  
-    // Format date to "YYYY-MM-DD"
     const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
       day
     ).padStart(2, "0")}`;
-  
+
     // Exclude pembeliID, createdAt, and updatedAt from the dataToUpdate
     const { pembeliID, createdAt, updatedAt, tanggal_lahir, ...dataToUpdate } = updatedProfile;
-  
+
     // Add the formatted date back to dataToUpdate
     dataToUpdate.tanggal_lahir = formattedDate;
-  
+
+    // Filter hanya data yang diubah
+    const filteredData = Object.keys(dataToUpdate).reduce((acc, key) => {
+      if (dataToUpdate[key] !== originalProfile[key]) {
+        acc[key] = dataToUpdate[key];
+      }
+      return acc;
+    }, {});
+
+    if (Object.keys(filteredData).length === 0) {
+      console.log("No changes detected");
+      setLoading(false);
+      toast.error("No changes to update");
+      return;
+    }
+
     axios
       .put(
         `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-        dataToUpdate
+        filteredData
       )
       .then((response) => {
         const dataUser = response.data.data;
         setUpdatedProfile(dataUser);
+        setOriginalProfile(dataUser); // Update original profile setelah sukses
         setLoading(false);
         toast.success("Successfully updated");
       })
       .catch((error) => {
         setLoading(false);
-        if (error.response) {
-          console.error("Server responded with error:", error.response.data);
-          toast.error(error.response.data.message || "An error occurred while updating");
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-          toast.error("No response from server. Please try again.");
-        } else {
-          console.error("Error setting up request:", error.message);
-          toast.error("An error occurred. Please try again.");
-        }
+        toast.error(
+          error.response ? error.response.data.message : error.message
+        );
       });
   };
 

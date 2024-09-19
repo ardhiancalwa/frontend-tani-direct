@@ -64,10 +64,44 @@ const postalCodes = [
 ];
 
 const ContentEditAlamat = () => {
+  // const [updatedAlamat, setUpdatedAlamat] = useState({});
+  // // const { enqueueSnackbar } = useSnackbar();
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [loading, setLoading] = useState(false);
+
   const [updatedAlamat, setUpdatedAlamat] = useState({});
-  // const { enqueueSnackbar } = useSnackbar();
+  const [initialAlamat, setInitialAlamat] = useState({}); // State for initial data
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   const userToken = cookies.get("token_pembeli");
+  //   const pembeliID = cookies.get("pembeliID");
+
+  //   if (!userToken || !pembeliID) {
+  //     console.log("No token or pembeliID found");
+  //     return;
+  //   }
+
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const res = await request.get(`/pembeli/${pembeliID}`);
+  //       console.log("Received data:", res.data.data);
+  //       setUpdatedAlamat(res.data.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.log("Error fetching data:", error);
+  //       setErrorMessage(
+  //         error.response ? error.response.data.message : error.message
+  //       );
+  //       toast.error(error.message);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const userToken = cookies.get("token_pembeli");
@@ -82,8 +116,8 @@ const ContentEditAlamat = () => {
       setLoading(true);
       try {
         const res = await request.get(`/pembeli/${pembeliID}`);
-        console.log("Received data:", res.data.data);
         setUpdatedAlamat(res.data.data);
+        setInitialAlamat(res.data.data); // Set initial data here
         setLoading(false);
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -97,6 +131,38 @@ const ContentEditAlamat = () => {
 
     fetchData();
   }, []);
+
+
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleInputDropdownChange = (name, value) => {
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+  // };
+  
+  // const handleInputDropdownChange = (name, value) => {
+  //   setUpdatedAlamat((prevProfile) => ({
+  //     ...prevProfile,
+  //     [name]: value,
+  //   }));
+  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -112,6 +178,60 @@ const ContentEditAlamat = () => {
       [name]: value,
     }));
   };
+  
+
+  // const handleUpdateAlamat = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!updatedAlamat) {
+  //     console.error("Updated alamat is undefined");
+  //     return;
+  //   }
+
+  //   console.log("Updated alamat before update:", updatedAlamat);
+
+  //   const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedAlamat;
+
+  //   try {
+  //     const res = await axios.put(
+  //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
+  //       // `http://localhost:4000/pembeli/${pembeliID}`,
+  //       dataToUpdate
+  //     );
+  //     console.log("Updated alamat res:", res.data.data);
+  //     setUpdatedAlamat(res.data.data);
+  //     toast.success("Successfully updated");
+  //   } catch (error) {
+  //     setLoading(false);
+  //     console.log("Error response:", error.response);
+  //     setErrorMessage(error.response?.data?.message || "An error occurred");
+  //     toast.error(error.response?.data?.message || error.message);
+  //   }
+  // };
+
+  // const handleUpdateAlamat = async (e) => {
+  //   e.preventDefault();
+  
+  //   if (!updatedAlamat) {
+  //     console.error("Updated alamat is undefined");
+  //     return;
+  //   }
+  
+  //   const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedAlamat;
+  
+  //   try {
+  //     const res = await axios.put(
+  //       `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
+  //       dataToUpdate
+  //     );
+  //     setUpdatedAlamat(res.data.data);
+  //     toast.success("Successfully updated");
+  //   } catch (error) {
+  //     setLoading(false);
+  //     setErrorMessage(error.response?.data?.message || "An error occurred");
+  //     toast.error(error.response?.data?.message || error.message);
+  //   }
+  // };
 
   const handleUpdateAlamat = async (e) => {
     e.preventDefault();
@@ -121,18 +241,28 @@ const ContentEditAlamat = () => {
       return;
     }
 
-    console.log("Updated alamat before update:", updatedAlamat);
+    // Compare initial and updated data to find changed fields
+    const dataToUpdate = {};
+    Object.keys(updatedAlamat).forEach((key) => {
+      if (updatedAlamat[key] !== initialAlamat[key]) {
+        dataToUpdate[key] = updatedAlamat[key];
+      }
+    });
 
-    const { pembeliID, createdAt, updatedAt, ...dataToUpdate } = updatedAlamat;
+    if (Object.keys(dataToUpdate).length === 0) {
+      toast("No changes to update");
+      return;
+    }
+
+    const { pembeliID } = updatedAlamat; // Extract pembeliID
 
     try {
       const res = await axios.put(
         `https://backend-tanidirect-production.up.railway.app/pembeli/${pembeliID}`,
-        // `http://localhost:4000/pembeli/${pembeliID}`,
         dataToUpdate
       );
-      console.log("Updated alamat res:", res.data.data);
       setUpdatedAlamat(res.data.data);
+      setInitialAlamat(res.data.data); // Update the initial state with new data
       toast.success("Successfully updated");
     } catch (error) {
       setLoading(false);
@@ -141,6 +271,7 @@ const ContentEditAlamat = () => {
       toast.error(error.response?.data?.message || error.message);
     }
   };
+  
 
   return (
     <div>
