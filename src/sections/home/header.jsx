@@ -4,14 +4,12 @@ import GlobeImage from "../../assets/images/header-globe.png";
 const HeaderHome = () => {
   return (
     <div className="bg-neutral">
-      <div className="h-[40px] md:h-[80px] lg:h-[63px]"></div>
-      <div className="flex row-auto w-full justify-between">
-        <div className="flex flex-col">
-          <div className="xl:w-[610px] xl:h-[255px] md:h-[200px] sm:w-[348px] sm:h-[156px] w-[164px] h-[78px] font-inter text-black font-bold text-start text-[22px] sm:text-[40px] md:text-[50px] xl:text-[70px] lg:leading-normal ">
+      <div className="flex row-auto w-full justify-between mt-5 md:mt-20 lg:mt-10 xl:mt-14 2xl:mt-16">
+        <div className="flex flex-col mr-[5vw] 2xl:mr-[20vw]">
+          <div className="font-inter text-black font-bold text-start text-2xl md:text-5xl lg:text-6xl xl:text-8xl 2xl:text-[6rem] lg:leading-normal ">
             The future of agriculture is now
           </div>
-          <div className="h-[35px] md:h-[45px] lg:h-[80px]"></div>
-          <div className="flex row-auto items-start lg:pl-1">
+          <div className="flex row-auto items-start lg:pl-1 mt-5 md:mt-8 lg:mt-10 xl:mt-8 2xl:mt-20">
             <button
               type="button"
               onClick={() => (window.location.href = "/aboutus")}
@@ -23,7 +21,7 @@ const HeaderHome = () => {
         </div>
         <img
           src={GlobeImage}
-          className="lg:w-[244px] lg:h-[198px] sm:w-[244px] sm:h-[198px] w-[160px] h-[124px] 2xl:w-[488px] 2xl:h-[396px]"
+          className="w-[45vw] h-[40vw] md:w-[35vw] md:h-[30vw] lg:w-[35vw] lg:h-[30vw] xl:w-[30vw] xl:h-[25vw] 2xl:w-[30vw] 2xl:h-[25vw]"
           alt="Globe"
         />
       </div>
