@@ -40,10 +40,9 @@ const OurProduct = () => {
     <div>
       <div className="h-[0px] lg:h-[30px] 2xl:h-[60px] "></div>
       <div className="flex flex-col items-center justify-center">
-        <div className="font-inter text-[20px] md:text-[25px] lg:text-[60px] font-bold text-black">
+        <div className="font-inter text-[1.25] md:text-[1.75rem] lg:text-[2.4rem] xl:text-[2.6rem] 2xl:text-[3.5rem] my-4 md:my-8 lg:my-12 xl:my-16 2xl:my-20 font-bold text-black">
           Our Products
         </div>
-        <div className="h-[20px] lg:h-[60px] "></div>
         <div className="grid grid-cols-3 2xl:grid-cols-4 gap-x-[11px] gap-y-[13px] md:gap-x-5 lg:gap-x-8 lg:gap-y-10 md:gap-y-[34px] 2xl:gap-x-12 2xl:gap-y-16">
           {loading ? (
             <div className="flex items-center justify-center col-span-4 h-[600px]">

@@ -67,23 +67,22 @@ const Recomendation = () => {
       <div className="font-bold font-inter text-black text-[15px] md:text-[25px] lg:text-[30px] 2xl:text-[45px]">
         Must-Have Items
       </div>
-      <div className="h-[0px] 2xl:h-[60px]"></div>
       <div className="flex flex-row gap-2 w-full justify-between items-center">
         <img
           src={ArrowLeft}
           alt="arrow left"
           onClick={handlePreviousCard}
-          className="cursor-pointer w-[24px] h-[24px] md:w-[42px] md:h-[42px] xl:w-[60px] xl:h-[60px]"
+          className="cursor-pointer w-[6vw] md:w-[5vw] xl:w-[60px] xl:h-[60px]"
         />
         <div
-          className="pt-[30px] snap-x md:h-[340px] lg:h-[450px] xl:h-[720px] h-[200px] snap-mandatory overflow-hidden"
+          className="pt-[30px] snap-x h-[55vw] md:h-[50vw] lg:h-[55vw] xl:h-[38vw] 2xl:h-[38vw] snap-mandatory overflow-hidden"
           ref={containerRef}
         >
           <div className="flex flex-wrap items-center flex-row w-max">
           {cards.slice(0,3).map((card, index) => (
               <CardProductRecomendations
                 key={card.id}
-                image={`${imageUrl}${card.image_produk}`} 
+                image={`${imageUrl}${card.image_produk[0]}`} 
                 title={card.nama_produk}
                 totalSold={card.totalSold} 
                 isActive={index === currentCard}
@@ -96,7 +95,7 @@ const Recomendation = () => {
           src={ArrowRight}
           alt="arrow right"
           onClick={handleNextCard}
-          className="cursor-pointer w-[24px] h-[24px] md:w-[42px] md:h-[42px] xl:w-[60px] xl:h-[60px]"
+          className="cursor-pointer w-[6vw] md:w-[5vw] md:h-[42px] xl:w-[60px] xl:h-[60px]"
         />
       </div>
     </div>

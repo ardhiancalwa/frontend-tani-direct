@@ -28,7 +28,7 @@ const Navbar = ({ className }) => {
 
   return (
     <div className="flex  w-full lg:flex-row justify-center">
-      <nav className={`bg-white fixed w-full  ${className}  border-black border-opacity-20 px-8 md:px-16 lg:px-28`}>
+      <nav className={`bg-white fixed w-full  ${className} z-50 border-black border-opacity-20 px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw]`}>
         <div className=" flex row-auto py-2 md:py-4 items-center justify-between md:border-b border-gray ">
           <a href={"/home"}>
             <div className="text-black w-[40px] h-[23px] md:w-[100px] md:h-[56px] hover:scale-105 active:scale-100 font-semibold font-inter">
@@ -91,7 +91,7 @@ const Navbar = ({ className }) => {
             <img src={CartIcon} alt="cart" />
           </button>
           {cartItemCount > 0 && (
-            <div className="absolute top-4 right-0 md:top-6 md:right-0 lg:right-2 w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-primary text-white rounded-full flex items-center justify-center font-inter text-[7px] md:text-sm lg:text-base">
+            <div className="absolute top-[1.8vw] right-[4.8vw] md:top-[2.8vw] md:right-[7.5vw] lg:right-[5.5vw] lg:top-[2vw] xl:right-[4.5vw] xl:top-[1.5vw] 2xl:right-[4.8vw] 2xl:top-[1vw] w-3 h-3 md:w-5 md:h-5 lg:w-6 lg:h-6 bg-primary text-white rounded-full flex items-center justify-center font-inter text-[7px] md:text-sm lg:text-base">
               {cartItemCount}
             </div>
           )}

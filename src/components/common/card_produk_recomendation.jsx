@@ -24,30 +24,28 @@ const CardProductRecomendations = ({
 
   return (
     <div
-      className="lg:px-3 md:px-1 w-[95px] h-[156px] md:w-[180px] md:h-[219px] lg:w-[270px] 2xl:w-[500px] 2xl:h-[600px] "
+      className="lg:px-3 md:px-1 w-[25vw] h-auto md:w-[22vw] md:h-[25vw] lg:w-[26vw] xl:w-[27vw] 2xl:w-[28vw] "
       style={cardStyle}
       ref={cardRef}
     >
-      <div className="lg:max-w-sm 2xl:max-w-full w-auto bg-white border border-gray border-opacity-30 rounded-2xl p-1  md:rounded-xl overflow-hidden  ">
-        <div className="lg:p-6 flex items-center justify-center rounded-xl">
+      <div className="lg:max-w-sm 2xl:max-w-full w-full bg-white border border-gray border-opacity-30 rounded-lg p-[1.5vw]  md:rounded-xl xl:rounded-2xl overflow-hidden  ">
+        <div className="flex items-center justify-center rounded-xl">
           <img
             src={image}
-            className="2xl:w-[500px] 2xl:h-96 2xl:rounded-2xl md:p-0 md:object-cover "
+            className="rounded-md w-[25vw] h-[20vw] md:w-[20vw] md:h-[15vw] lg:w-[30vw] lg:h-[20vw] xl:w-[24vw] xl:h-[18vw] 2xl:w-[25vw] 2xl:h-[20vw] 2xl:rounded-2xl object-cover "
             alt="sayur"
           />
         </div>
-        <div className="flex flex-col lg:p-6 md:p-3 ">
-          <div className="font-bold text-black font-inter text-start text-[7px] md:text-[12px] lg:text-[20px] xl:text-[30px]">
+        <div className="flex flex-col mt-[1vw] xl:mt-[1.5vw] 2xl:mt-[0.5vw]">
+          <div className="font-bold text-black font-inter text-start text-[0.5rem] md:text-[1rem] lg:text-[1.5rem] xl:text-[1.8rem] 2xl:text-[2rem]">
             {title}
           </div>
-          <div style={{ height: 5 }}></div>
-          <div className="flex items-center  justify-center bg-greenLight rounded-md md:w-[58px] md:h-[26px] w-[40px] h-[16px] ">
-            <div className="font-inter font-normal text-primary  md:text-[16px] text-[8px] ">
+          <div className="flex items-center justify-center mt-[0.8vw] bg-greenLight rounded-[0.25rem] lg:rounded-lg 2xl:w-[6vw] 2xl:h-[2vw] md:w-[10vw] md:h-[2.5vw] w-full h-auto ">
+            <div className="font-inter font-normal text-primary md:text-[0.8rem] text-[0.5rem] lg:text-[1rem] xl:text-[1.2rem]  2xl:text-[1.2rem]">
               Quality
             </div>
           </div>
-          <div style={{ height: 7 }}></div>
-          <div className="text-start font-inter font-normal lg:text-[14px] text-[5px] xl:text-[16px]  md:text-[11px] ">
+          <div className="mt-[2vw] xl:mt-[1vw] text-start font-inter font-normal text-[0.4rem] md:text-[0.6rem] lg:text-[0.8rem] xl:text-[1rem] 2xl:text-[1.2rem] ">
             Produk {title} ini terjual sebanyak {totalSold} dalam kurun waktu
             kurang dari 1 minggu.
           </div>
