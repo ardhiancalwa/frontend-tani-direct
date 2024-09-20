@@ -6,7 +6,7 @@ import CloseEyeIcon from "../../assets/images/close-eye-obsecure.svg";
 const TextfieldPassword = ({value, onChange, width, height, placeholder, rounded}) => {
   const [isObsecure, setIsObsecure] = useState(true);
   return (
-    <div className={`flex flex-row ${width} ${height}  rounded-lg 2xl:rounded-2xl border focus-within:ring-2 focus-within:ring-green-700 border-gray border-opacity-30`}>
+    <div className={`flex flex-row ${width} ${height}  rounded-lg 2xl:rounded-xl border focus-within:ring-2 focus-within:ring-green-700 border-gray border-opacity-30`}>
       <input
         type={isObsecure ? "password" : "text"}
         id="password"
@@ -20,7 +20,7 @@ const TextfieldPassword = ({value, onChange, width, height, placeholder, rounded
         onClick={() => setIsObsecure(!isObsecure)}
       >
         {isObsecure ? (
-          <img src={EyeIcon} className="2xl:w-[2vw] 2xl:h-[2vw]" alt="Tampilkan password" />
+          <img src={EyeIcon} className="2xl:w-[1.5vw] 2xl:h-[1.5vw]" alt="Tampilkan password" />
         ) : (
           <img src={CloseEyeIcon} alt="Sembunyikan password" />
         )}

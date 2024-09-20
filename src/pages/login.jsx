@@ -169,14 +169,14 @@ const PembeliLoginPage = () => {
       <div>
         <div
           className={` ${
-            isLogin ? "lg:mb-0" : "lg:mb-[16vw] xl:mb-[9.6vw]"
+            isLogin ? "lg:mb-0" : "lg:mb-[16vw] xl:mb-[9.6vw] 2xl:mb-[4vw]"
           } flex flex-col w-full items-center justify-center md:my-10 my-6`}
         >
           {/* Login/Register Button */}
-          <div className="flex w-[62vw] h-[12vw] md:w-[50vw] md:h-[10vw] lg:w-[30vw] lg:h-[8vw] xl:w-[30vw] xl:h-[6vw] 2xl:w-[20vw] 2xl:h-[3.5vw] items-center justify-around bg-greenLight rounded-full p-4 shadow-lg shadow-greenLight">
-            <div className="flex flex-row items-center justify-center w-full text-[0.875rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.5rem] 2xl:text-[1.2rem]">
+          <div className="flex w-[62vw] h-[12vw] md:w-[50vw] md:h-[10vw] lg:w-[30vw] lg:h-[8vw] xl:w-[30vw] xl:h-[6vw] 2xl:w-[15vw] 2xl:h-[2.5vw] items-center justify-around bg-greenLight rounded-full p-4 shadow-lg shadow-greenLight">
+            <div className="flex flex-row items-center justify-center w-full text-[0.875rem] md:text-[1.25rem] lg:text-[1.25rem] xl:text-[1.5rem] 2xl:text-[1rem]">
               <div
-                className={`w-[40vw] h-[8vw] md:w-[25vw] md:h-[6vw] lg:w-[20vw] lg:h-[5vw] xl:w-[20vw] xl:h-[4vw] 2xl:w-[15vw] 2xl:h-[2.5vw] ${
+                className={`w-[40vw] h-[8vw] md:w-[25vw] md:h-[6vw] lg:w-[20vw] lg:h-[5vw] xl:w-[20vw] xl:h-[4vw] 2xl:w-[12vw] 2xl:h-[1.8vw] ${
                   isLogin ? "bg-primary text-neutral" : "bg-none text-primary"
                 } rounded-full flex items-center justify-center  font-inter font-bold cursor-pointer transition duration-300 ease-in-out`}
                 onClick={() => setIsLogin(true)}
@@ -184,7 +184,7 @@ const PembeliLoginPage = () => {
                 Log in
               </div>
               <div
-                className={`w-[40vw] h-[8vw] md:w-[25vw] md:h-[6vw] lg:w-[20vw] lg:h-[5vw] xl:w-[20vw] xl:h-[4vw] 2xl:w-[15vw] 2xl:h-[2.5vw] ${
+                className={`w-[40vw] h-[8vw] md:w-[25vw] md:h-[6vw] lg:w-[20vw] lg:h-[5vw] xl:w-[20vw] xl:h-[4vw] 2xl:w-[12vw] 2xl:h-[1.8vw] ${
                   isLogin ? "bg-none text-primary" : "bg-primary text-neutral"
                 } rounded-full flex items-center justify-center font-inter font-bold cursor-pointer transition duration-300 ease-in-out`}
                 onClick={() => setIsLogin(false)}
@@ -202,7 +202,7 @@ const PembeliLoginPage = () => {
               } transition duration-500 ease-in-out transform flex flex-col w-full items-center justify-center 2xl:mt-0`}
             >
               {/* Welcome Message */}
-              <div className="font-semibold font-inter text-black text-center mt-6 md:mt-6 lg:my-4 xl:my-5 2xl:my-6 leading-normal text-[2.5rem] md:text-[3.438rem] lg:text-[3.75rem] xl:text-[4.375rem] 2xl:text-[4rem]">
+              <div className="font-semibold font-inter text-black text-center mt-6 md:mt-6 lg:my-4 xl:my-5 2xl:my-6 leading-normal text-[2.5rem] md:text-[3.438rem] lg:text-[3.75rem] xl:text-[4.375rem] 2xl:text-[3.8rem]">
                 Welcome Back!
               </div>
 
@@ -224,7 +224,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={"Email"}
                   className={
-                    " w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[40vw] 2xl:h-[4vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-md lg:rounded-lg 2xl:rounded-2xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl pl-5 2xl:pl-10 mb-[3vw] lg:mb-[2vw] 2xl:mb-[0.8vw]"
+                    " w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-md lg:rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl 2xl:text-2xl pl-5 2xl:pl-10 mb-[3vw] lg:mb-[2vw] 2xl:mb-[0.8vw]"
                   }
                 />
                 <TextfieldPassword
@@ -232,8 +232,8 @@ const PembeliLoginPage = () => {
                   value={password}
                   rounded={"rounded-md lg:rounded-lg 2xl:rounded-2xl"}
                   placeholder={"Password"}
-                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[40vw]"}
-                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[4vw] h-10"}
+                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[35vw]"}
+                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[3vw] h-10"}
                 />
               </div>
 
@@ -243,11 +243,11 @@ const PembeliLoginPage = () => {
               <div>
                 <form onSubmit={handleLogin}>
                   <button
-                    className={`h-[10vw] md:w-[75vw] md:h-[8vw] lg:h-[6vw] 2xl:h-[4vw] flex items-center justify-center rounded-lg lg:rounded-lg 2xl:rounded-2xl shadow-lg bg-primary ${
+                    className={`h-[10vw] md:w-[75vw] md:h-[8vw] lg:h-[6vw] 2xl:h-[3vw] flex items-center justify-center rounded-lg lg:rounded-lg 2xl:rounded-xl shadow-lg bg-primary ${
                       loading
                         ? "bg-opacity-70"
                         : "bg-opacity-100 hover:shadow-xl hover:shadow-greenLight"
-                    } text-white font-semibold font-inter text-sm md:text-2xl lg:text-xl xl:text-2xl 2xl:text-2xl w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[40vw]`}
+                    } text-white font-semibold font-inter text-sm md:text-2xl lg:text-xl xl:text-2xl 2xl:text-2xl w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[35vw]`}
                     type="submit"
                   >
                     {loading ? (
@@ -350,7 +350,7 @@ const PembeliLoginPage = () => {
               } transition duration-500 ease-in-out transform flex flex-col w-full items-center justify-center md:my-8m lg:my-0`}
             >
               {/* Welcome Message */}
-              <div className="font-semibold font-inter text-black text-center mt-6 md:mt-6 lg:mt-6 leading-normal text-[2.188rem] md:text-[3.438rem] lg:text-[3.125rem] xl:text-[3.75rem]">
+              <div className="font-semibold font-inter text-black text-center mt-6 md:mt-6 lg:mt-6 leading-normal text-[2.188rem] md:text-[3.438rem] lg:text-[3.125rem] xl:text-[3.75rem] 2xl:text-[3.5rem]">
                 Create an Account!
               </div>
 
@@ -372,7 +372,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setNama(e.target.value)}
                   placeholder={"Full Name"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[40vw] 2xl:h-[4vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-2xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -383,7 +383,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setEmailRegis(e.target.value)}
                   placeholder={"Email"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[40vw] 2xl:h-[4vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-2xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -394,7 +394,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setNoHp(e.target.value)}
                   placeholder={"Phone Number"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[40vw] 2xl:h-[4vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-2xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -403,8 +403,8 @@ const PembeliLoginPage = () => {
                   value={passwordRegis}
                   rounded={"rounded-md lg:rounded-lg 2xl:rounded-2xl"}
                   placeholder={"Password"}
-                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[40vw]"}
-                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[4vw]"}
+                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[35vw]"}
+                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[3vw]"}
                 />
                 <div style={{ height: 15 }}></div>
                 <TextfieldPassword
@@ -412,8 +412,8 @@ const PembeliLoginPage = () => {
                   value={confirmPasswordRegis}
                   rounded={"rounded-md lg:rounded-lg 2xl:rounded-2xl"}
                   placeholder={"Confirm Password"}
-                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[40vw]"}
-                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[4vw]"}
+                  width={"w-[80vw] md:w-[75vw] lg:w-[45vw] 2xl:w-[35vw]"}
+                  height={"h-[10vw] md:h-[10vw] lg:h-[6vw] 2xl:h-[3vw]"}
                 />
               </div>
               <div className="flex items-start w-full pt-4 pl-[10vw] md:pl-0 lg:pl-[0vw] 2xl:pl-1">
@@ -452,11 +452,11 @@ const PembeliLoginPage = () => {
               <div>
                 <form onSubmit={handleRegister}>
                   <button
-                    className={`h-[9vw] md:w-[70vw] md:h-[7vw] lg:h-[5vw] 2xl:h-[4vw] flex items-center justify-center rounded-lg lg:rounded-lg 2xl:rounded-xl shadow-lg bg-primary ${
+                    className={`h-[9vw] md:w-[70vw] md:h-[7vw] lg:h-[5vw] 2xl:h-[3vw] flex items-center justify-center rounded-lg lg:rounded-lg 2xl:rounded-xl shadow-lg bg-primary ${
                       loading
                         ? "bg-opacity-70 cursor-not-allowed"
                         : "bg-opacity-100 hover:shadow-xl hover:shadow-greenLight"
-                    } text-white font-semibold font-inter text-sm md:text-xl lg:text-lg xl:text-xl 2xl:text-3xl w-[75vw] md:w-[70vw] lg:w-[40vw] 2xl:w-[40vw] transition duration-300 ease-in-out`}
+                    } text-white font-semibold font-inter text-sm md:text-xl lg:text-lg xl:text-xl 2xl:text-3xl w-[75vw] md:w-[70vw] lg:w-[40vw] 2xl:w-[35vw] transition duration-300 ease-in-out`}
                     type="submit"
                     disabled={loading}
                   >
