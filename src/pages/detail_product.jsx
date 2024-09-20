@@ -127,7 +127,7 @@ const DetailProduct = () => {
   };
 
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
+    <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px]">
       <Navbar />
       <Header
         title={"Product Description"}
@@ -138,7 +138,7 @@ const DetailProduct = () => {
           <LoadingScreen />
         ) : (
           <div>
-            <ContentDetailProduct
+            <ContentDetailProduct 
               product={product}
               selectedWeight={selectedWeight}
               calculatedPrice={calculatedPrice}

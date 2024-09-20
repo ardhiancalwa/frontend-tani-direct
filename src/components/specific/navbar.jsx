@@ -28,7 +28,7 @@ const Navbar = ({ className }) => {
 
   return (
     <div className="flex  w-full lg:flex-row justify-center">
-      <nav className={`bg-white fixed w-full  ${className}  border-black border-opacity-20 px-8 md:px-16 lg:px-28`}>
+      <nav className={`bg-white fixed w-full  ${className}  border-black border-opacity-20 px-8 md:px-16 lg:px-28 z-50`}>
         <div className=" flex row-auto py-2 md:py-4 items-center justify-between md:border-b border-gray ">
           <a href={"/home"}>
             <div className="text-black w-[40px] h-[23px] md:w-[100px] md:h-[56px] hover:scale-105 active:scale-100 font-semibold font-inter">

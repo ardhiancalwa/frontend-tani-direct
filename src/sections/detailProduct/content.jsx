@@ -44,24 +44,24 @@ const ContentDetailProduct = ({
             <img
               key={index}
               src={`${imageUrl}${image}`}
-              className="border border-gray border-opacity-30 rounded-lg shadow-lg md:rounded-lg lg:rounded-2xl w-[370px] h-[222px] lg:w-[800px] lg:h-[300px] 2xl:w-[800px] 2xl:h-[500px] object-cover"
+              className="border border-gray border-opacity-30 rounded-lg shadow-lg md:rounded-lg lg:rounded-2xl w-[370px] h-[222px] lg:w-[800px] lg:h-[300px] 2xl:w-[700px] 2xl:h-[400px] object-cover"
               alt={`${product.nama_produk} ${index + 1}`}
             />
           ))} 
           <DetailImage />
         </div>
-        <div className="w-[36px] 2xl:w-[150px]"></div>
-        <div className="flex flex-col col-auto items-start h-[275px] lg:w-full 2xl:w-full lg:h-[434px]">
-          <div className="pt-[0px] lg:w-[505px] 2xl:w-[900px] md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[24px] 2xl:text-[40px]">
+        <div className="w-[36px]"></div>
+        <div className="flex flex-col col-auto items-start h-[275px] lg:w-full 2xl:max-w-fit lg:h-[434px] 2xl:h-auto">
+          <div className="pt-[0px] lg:w-[505px] 2xl:w-[900px] md:py-0 font-inter font-semibold text-black text-start text-[18px] md:text-[16px] lg:text-[24px] 2xl:text-[30px]">
             {product.nama_produk}
           </div>
-          <div className="py-[6px] lg:py-2 font-inter font-semibold text-black text-start text-[14px] md:text-[16px] lg:text-[20px] 2xl:text-[30px]">
+          <div className="py-[6px] lg:py-2 font-inter font-semibold text-black text-start text-[14px] md:text-[16px] lg:text-[20px] 2xl:text-[26px]">
             Description
           </div>
           <div className="font-inter font-medium text-black text-start text-[12px] lg:text-[16px] 2xl:text-[25px] ">
             {product.deskripsi_produk}
           </div>
-          <div className="flex flex-row row-auto md:pt-2 2xl:pt-2">
+          <div className="flex flex-row row-auto md:pt-2">
             {[20, 50, 75, 100].map((weight) => (
               <ButtonWeightProduct
                 key={weight}
@@ -89,13 +89,13 @@ const ContentDetailProduct = ({
           </div>
           <div className="flex flex-col lg:pt-[10px] lg:h-[172px] col-auto p-1">
             <div className="flex flex-row row-auto items-center md:pt-[0px]">
-              <span className="font-inter text-[20px] lg:text-[26px] 2xl:text-[40px] font-bold text-primary">
+              <span className="font-inter text-[20px] lg:text-[26px] 2xl:text-[31px] font-bold text-primary">
                 {calculatedPrice !== undefined
                   ? `Rp ${(calculatedPrice * 1).toLocaleString("id-ID")}`
                   : "Loading..."}
               </span>
               <div style={{ width: 10 }}></div>
-              <span className="font-inter text-[14px] md:text-[10px] lg:text-[16px] 2xl:text-[25px] font-normal text-gray text-opacity-50 line-through">
+              <span className="font-inter text-[14px] md:text-[10px] lg:text-[16px] 2xl:text-[20px] font-normal text-gray text-opacity-50 line-through">
                 {calculatedPrice !== undefined
                   ? `Rp ${(calculatedPrice + 150000).toLocaleString("id-ID")}`
                   : "Loading..."}
@@ -108,7 +108,7 @@ const ContentDetailProduct = ({
             </div>
             <div className="hidden md:flex flex-row row-auto 2xl:py-5">
               <button
-                className="bg-primary md:rounded lg:rounded-xl md:w-[180px] md:h-[34px] lg:w-[250px] lg:h-[55px] 2xl:w-[850px] 2xl:h-[64px] "
+                className="bg-primary md:rounded lg:rounded-xl md:w-[180px] md:h-[34px] lg:w-[250px] lg:h-[55px] 2xl:w-[300px] 2xl:h-[64px] "
                 onClick={onBuyClick}
               >
                 <div className="flex items-start justify-center text-white font-inter font-semibold md:text-[10px] lg:text-[20px]">

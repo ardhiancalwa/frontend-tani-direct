@@ -67,7 +67,7 @@ const DetailImage = () => {
         <div className="pb-1">
           <button
             onClick={LeftArrow}
-            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-l-xl"
+            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[100px] rounded-l-xl"
           >
             <img
               src={SlideLeft}
@@ -78,14 +78,14 @@ const DetailImage = () => {
         </div>
         <div
           id="slider"
-          className="w-[600px] md:w-[350px] 2xl:w-[745px] h-full overflow-x-scroll scroll whitespace-nowrap  scroll-smooth scrollbar-hide"
+          className="w-[600px] md:w-[350px] 2xl:w-[515px] h-full overflow-x-scroll scroll whitespace-nowrap  scroll-smooth scrollbar-hide"
         >
           {images.length > 0 ? (
             images.map((image, index) => (
               <div key={index} className="inline-block p-2">
                 <img
                   src={`${imageUrl}${image}`} // Pastikan image adalah string URL yang benar
-                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-[80px] h-[70px] lg:w-[80px] lg:h-[80px] 2xl:w-[170px] 2xl:h-[170px]"
+                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-[80px] h-[70px] lg:w-[80px] lg:h-[80px] 2xl:w-[110px] 2xl:h-[110px]"
                   alt={product.nama_produk}
                 />
               </div>
@@ -97,7 +97,7 @@ const DetailImage = () => {
         <div className="pb-1">
           <button
             onClick={RightArrow}
-            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-r-md"
+            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[100px] rounded-r-md"
           >
             <img
               src={SlideRight}
