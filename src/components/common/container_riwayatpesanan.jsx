@@ -8,7 +8,7 @@ const ContainerRiwayatPesanan = ({ products }) => {
   const imageUrl =
     "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
   const calculateTotalPrice = (harga, jumlah, berat_produk) => {
-    if (berat_produk === 25) {
+    if (berat_produk === 20) {
       return harga * jumlah * 1;
     } else if (berat_produk === 50) {
       return harga * jumlah * 1.25;
@@ -47,7 +47,7 @@ const ContainerRiwayatPesanan = ({ products }) => {
                   </div>
                 </div>
                 <div className="font-inter font-bold text-primary text-[10px] md:text-[14px] lg:text-[25px]">
-                Total Pesanan: Rp {calculateTotalPrice(products.harga, products.jumlah, products.berat_produk).toLocaleString('id-ID')}
+                Total Pesanan: Rp {products.harga.toLocaleString('id-ID')}
                 </div>
               </div>
               <div className="flex  lg:pt-40">

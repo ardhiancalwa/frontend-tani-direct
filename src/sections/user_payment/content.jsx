@@ -36,19 +36,6 @@ const options = [
   },
 ];
 
-const typeOption = [
-  {
-    label: "Reguler",
-    value: "Reguler",
-    price: 15000,
-  },
-  {
-    label: "Express",
-    value: "Express",
-    price: 10000,
-  },
-];
-
 const ContentUserPayment = () => {
   const cookies = new Cookies();
   const [pembeli, setPembeli] = useState({});
@@ -149,105 +136,72 @@ const ContentUserPayment = () => {
   };
 
   const subtotal = calculateSubtotal();
-  const totalPayment = subtotal + totalShippingCost;
+  const totalPayment = subtotal + selectedOption.price;
 
   const handlePayment = async () => {
     try {
-      // Mengambil data dari localStorage
-      const products =
-        JSON.parse(localStorage.getItem("checkedProducts")) || [];
-      const totalHarga = totalPayment;
-      products.forEach(product => {
-        const berat_produk = product.selectedWeight;
-        console.log(`Berat produk dengan ID ${product.produkID} adalah ${berat_produk} gram.`);
-      });
-
-      // Mengambil pembeliID dari cookies
+      const products = JSON.parse(localStorage.getItem("checkedProducts")) || [];
+      console.log("harga pengiriman: ", selectedOption.price);
+      
       const cookies = new Cookies();
       const pembeliID = cookies.get("pembeliID");
-
+  
       if (!pembeliID) {
         toast.error("User not logged in");
         return;
       }
-
+  
       const token = cookies.get("token_pembeli");
-      const productData = products.map(product => ({
+      const productData = products.map((product) => ({
         produkID: product.produkID,
         jumlah: product.jumlah,
-        berat_produk: product.selectedWeight, // Mengambil berat dari setiap produk
+        berat_produk: product.selectedWeight,
       }));
-      try {
-        const response = await request.post(
-          "/transaksi/generate-token",
-          {
-            pembeliID: pembeliID, // Kirim data pembeli ke backend
-            produkID: productData,
-            totalHarga: totalHarga,
+  
+      // Mengirim request untuk mendapatkan Midtrans token
+      const response = await request.post(
+        "/transaksi",
+        {
+          pembeliID: pembeliID,
+          produkID: productData,
+          total_harga: totalPayment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        // Menampilkan pop-up Snap
-        if (response.data.data.midtransToken != null) {
-          const midtransToken = response.data.data.midtransToken;
-          const noTransaksi = response.data.data.no_transaksi;
-
-          window.snap.pay(midtransToken, {
-            onSuccess: async function (result) {
-              try {
-                // Memastikan data transaksi dikirim ke backend
-                const transaksiResponse = await request.post(
-                  "/transaksi",
-                  {
-                    no_transaksi: noTransaksi,
-                    tanggal_transaksi: new Date().toISOString(),
-                    metode_pembayaran: "midtrans",
-                    pembeliID: pembeliID,
-                    produkID: productData,
-                  },
-                  {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                  }
-                );
-                if (transaksiResponse.status === 201) {
-                  toast.success("Payment successful");
-                  window.location.href = "/trackingorder";
-                } else {
-                  throw new Error("Transaction not saved in the database");
-                }
-              } catch (error) {
-                console.error("Error saving transaction:", error);
-                toast.error("Failed to save transaction");
-              }
-            },
-            onPending: function (result) {
-              toast("Waiting for payment confirmation", { icon: "🔃" });
-            },
-            onError: function (result) {
-              toast.error("Payment failed");
-            },
-            onClose: function () {
-              console.log(response.data.message);
-              toast("Transaction canceled", { icon: "❌" });
-            },
-          });
-        } else {
-          toast.error("Failed to get Midtrans token");
         }
-      } catch (error) {
-        console.log(error.message);
+      );
+  
+      const midtransToken = response.data.data?.midtransToken;
+      if (!midtransToken) {
+        toast.error("Failed to get Midtrans token");
+        return;
       }
+  
+      const noTransaksi = response.data.data.no_transaksi;
+  
+      window.snap.pay(midtransToken, {
+        onSuccess: async function (result) {
+          toast.success("Payment successful! Please wait for confirmation.");
+          // Transaksi dianggap berhasil di front-end, tapi status di backend di-update melalui notifikasi Midtrans
+          window.location.href = "/trackingorder";
+        },
+        onPending: function () {
+          toast("Waiting for payment confirmation", { icon: "🔃" });
+        },
+        onError: function () {
+          toast.error("Payment failed");
+        },
+        onClose: function () {
+          toast("Transaction canceled", { icon: "❌" });
+        },
+      });
     } catch (error) {
       console.error("Error processing payment:", error);
-      alert(error);
+      toast.error("An error occurred during payment processing");
     }
-  };
+  }; 
 
   return (
     <div className="flex flex-col">
@@ -312,10 +266,8 @@ const ContentUserPayment = () => {
           <div className="font-inter font-bold text-black text-[16px] md:text-[22px]">
             Pilih Pengiriman
           </div>
-          <div style={{ height: 15 }}></div>
           <div className="flex flex-col items-start">
-            <div style={{ height: 7 }}></div>
-            <div className="relative w-[350px] md:w-[583px] lg:w-[740px] 2xl:w-[900px] ">
+            <div className="relative w-[350px] md:w-[583px] lg:w-[740px] 2xl:w-[88vw] ">
               <div
                 className="flex flex-row justify-between h-[44px] md:h-[58px] items-center border border-gray-300 border-opacity-50 rounded-xl px-5 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
@@ -349,71 +301,10 @@ const ContentUserPayment = () => {
                         <div>{option.label}</div>
                         <div className="flex flex-row">
                           <div className="ml-2">
-                            Rp {option.price.toLocaleString('id-ID')}
+                            Rp {option.price.toLocaleString("id-ID")}
                           </div>
                           <div className="ml-2 line-through text-gray text-opacity-30 text-[14px] lg:text-[20px]">
-                            Rp {(option.price + 20000).toLocaleString('id-ID')}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col items-start lg:pb-[270px] w-full">
-          <div className="font-inter font-bold text-black text-[16px] md:text-[22px]">
-            Pilih Jenis Pengiriman
-          </div>
-          <div style={{ height: 15 }}></div>
-          <div className="flex flex-col items-start">
-            <div style={{ height: 7 }}></div>
-            <div className="relative w-[350px] md:w-[583px] lg:w-[740px] 2xl:w-[948px]">
-              <div
-                className="flex flex-row justify-between h-[44px] md:h-[58px] items-center border border-gray-300 border-opacity-50 rounded-xl px-5 cursor-pointer"
-                onClick={() => setIsTypeOpen(!isTypeOpen)}
-              >
-                <div className="w-80 h-18 flex items-center font-medium font-inter text-xl">
-                  {selectedTypeOption.label}
-                </div>
-                {isTypeOpen ? (
-                  <img
-                    src={DropdownUpIcon}
-                    className="w-[24px] h-[24px] lg:w-[38px] lg:h-[38px]"
-                    alt="dropdown up"
-                  />
-                ) : (
-                  <img
-                    src={DropdownIcon}
-                    className="w-[24px] h-[24px] lg:w-[38px] lg:h-[38px]"
-                    alt="dropdown"
-                  />
-                )}
-              </div>
-              {isTypeOpen && (
-                <div className="absolute w-full mt-3 bg-white border border-gray-300 rounded-xl font-inter shadow-lg z-10 max-h-96  overflow-y-auto">
-                  {typeOption.map((typeOption) => (
-                    <div
-                      key={typeOption.value}
-                      className="p-4 hover:bg-gray-200 cursor-pointer hover:bg-greenLight border-b-2 border-gray px-5 border-opacity-10 text-[14px] lg:text-[20px]"
-                      onClick={() => handleTypeOptionClick(typeOption)}
-                    >
-                      <div className="flex flex-row justify-between font-inter font-semibold text-black text-[14px] md:text-[20px]">
-                        <div>{typeOption.label}</div>
-                        <div className="flex flex-row">
-                          <div className="ml- text-[14px] lg:text-[20px]">
-                            Rp{" "}
-                            {typeOption?.price !== undefined
-                              ? typeOption.price.toLocaleString('id-ID')
-                              : "N/A"}
-                          </div>
-                          <div className="ml-2 line-through text-gray text-opacity-30 text-[12px] lg:text-[16px]">
-                            Rp{" "}
-                            {typeOption?.price !== undefined
-                              ? (typeOption.price + 20000).toLocaleString('id-ID')
-                              : "N/A"}
+                            Rp {(option.price + 20000).toLocaleString("id-ID")}
                           </div>
                         </div>
                       </div>
@@ -433,15 +324,15 @@ const ContentUserPayment = () => {
           <div className="h-5"></div>
           <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-gray text-opacity-50">
             <div>Subtotal untuk Produk</div>
-            <div>Rp {subtotal.toLocaleString('id-ID')}</div>
+            <div>Rp {subtotal.toLocaleString("id-ID")}</div>
           </div>
           <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-gray text-opacity-50">
             <div>Subtotal Pengiriman</div>
-            <div>Rp {totalShippingCost.toLocaleString('id-ID')}</div>
+            <div>Rp {totalShippingCost.toLocaleString("id-ID")}</div>
           </div>
           <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-black">
             <div>Total Pembayaran</div>
-            <div>Rp {totalPayment.toLocaleString('id-ID')}</div>
+            <div>Rp {totalPayment.toLocaleString("id-ID")}</div>
           </div>
         </div>
       </div>

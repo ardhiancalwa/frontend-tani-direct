@@ -22,6 +22,10 @@ const Recomendation = () => {
     setCurrentCard((prevCard) => (prevCard - 1 + cards.length) % cards.length);
   };
 
+  const handleCardClick = (index) => {
+    setCurrentCard(index);
+  };
+
   useEffect(() => {
     const fetchTopSellingProducts = async () => {
       setLoading(true);
@@ -87,6 +91,7 @@ const Recomendation = () => {
                 totalSold={card.totalSold} 
                 isActive={index === currentCard}
                 cardRef={(el) => (cardRefs.current[index] = el)}
+                onClick={() => handleCardClick(index)}
               />
             ))}
           </div>

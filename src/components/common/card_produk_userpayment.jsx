@@ -19,7 +19,7 @@ const ProductCardUserPayment = ({
       <div className="flex flex-row justify-between md:border-none border border-gray lg:p-0 rounded-[5px]">
         <div className="flex flex-row">
           <img
-            src={`${imageUrl}${product.image_produk}`}
+            src={`${imageUrl}${product.image_produk[0]}`}
             className="lg:border border-gray border-opacity-20 rounded-xl w-[85px] h-[62px] md:w-[170px] md:h-[120px] object-cover"
             alt="image_produk"
           />
