@@ -78,7 +78,7 @@ const CartPage = () => {
   );
   return (
     <div>
-      <div className="max-w-screen-sm md:max-w-full px-[30px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[110px]">
+      <div className="max-w-screen-sm md:max-w-full px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw] 2xl:px-[5vw]">
         <Navbar />
         <HeaderCart
           item={isAnyChecked}

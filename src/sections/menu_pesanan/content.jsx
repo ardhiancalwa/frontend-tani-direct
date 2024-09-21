@@ -115,7 +115,7 @@ const ContentMenuPesanan = () => {
                       </button>
                       <div className="w-[5px] md:w-[15px]"></div>
                       <img
-                        src={`${imageUrl}${product.image_produk}`}
+                        src={`${imageUrl}${product.image_produk[0]}`}
                         alt="bayam"
                         className="w-5 h-5 md:w-10 md:h-10 mr-4 lg:h-16 lg:w-16 object-cover"
                       />

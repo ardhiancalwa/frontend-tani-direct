@@ -76,7 +76,7 @@ const CardProduct = ({ product }) => {
           </div>
           <div className="flex flex-row justify-between items-center mt-[1vw] md:mt-[2vw] lg:py-[0.5vw] xl:py-[0.2vw] 2xl:py-[0.5vw]">
             <button
-              className="w-[18vw] h-[5vw] md:w-[17vw] md:h-[4vw] lg:w-[16.5vw] lg:h-[4.5vw] xl:w-[18vw] xl:h-[4vw] 2xl:w-[15vw] 2xl:h-[3vw] flex flex-row justify-center items-center border-[1px] lg:border-2 border-gray border-opacity-30 rounded-full lg:pt-4 lg:pb-4 hover:border-opacity-40 active:scale-95 active:bg-gray-200"
+              className="w-[18vw] h-[5vw] md:w-[17vw] md:h-[4vw] lg:w-[16.5vw] lg:h-[4.5vw] xl:w-[18vw] xl:h-[4vw] 2xl:w-[14vw] 2xl:h-[3vw] flex flex-row justify-center items-center border-[1px] lg:border-2 border-gray border-opacity-30 rounded-full lg:pt-4 lg:pb-4 hover:border-opacity-40 active:scale-95 active:bg-gray-200"
               onClick={() =>
                 (window.location.href = `/detailProduct/${product.produkID}`)
               }

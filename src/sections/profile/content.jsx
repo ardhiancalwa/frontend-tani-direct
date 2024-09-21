@@ -131,24 +131,22 @@ const ContentProfile = (profileData) => {
         </div>
       ) : (
         <div
-          className="lg:pl-16 2xl:px-5  w-full  "
+          className="lg:pl-[5vw] 2xl:px-[3vw] w-full  "
           key={profileData.pembeliID}
         >
-          <div className="h-[20px] md:h-[30px]"></div>
           <div className="flex flex-col lg:flex-row lg:gap-5 ">
             <div className="flex flex-col items-center ">
-              <div className="flex flex-col w-[173px] md:w-[223px] lg:w-[270px] 2xl:w-96 items-center border border-gray rounded-md 2xl:rounded-xl p-[15px]">
+              <div className="flex flex-col w-[40vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] 2xl:w-[20vw] items-center border border-gray rounded-md 2xl:rounded-xl p-[15px]">
                 <img
                   src={`${imageUrl}${profile.image_pembeli}`}
-                  className="w-[139px] h-[121px] md:w-[189px] md:h-[155px] lg:w-[200px] lg:h-[200px] 2xl:w-72 2xl:h-72 rounded-full object-cover"
+                  className="w-[50vw] md:w-[40vw] lg:w-[25vw] 2xl:w-72 2xl:h-72 mb-4 md:mb-6 rounded-full object-cover"
                   alt="profile_photo"
                 />
-                <div style={{ height: 25 }}></div>
                 <button
-                  className="flex items-center w-36 md:w-[189px] h-auto lg:w-full justify-center py-2 border border-black rounded active:scale-[0.98]"
+                  className="flex items-center h-auto w-full justify-center py-2 border border-black rounded active:scale-[0.98]"
                   onClick={handleButtonClick}
                 >
-                  <div className="font-inter text-[10px] md:text-[14px] lg:text-[18px] font-semibold text-black text-start">
+                  <div className="font-inter text-[0.65rem] md:text-[0.8rem] lg:text-[1rem] font-semibold text-black text-start">
                     Pilih foto
                   </div>
                 </button>
@@ -158,63 +156,57 @@ const ContentProfile = (profileData) => {
                   style={{ display: "none" }}
                   onChange={handleFileChange}
                 />
-                <div className="lg:h-[25px] md:h-[10px] h-[10px] "></div>
-                <div className="w-auto">
-                  <div className="font-inter font-medium lg:font-semibold text-black text-start text-[8px] md:text-[10px] 2xl:text-sm">
+                <div className="w-auto mt-2 md:mt-3">
+                  <div className="font-inter font-medium text-black text-start text-[0.5rem] md:text-[0.5rem] lg:text-[0.6rem] 2xl:text-sm">
                     Besar file: maksimum 10.000.000 bytes (10 Megabytes).
                     Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
                   </div>
                 </div>
               </div>
-              <div style={{ height: 20 }}></div>
-              <div className=" lg:w-[270px] 2xl:w-96 hidden lg:flex lg:flex-col">
-                <div className="py-1">
+              <div className="w-full hidden lg:flex lg:flex-col mt-4">
+                <div className="py-1 xl:py-[0.4vw] 2xl:py-1">
                   <button
                     className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                     onClick={() => (window.location.href = "/editprofile")}
                   >
                     <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
+                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
                     >
                       Edit Profile
                     </div>
                   </button>
                 </div>
-                <div className="py-1">
+                <div className="py-1 xl:py-[0.4vw] 2xl:py-1">
                   <button
                     className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                     onClick={() => (window.location.href = "/editalamat")}
                   >
                     <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
+                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
                     >
                       Edit Alamat
                     </div>
                   </button>
                 </div>
-                <div className="py-1">
+                <div className="py-1 xl:py-[0.4vw] 2xl:py-1">
                   <button
                     className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                     onClick={() => (window.location.href = "/riwayatpesanan")}
                   >
                     <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
+                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
                     >
                       Riwayat Pesanan
                     </div>
                   </button>
                 </div>
-                <div className="py-1">
+                <div className="py-1 xl:py-[0.4vw] 2xl:py-1">
                   <button
                     className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                     onClick={() => (window.location.href = "/trackingorder")}
                   >
                     <div
-                      className="font-inter font-semibold text-black text-start"
-                      style={{ fontSize: 18 }}
+                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
                     >
                       Tracking My Order
                     </div>
@@ -222,23 +214,22 @@ const ContentProfile = (profileData) => {
                 </div>
               </div>
             </div>
-            {/* <div style={{ width: 50 }}></div> */}
-            <div className="w-full  flex  justify-center items-center  xl:items-start xl:justify-start">
-              <div className="lg:w-full  flex flex-col ">
+            <div className="w-full flex justify-center items-center  xl:items-start xl:justify-start">
+              <div className="w-full flex flex-col ">
                 <TextfieldProfile
                   title="Nama"
                   placeholder={profile.nama_pembeli}
                   type="text"
                   readOnly={true}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full "
+                    "font-inter font-medium text-[1rem] md:text-[1.2rem] lg:text-[24px] focus:outline-none w-[80vw]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full "
                   }
                 />
                 <TextfieldProfile
                   title="Email"
                   placeholder={profile.email_pembeli}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
+                    "font-inter font-medium text-[1rem] md:text-[1.2rem] lg:text-[24px] focus:outline-none w-[80vw]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
                   }
                   type="email"
                   readOnly={true}
@@ -247,7 +238,7 @@ const ContentProfile = (profileData) => {
                   title="Contact Number"
                   placeholder={profile.kontak_pembeli}
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
+                    "font-inter font-medium text-[1rem] md:text-[1.2rem] lg:text-[24px] focus:outline-none w-[80vw]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
                   }
                   type="text"
                   readOnly={true}
@@ -260,7 +251,7 @@ const ContentProfile = (profileData) => {
                       : "Tanggal tidak tersedia"
                   }
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
+                    "font-inter font-medium text-[1rem] md:text-[1.2rem] lg:text-[24px] focus:outline-none w-[80vw]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
                   }
                   type="text"
                   readOnly={true}
@@ -269,7 +260,7 @@ const ContentProfile = (profileData) => {
                   title="Password"
                   placeholder="*************"
                   className={
-                    "font-inter font-medium text-[12px] md:text-[14px] lg:text-[24px] focus:outline-none w-[290px]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
+                    "font-inter font-medium text-[1rem] md:text-[1.2rem] lg:text-[24px] focus:outline-none w-[80vw]  md:w-[626px] xl:w-[700px] lg:w-[480px] 2xl:w-full"
                   }
                   type="password"
                   readOnly={true}
@@ -278,7 +269,7 @@ const ContentProfile = (profileData) => {
                 <div className=" hidden lg:flex justify-end">
                   <button
                     type="button"
-                    className="flex items-center w-24 h-8 lg:w-36 lg:h-12 justify-center focus:outline-none font-inter font-semibold text-white text-[12px] lg:text-[18px] bg-red-600 hover:bg-red-700 focus:ring-2 active:scale-95 focus:ring-red-300 rounded-lg text-sm px-5 py-2.5  mb-2 transition duration-200 ease-in-out transform hover:scale-105"
+                    className="flex items-center w-24 h-8 lg:w-36 lg:h-12 justify-center focus:outline-none font-inter font-semibold text-white text-[1rem] lg:text-[18px] bg-red-600 hover:bg-red-700 focus:ring-2 active:scale-95 focus:ring-red-300 rounded-lg text-sm px-5 py-2.5  mb-2 transition duration-200 ease-in-out transform hover:scale-105"
                     onClick={openModal}
                   >
                     Logout

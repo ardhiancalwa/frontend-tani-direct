@@ -252,10 +252,9 @@ const ContentEditProfile = () => {
           <LoadingScreen />
         </div>
       ) : (
-        <div className="inline-flex flex-col w-full ">
-          <div className="h-[20px] lg:h-10"></div>
+        <div className="inline-flex flex-col w-full">
           <div className="flex flex-col w-full justify-start items-start ">
-            <div className="w-full ">
+            <div className="w-full">
               <TextfieldProfile
                 title={"Nama Lengkap"}
                 placeholder={updatedProfile.nama_pembeli || ""}
@@ -265,7 +264,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.nama_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[0.8rem] md:text-[1rem] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[50vw] 2xl:w-full"
                 }
               />
               <TextfieldProfile
@@ -277,7 +276,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.email_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
                 }
               />
               <TextfieldProfile
@@ -289,11 +288,11 @@ const ContentEditProfile = () => {
                 value={updatedProfile?.kontak_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[320px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
                 }
               />
             </div>
-            <div className="flex flex-row w-full gap-5 justify-between">
+            <div className="flex flex-row w-full gap-3 justify-between">
               <DropdownValue
                 title={"Tanggal lahir"}
                 placeholder={updatedProfile.tanggal_lahir?.day || ""}
@@ -305,7 +304,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile.tanggal_lahir?.day || ""}
                 onChange={(value) => handleDateChange("day", value)}
                 className={
-                  " w-[110px] md:w-[130px] 2xl:w-[400px]  inline-flex lg:w-[280px]  "
+                  " w-[20vw] md:w-[20vw] 2xl:w-[400px]  inline-flex lg:w-[280px] mt-2 "
                 }
               />
               <DropdownValue
@@ -316,7 +315,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile.tanggal_lahir?.month || ""}
                 onChange={(value) => handleDateChange("month", value)}
                 className={
-                  " w-[110px]  text-[12px] md:w-[130px]  2xl:w-[400px]  inline-flex lg:w-[280px]  "
+                  " w-[20vw] md:w-[20vw] 2xl:w-[400px]  inline-flex lg:w-[280px] mt-2 "
                 }
                 // paddingLeft={"md:pl-28 lg:pl-[82px] 2xl:pl-0"}
               />
@@ -328,13 +327,12 @@ const ContentEditProfile = () => {
                 value={updatedProfile.tanggal_lahir?.year || ""}
                 onChange={(value) => handleDateChange("year", value)}
                 className={
-                  " w-[104px] md:w-[135px] lg:w-[280px] 2xl:w-[400px]  inline-flex  pb-[10px]"
+                  " w-[20vw] md:w-[20vw] 2xl:w-[400px]  inline-flex lg:w-[280px] mt-2 "
                 }
                 // paddingLeft={"md:pl-28 lg:pl-26 2xl:pl-0"}
               />
             </div>
-            <div className="lg:h-[20px]"></div>
-            <div className="w-full ">
+            <div className="w-full mt-4">
               <TextfieldProfile
                 title={"Password"}
                 placeholder={"*************"}
@@ -344,7 +342,7 @@ const ContentEditProfile = () => {
                 value={updatedProfile.password_pembeli || ""}
                 onChange={handleInputChange}
                 className={
-                  "font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+                  "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
                 }
               />
             </div>

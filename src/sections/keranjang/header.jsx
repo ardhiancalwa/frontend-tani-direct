@@ -3,8 +3,7 @@ import ArrowBack from "../../assets/images/arrow_back3.svg";
 
 const HeaderCart = ({ item, onRemoveItem, isAnyChecked }) => {
   return (
-    <div>
-      <div className="h-[50px] md:h-[85px] lg:h-[70px] "></div>
+    <div className="mt-8 md:mt-20 lg:mt-14">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row row-auto items-center ">
           <button
@@ -13,12 +12,12 @@ const HeaderCart = ({ item, onRemoveItem, isAnyChecked }) => {
           >
             <img
               src={ArrowBack}
-              className="w-5 h-5 lg:w-[35px] lg:h-[35px] 2xl:w-[45px] 2xl:h-[45px]"
+              className="w-5 h-5 md:w-6 md:h-6 lg:w-[3vw] lg:h-[3vw] xl:w-[2.5vw] xl:h-[2.5vw] 2xl:w-[1.8vw] 2xl:h-[1.8vw]"
               alt="arrow back"
             />
           </button>
           <div className="w-2 lg:w-5"></div>
-          <div className="font-inter font-semibold text-black text-[16px] md:text-[20px] lg:text-[28px] 2xl:text-[35px]">
+          <div className="font-inter font-semibold text-black text-[1rem] md:text-[1.5rem] lg:text-[1.8rem] 2xl:text-[35px]">
             Keranjang Belanja
           </div>
         </div>

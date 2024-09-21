@@ -14,14 +14,10 @@ import Logo from "../assets/images/logo.png";
 
 const AllProducts = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[25px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px]">
+    <div className="max-w-screen-sm md:max-w-full px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw] 2xl:px-[5vw]">
       <Navbar />
-      {/* <HeaderAllProducts /> */}
       <Products />
-      <div className="h-[80px] md:h-[0px] lg:h-0"></div>
-
       <div className="bg-white">
-        <div className="h-[25px] md:h-[0px] lg:h-[0px]"></div>
         <footer className="w-[350px] md:w-full lg:w-full mx-auto  lg:px-4">
           <div className="flex flex-row items-start justify-between">
             <div className="flex flex-col text-start w-[80px] md:w-[150px] lg:w-[500px]">

@@ -6,7 +6,7 @@ import Header from "../components/common/header";
 
 const ProfilePage = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[10px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px]">
+    <div className="max-w-screen-sm md:max-w-full px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw] 2xl:px-[5vw]">
       <Navbar />
       <Header title={"Profile"} onClick={() => window.history.back()} />
       <ContentProfile />

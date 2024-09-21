@@ -281,7 +281,6 @@ const ContentEditAlamat = () => {
         </div>
       ) : (
         <div>
-          <div className="h-[20px] lg:h-10"></div>
           <div className="w-full">
             <TextfieldProfile
               title="Nama Lengkap"
@@ -290,7 +289,7 @@ const ContentEditAlamat = () => {
               name="nama_pembeli"
               value={updatedAlamat.nama_pembeli || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+              className="font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[24px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[80vw] 2xl:w-full"
             />
             <TextfieldProfile
               title="Contact Number"
@@ -299,9 +298,9 @@ const ContentEditAlamat = () => {
               name="kontak_pembeli"
               value={updatedAlamat.kontak_pembeli || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-full"
+              className="font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[80vw] 2xl:w-full"
             />
-            <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] 2xl:w-full  ">
+            <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] xl:w-full 2xl:w-full  ">
               <DropdownValueAlamat
                 title="Provinsi"
                 name="provinsi"
@@ -309,7 +308,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("provinsi", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[100px] bg-red"
+                className="relative w-[163px] md:w-[140px] xl:w-[18vw] 2xl:w-[100px] bg-red"
                 placeholder={updatedAlamat.provinsi || "Select Province"}
                 options={provinces}
               />
@@ -318,7 +317,7 @@ const ContentEditAlamat = () => {
                 name="kota"
                 value={updatedAlamat.kota || ""}
                 onChange={(value) => handleInputDropdownChange("kota", value)}
-                className="relative w-[163px] md:w-[140px] 2xl:w-[100px]"
+                className="relative w-[163px] md:w-[140px] xl:w-[18vw]  2xl:w-[100px]"
                 placeholder={updatedAlamat.kota || "Select City"}
                 options={cities}
               />
@@ -329,7 +328,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("kecamatan", value)
                 }
-                className="relative w-[163px] md:w-[140px] 2xl:w-[100px]"
+                className="relative w-[163px] md:w-[140px] xl:w-[18vw] 2xl:w-[100px]"
                 placeholder={updatedAlamat.kecamatan || "Select District"}
                 options={districts}
               />
@@ -340,7 +339,7 @@ const ContentEditAlamat = () => {
                 onChange={(value) =>
                   handleInputDropdownChange("kode_pos", value)
                 }
-                className="relative w-[163px] md:w-[140px] lg:w-[258px] "
+                className="relative w-[163px] md:w-[140px] xl:w-[18vw] lg:w-[258px] "
                 placeholder={updatedAlamat.kode_pos || "Select Postal Code"}
                 options={postalCodes}
               />
@@ -394,7 +393,7 @@ const ContentEditAlamat = () => {
               value={updatedAlamat.detail_alamat || ""}
               onChange={handleInputChange}
               type="text"
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className="font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[80vw] 2xl:w-screen"
             />
             <div className="pb-[25px] ">
               <div className="flex flex-col items-start">
@@ -403,10 +402,10 @@ const ContentEditAlamat = () => {
                 </div>
                 <div style={{ height: 7 }}></div>
                 <form className="flex items-center justify-start w-full">
-                  <div className="flex items-center justify-start rounded-md ring-1 ring-gray p-5  ring-opacity-50 focus:ring-gray w-full">
+                  <div className="flex items-center justify-start rounded-md ring-1 ring-gray p-5  ring-opacity-50 focus:ring-gray">
                     <textarea
                       placeholder={updatedAlamat.nama_alamat || ""}
-                      className="font-inter font-medium focus:outline-none text-[12px] md:text-[16px] lg:text-[24px] h-[67px] lg:h-[189px] resize-none w-[325px] md:w-[627px] lg:w-[862px] 2xl:w-full"
+                      className="font-inter font-medium focus:outline-none text-[0.8rem] md:text-[16px] lg:text-[24px] h-[67px] lg:h-[189px] resize-none w-[80vw] md:w-[78vw] lg:w-[84vw] xl:w-[87vw] 2xl:w-[87vw]"
                       name="nama_alamat"
                       value={updatedAlamat.nama_alamat || ""}
                       onChange={handleInputChange}

@@ -1,6 +1,5 @@
 import React from "react";
 
-import ProfilePenjual from "../../assets/images/profile_penjual.png";
 import ChatIcon from "../../assets/images/chat.svg";
 
 const PenjualSection = ({seller}) => {
@@ -8,36 +7,34 @@ const PenjualSection = ({seller}) => {
   const imageUrl =
     "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
   return (
-    <div>
-      <div className="h-[0px]  md:h-[52px]"></div>
-      <div className="flex flex-row row-auto w-full border-t-[1px] border-b-[1px] md:py-[20px] py-[10px] border-gray border-opacity-50 items-center justify-between">
+    <div className="mt-8 2xl:mt-14">
+      <div className="flex flex-row row-auto w-full border-t-[1px] border-b-[1px] md:py-[2vw] py-[3vw] border-gray border-opacity-50 items-center justify-between">
         <div className="flex flex-row row-auto">
           <img
             src={`${imageUrl}${seller?.image_petani}`}
-            className="w-[35px] h-[35px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px] 2xl:w-[100px] 2xl:h-[100px] rounded-full object-cover"
+            className="w-[12vw] h-[12vw] md:w-[7vw] md:h-[7vw] lg:w-[8vw] lg:h-[8vw] xl:w-[6vw] xl:h-[6vw] 2xl:w-[6.5vw] 2xl:h-[6.5vw] rounded-full object-cover"
             alt="profile_penjual"
           />
-          <div className="flex flex-col items-start justify-center  pl-8">
-            <div className="font-inter font-semibold text-start text-black text-[12px] md:text-[16px] lg:text-[24px] 2xl:text-[28px]">
+          <div className="flex flex-col items-start justify-center pl-2 md:pl-4">
+            <div className="font-inter font-semibold text-start text-black text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] xl:text-[1.5rem] 2xl:text-[2rem]">
               {seller?.nama_petani}
             </div>
-            <div className="font-inter font-semibold text-gray text-opacity-50 text-[10px] md:text-[12px] lg:text-[14px] 2xl:text-[20px]">
+            <div className="font-inter font-semibold text-gray text-opacity-50 text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] xl:text-[1rem] 2xl:text-[1.2rem]">
               Aktif {number} Menit yang lalu
             </div>
           </div>
         </div>
         <button
-          className="bg-primary rounded-md lg:rounded-xl w-[80px] h-[26px] md:w-[100px] md:h-[30px] lg:w-[180px] lg:h-[50px] 2xl:w-[240px] 2xl:h-[64px] "
+          className="bg-primary rounded-md lg:rounded-xl w-[22vw] h-[6vw] md:w-[18vw] md:h-[5vw] lg:w-[180px] lg:h-[50px] 2xl:w-[240px] 2xl:h-[64px] "
           onClick={() => (window.location.href = "/chat")}
         >
-          <div className="flex flex-row row-auto items-center justify-center">
+          <div className="flex flex-row row-auto items-center justify-between px-2 md:px-3 2xl:px-6">
             <img
               src={ChatIcon}
-              className="w-[10px] h-[10px] md:w-[12px] md:h-[12px] lg:w-[24px] lg:h-[24px] "
+              className="w-[3.5vw] h-[3.5vw] md:w-[2.8vw] md:h-[2.8vw] lg:w-[2.5vw] lg:h-[2.5vw] xl:w-[2vw] xl:h-[2vw] "
               alt="icon_chat"
             />
-            <div style={{ width: 10 }}></div>
-            <div className="text-[8px] md:text-[10px] lg:text-[20px] font-medium font-inter text-white ">
+            <div className="text-[0.6rem] md:text-[0.88rem] lg:text-[1.2rem] 2xl:text-[1.5rem] font-medium font-inter text-white ">
               Chat Penjual
             </div>
           </div>
