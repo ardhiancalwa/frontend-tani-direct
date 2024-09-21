@@ -8,6 +8,7 @@ const CardProductRecomendations = ({
   totalSold,
   isActive,
   cardRef,
+  onClick,
 }) => {
   const cardStyle = isActive
     ? {
@@ -27,6 +28,7 @@ const CardProductRecomendations = ({
       className="lg:px-3 md:px-1 w-[25vw] h-auto md:w-[22vw] md:h-[25vw] lg:w-[26vw] xl:w-[27vw] 2xl:w-[28vw] "
       style={cardStyle}
       ref={cardRef}
+      onClick={onClick}
     >
       <div className="lg:max-w-sm 2xl:max-w-full w-full bg-white border border-gray border-opacity-30 rounded-lg p-[1.5vw]  md:rounded-xl xl:rounded-2xl overflow-hidden  ">
         <div className="flex items-center justify-center rounded-xl">
