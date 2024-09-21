@@ -108,16 +108,15 @@ const Products = () => {
 
   return (
     <div>
-      <div>
-        <div className="h-[50px] md:h-[90px] lg:h-[70px] "></div>
-        <div className="flex flex-row row-auto items-center justify-between w-[300px] md:w-[545px] lg:w-[780px] xl:w-[925px] 2xl:w-[1300px] ">
+      <div className="mt-[6vw] md:mt-[12vw] lg:mt-[7vw] xl:mt-[5vw] 2xl:mt-[3vw] ">
+        <div className="flex flex-row row-auto items-center justify-between w-[74vw] md:w-[66vw] lg:w-[74vw] xl:w-[76vw] 2xl:w-[75vw] ">
           <button
             className="flex items-center justify-center hover:scale-95"
             onClick={() => window.history.back()}
           >
             <img
               src={ArrowBack}
-              className="w-5 h-5 md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]"
+              className="w-[6vw] h-[6vw] md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]"
               alt="arrow back"
             />
           </button>
@@ -131,7 +130,7 @@ const Products = () => {
         </div>
       ) : (
         <div>
-          <div className="mx-auto grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-5 gap-x-[15px] gap-y-5 xl:gap-x-5 2xl:gap-x-10 lg:gap-y-12 lg:pl-[0px] ">
+          <div className="mx-auto grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-5 gap-[5vw] md:gap-[1.5vw] lg:gap-[2vw] xl:gap-x-5 2xl:gap-[2vw] lg:pl-[0px] ">
             {currentProducts.map((product) => (
               <CardProductAll
                 key={product.produkID}

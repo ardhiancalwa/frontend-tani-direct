@@ -41,10 +41,10 @@ const DropdownValueAlamat = ({
       <div style={{ height: 7 }}></div>
       <div className={className}>
         <div
-          className={`h-[35px] lg:w-[192px] lg:h-[70px] md:h-[44px] 2xl:w-[400px] flex flex-row justify-between items-center border-[1px] border-gray border-opacity-50 bg-white rounded-md lg:rounded-xl px-[10px] cursor-pointer`}
+          className={`h-[35px] lg:w-[192px] xl:w-[20vw] lg:h-[5vw] md:h-[44px] 2xl:w-[400px] flex flex-row justify-between items-center border-[1px] border-gray border-opacity-50 bg-white rounded-md lg:rounded-lg px-[10px] cursor-pointer`}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <div className="h-18 pr-[5px] lg:mr-0 flex justify-start items-center font-medium font-inter text-[14px] lg:text-[26px]">
+          <div className="h-18 pr-[5px] lg:mr-0 flex justify-start items-center font-medium font-inter text-[0.8rem] md:text-[1rem] lg:text-[1.2rem] 2xl:text-[1.5rem]">
             {selectedOption ? selectedOption.label : placeholder}
           </div>
           {isOpen ? (
@@ -63,7 +63,7 @@ const DropdownValueAlamat = ({
         </div>
         {isOpen && (
           <div
-            className="absolute w-full md:w-[140px] lg:w-[292px] 2xl:w-[400px] mt-3 bg-white border border-gray border-opacity-20 rounded-lg lg:rounded-xl shadow-lg z-10 max-h-36 overflow-y-auto "
+            className="absolute w-full md:w-[140px] gap-x-2 lg:w-[292px] xl:w-full 2xl:w-[400px] mt-3 bg-white border border-gray border-opacity-20 rounded-lg lg:rounded-xl shadow-lg z-10 max-h-36 overflow-y-auto "
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",

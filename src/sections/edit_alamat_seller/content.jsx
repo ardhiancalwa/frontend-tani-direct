@@ -217,7 +217,9 @@ const ContentEditAlamatSeller = () => {
               name="nama_petani"
               value={updatedAlamat.nama_petani || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[24px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className={
+                "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
+              }
             />
             <TextfieldProfile
               title="Contact Number"
@@ -226,7 +228,9 @@ const ContentEditAlamatSeller = () => {
               name="no_telepon_petani"
               value={updatedAlamat.no_telepon_petani || ""}
               onChange={handleInputChange}
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className={
+                "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
+              }
             />
             <div className="hidden md:flex lg:flex flex-row justify-between md:w-[668px] lg:w-[970px] 2xl:w-[1750px]">
               <DropdownValueAlamat
@@ -329,7 +333,9 @@ const ContentEditAlamatSeller = () => {
               value={updatedAlamat.detail_alamat || ""}
               onChange={handleInputChange}
               type="text"
-              className="font-inter font-medium text-[14px] md:text-[16px] lg:text-[26px] focus:outline-none w-[325px] md:w-[627px] lg:w-[900px] 2xl:w-screen"
+              className={
+                "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[80vw] lg:w-[900px] 2xl:w-full"
+              }
             />
             <div className="pb-[25px]">
               <div className="flex flex-col items-start">
@@ -341,7 +347,9 @@ const ContentEditAlamatSeller = () => {
                   <span className="flex items-center justify-start rounded-md ring-1 ring-gray p-5 w-full ring-opacity-50 focus:ring-gray">
                     <textarea
                       placeholder={updatedAlamat.nama_alamat || ""}
-                      className="font-inter font-medium focus:outline-none text-[12px] md:text-[16px] lg:text-[24px] h-[67px] lg:h-[189px] resize-none w-[325px] md:w-[627px] lg:w-[862px] 2xl:w-[1850px]"
+                      className={
+                        "font-inter font-medium text-[0.8rem] md:text-[16px] lg:text-[26px] focus:outline-none w-[80vw] md:w-[78vw] lg:w-[84vw] xl:w-[88vw] 2xl:w-[87vw]"
+                      }
                       name="nama_alamat"
                       value={updatedAlamat.nama_alamat || ""}
                       onChange={handleInputChange}

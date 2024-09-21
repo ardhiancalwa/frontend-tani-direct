@@ -28,7 +28,7 @@ const ContainerRiwayatPesanan = ({ products }) => {
           <div className="flex flex-col py-1 md:py-2">
             <div className="flex flex-row items-end pb-1 md:pb-2">
               <img
-                src={`${imageUrl}${products.image_produk}`}
+                src={`${imageUrl}${products.image_produk[0]}`}
                 className="w-[110px] h-[90px] md:w-[160px] md:h-[120px] lg:w-[235px] lg:h-[186px] 2xl:w-[270px] 2xl:h-[200px] shadow-sm rounded-lg object-cover"
                 alt="image_produk"
               />

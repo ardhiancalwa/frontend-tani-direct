@@ -62,30 +62,29 @@ const DetailImage = () => {
 
   return (
     <div>
-      <div className="h-[10px] lg:h-[25px]"></div>
-      <div className="relative flex items-center ">
+      <div className="relative flex items-center mt-[1vw] ">
         <div className="pb-1">
           <button
             onClick={LeftArrow}
-            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-l-xl"
+            className="bg-greenLight h-[15vw] md:h-[10vw]  lg:h-[8vw] xl:h-[6.5vw] 2xl:h-[7vw] rounded-l-lg"
           >
             <img
               src={SlideLeft}
-              className="w-10 h-10 md:w-7 md:h-7 opacity-50 hover:opacity-100"
+              className="w-[8vw] h-[8vw] md:w-7 md:h-7 opacity-50 hover:opacity-100"
               alt=""
             />
           </button>
         </div>
         <div
           id="slider"
-          className="w-[600px] md:w-[350px] 2xl:w-[745px] h-full overflow-x-scroll scroll whitespace-nowrap  scroll-smooth scrollbar-hide"
+          className="w-[110vw] md:w-[40vw] 2xl:w-[745px] h-full overflow-x-scroll scroll whitespace-nowrap  scroll-smooth scrollbar-hide"
         >
           {images.length > 0 ? (
             images.map((image, index) => (
               <div key={index} className="inline-block p-2">
                 <img
                   src={`${imageUrl}${image}`} // Pastikan image adalah string URL yang benar
-                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-[80px] h-[70px] lg:w-[80px] lg:h-[80px] 2xl:w-[170px] 2xl:h-[170px]"
+                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-full h-[15.5vw] md:w-[18vw] md:h-[10vw] lg:w-[12vw] lg:h-[7.85vw] xl:w-[12vw] xl:h-[6.5vw] 2xl:w-[14vw] 2xl:h-[7vw]"
                   alt={product.nama_produk}
                 />
               </div>
@@ -97,11 +96,11 @@ const DetailImage = () => {
         <div className="pb-1">
           <button
             onClick={RightArrow}
-            className="bg-greenLight h-[75px] lg:h-[85px] 2xl:h-[176px] rounded-r-md"
+            className="bg-greenLight h-[15vw] md:h-[10vw] lg:h-[8vw] xl:h-[6.5vw] 2xl:h-[7vw] rounded-r-lg"
           >
             <img
               src={SlideRight}
-              className="w-10 h-10 md:w-7 md:h-7 opacity-80 hover:opacity-100"
+              className="w-[8vw] h-[8vw] md:w-7 md:h-7 opacity-80 hover:opacity-100"
               alt=""
             />
           </button>

@@ -152,7 +152,7 @@ const PembeliLoginPage = () => {
       <div className="hidden lg:flex items-center">
         <img
           src={LoginImage}
-          className="lg:w-[45vw] lg:h-[45vw] xl:w-[45vw] xl:h-[45vw] 2xl:w-[25vw] 2xl:h-[25vw] 2xl:mx-[8vw]"
+          className="lg:w-[45vw] lg:h-[37vw] xl:w-[40vw] xl:h-[33vw] 2xl:w-[25vw] 2xl:h-[18vw] 2xl:mx-[8vw]"
           alt="login-image"
         />
       </div>
@@ -210,7 +210,7 @@ const PembeliLoginPage = () => {
               <div className="md:flex lg:hidden md:justify-center items-center my-6 md:my-10 ">
                 <img
                   src={LoginImage}
-                  className="w-[65vw] h-[65vw] md:w-[50vw] md:h-[50vw]"
+                  className="w-[65vw] h-[58vw] md:w-[50vw] md:h-[43vw]"
                   alt="login-image"
                 />
               </div>
@@ -372,7 +372,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setNama(e.target.value)}
                   placeholder={"Full Name"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5 2xl:pl-10"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -383,7 +383,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setEmailRegis(e.target.value)}
                   placeholder={"Email"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5 2xl:pl-10"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -394,7 +394,7 @@ const PembeliLoginPage = () => {
                   onChange={(e) => setNoHp(e.target.value)}
                   placeholder={"Phone Number"}
                   className={
-                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5"
+                    "w-[80vw] h-[10vw] md:w-[75vw] md:h-[10vw] lg:w-[45vw] lg:h-[6vw] 2xl:w-[35vw] 2xl:h-[3vw] border border-gray border-opacity-30 focus:outline-green-700 shadow-sm rounded-lg 2xl:rounded-xl font-inter font-semibold text-sm md:text-xl lg:text-xl xl:text-2xl pl-5 2xl:pl-10"
                   }
                 />
                 <div style={{ height: 15 }}></div>
@@ -485,7 +485,7 @@ const PembeliLoginPage = () => {
                         <span>Processing...</span>
                       </div>
                     ) : (
-                      "Login"
+                      "Register"
                     )}
                   </button>
                 </form>

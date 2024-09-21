@@ -10,11 +10,11 @@ const CardWishList = ({ product, onRemoveBookmark }) => {
   const imageUrl =
     "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
   return (
-    <div className="2xl:py-[25px] md:py-3 py-2">
+    <div className="2xl:py-[0.5vw] md:py-3 py-2">
       <div className="min-w-full w-[350px] h-[85px] md:w-[604px] md:h-[141px] lg:w-[900px] lg:h-[200px] 2xl:w-[1240px] 2xl:h-[260px] flex flex-row md:p-2 row-auto border border-gray border-opacity-50 rounded-md md:rounded-xl shadow-sm lg:shadow-md overflow-hidden">
         <div className="flex items-center px-[15px] py-[0px]">
           <img
-            src={`${imageUrl}${product.image_produk}`}
+            src={`${imageUrl}${product.image_produk[0]}`}
             alt="sayur"
             className="2xl:w-[350px] 2xl:h-[212px] rounded-md lg:w-[200px] lg:h-[150px] md:w-[170px] md:h-[105px] w-[85px] h-[62px] object-cover"
           />
