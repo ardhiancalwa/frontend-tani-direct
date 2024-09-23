@@ -87,19 +87,28 @@ const DetailProduct = () => {
   };
 
   const handleBuyClick = () => {
-    const checkedProducts =
-      JSON.parse(localStorage.getItem("checkedProducts")) || [];
-    const updatedProducts = [
-      ...checkedProducts,
-      {
-        ...product,
-        jumlah: quantity,
-        selectedWeight: selectedWeight,
-        calculatedPrice: calculatedPrice,
-      },
-    ];
-    localStorage.setItem("checkedProducts", JSON.stringify(updatedProducts));
-    window.location.href = "/userpayment";
+    const tokenPetani = cookies.get("token_petani"); // Memeriksa token petani
+    if (tokenPetani) {
+      // Jika user login sebagai petani, tampilkan toast
+      toast.error("Petani tidak bisa melakukan pembelian!", {
+        icon: "🚫",
+      });
+    } else {
+      // Jika user login sebagai pembeli, lanjutkan ke halaman pembayaran
+      const checkedProducts =
+        JSON.parse(localStorage.getItem("checkedProducts")) || [];
+      const updatedProducts = [
+        ...checkedProducts,
+        {
+          ...product,
+          jumlah: quantity,
+          selectedWeight: selectedWeight,
+          calculatedPrice: calculatedPrice,
+        },
+      ];
+      localStorage.setItem("checkedProducts", JSON.stringify(updatedProducts));
+      window.location.href = "/userpayment";
+    }
   };
 
   const handleWeightClick = (weight) => {
@@ -113,7 +122,7 @@ const DetailProduct = () => {
       {
         ...product,
         jumlah: quantity,
-        selectexdWeight: selectedWeight,
+        selectedWeight: selectedWeight,
         calculatedPrice: calculatedPrice,
       },
     ];

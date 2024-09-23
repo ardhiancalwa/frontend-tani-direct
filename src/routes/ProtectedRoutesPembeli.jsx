@@ -33,10 +33,7 @@ const ProtectedRoutesPembeli = [
   { path: "/editalamat", element: EditAlamat, allowedUserTypes: ["pembeli"] },
   { path: "/riwayatpesanan", element: RiwayatPesanan, allowedUserTypes: ["pembeli"] },
   { path: "/trackingorder", element: TrackingOrder, allowedUserTypes: ["pembeli"] },
-  { path: "/payment", element: Payment, allowedUserTypes: ["pembeli", "petani"] },
-  { path: "/pembayaran", element: PembayaranPage, allowedUserTypes: ["pembeli", "petani"] },
-  { path: "/success2", element: SuccessPayment, allowedUserTypes: ["pembeli", "petani"] },
-  { path: "/userpayment", element: UserPayment, allowedUserTypes: ["pembeli"] },
+  { path: "/userpayment", element: UserPayment, allowedUserTypes: ["pembeli", "petani"] },
   { path: "/success", element: AnimatedImages, allowedUserTypes: ["pembeli"] },
 ];
 

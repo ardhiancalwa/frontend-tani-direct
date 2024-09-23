@@ -8,8 +8,8 @@ const LoadingScreen = () => {
     // </div>
     <div>
       <div class="relative flex justify-center items-center h-[600px]">
-        <div class="absolute animate-spin rounded-full h-32 w-32 border-t-[4px] border-b-[4px] border-primary border-opacity-60"></div>
-        <img src={Logo} className="animate-pulse w-24 h-24" alt="logo" />
+        <div class="absolute animate-spin rounded-full h-20 w-20 lg:h-32 lg:w-32 border-t-[4px] border-b-[4px] border-primary border-opacity-60"></div>
+        <img src={Logo} className="animate-pulse h-16 w-16 lg:w-24 lg:h-24" alt="logo" />
       </div>
     </div>
   );

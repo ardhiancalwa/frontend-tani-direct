@@ -5,16 +5,25 @@ import ContentCart from "../sections/keranjang/contentCart";
 import FooterCart from "../sections/keranjang/footer";
 import toast from "react-hot-toast";
 
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
   const [totalItems, setTotalItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemToRemove, setItemToRemove] = useState(null);
+  const [isFarmer, setIsFarmer] = useState(false);
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cart);
+
+    const tokenPetani = cookies.get("token_petani");
+    if (tokenPetani) {
+      setIsFarmer(true); // jika token petani ada, user adalah petani
+    }
   }, []);
 
   const handleItemCheck = (productId, isChecked, itemPrice) => {
@@ -65,12 +74,15 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    const checkedProducts = cartItems.filter(
-      (item) => checkedItems[item.produkID]
-    );
-    localStorage.setItem("checkedProducts", JSON.stringify(checkedProducts));
-    // Redirect to payment page or perform any other actions
-    window.location.href = "/userpayment";
+    if (isFarmer) {
+      toast("Petani tidak bisa melakukan pembelian", { icon: "⚠️" }); // Tampilkan pesan toast jika user adalah petani
+    } else {
+      const checkedProducts = cartItems.filter(
+        (item) => checkedItems[item.produkID]
+      );
+      localStorage.setItem("checkedProducts", JSON.stringify(checkedProducts));
+      window.location.href = "/userpayment"; // Jika bukan petani, lanjut ke halaman pembayaran
+    }
   };
 
   const isAnyChecked = Object.values(checkedItems).some(

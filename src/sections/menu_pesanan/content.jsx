@@ -82,25 +82,27 @@ const ContentMenuPesanan = () => {
               + Add Your New Product
             </button>
           </div>
-          <div className="overflow-x-auto pt-0 md:pt-[20px] md:py-0">
+          <div className="overflow-x-auto">
             <table className="w-full text-xl font-inter text-black">
-              <thead className=" ">
+              <thead>
                 <tr className="text-[10px] md:text-[16px] lg:text-2xl font-bold bg-greenLight bg-opacity-70">
                   <th
                     scope="col"
-                    className=" px-3 md:px-6  py-3 text-left rounded-s-lg"
+                    className="w-[300px] px-3 md:px-6 py-3 text-left rounded-s-lg"
                   >
                     Nama Produk
                   </th>
-                  <th className=" px-3 md:px-6 py-3 ">Harga</th>
-                  <th className=" px-3 md:px-6  py-3 ">Stok</th>
-                  <th className=" px-3 md:px-6 py-3 rounded-e-lg">Penjualan</th>
+                  <th className="w-[150px] px-3 md:px-6 py-3">Harga</th>
+                  <th className="w-[100px] px-3 md:px-6 py-3">Stok</th>
+                  <th className="w-[150px] px-3 md:px-6 py-3 rounded-e-lg">
+                    Penjualan
+                  </th>
                 </tr>
               </thead>
-              <tbody className="font-inter font-medium text-black text-[10px] md:text-[16px] lg:text-[20px] ">
+              <tbody className="font-inter font-medium text-black text-[10px] md:text-[16px] lg:text-[20px]">
                 {products.map((product, index) => (
                   <tr key={product.produkID} className="border-b">
-                    <td className=" px-3 md:px-6  py-4 flex items-center">
+                    <td className="w-[300px] px-3 md:px-6 py-4 flex items-center">
                       <button
                         className={`border w-[14px] h-[14px] md:w-6 md:h-6 border-gray rounded-sm lg:rounded-sm flex items-center justify-center ${
                           isChecked ? "bg-none" : ""
@@ -113,7 +115,7 @@ const ContentMenuPesanan = () => {
                           ""
                         )}
                       </button>
-                      <div className="w-[5px] md:w-[15px]"></div>
+                      <div className="w-[10px] md:w-[15px]"></div>
                       <img
                         src={`${imageUrl}${product.image_produk[0]}`}
                         alt="bayam"
@@ -121,18 +123,21 @@ const ContentMenuPesanan = () => {
                       />
                       <div>{product.nama_produk}</div>
                     </td>
-                    <td className=" px-3 md:px-6  py-4">
-                      Rp {product.harga.toLocaleString("id-ID")} - Rp {(product.harga * 1.75).toLocaleString("id-ID")}
+                    <td className="w-full px-3 md:px-6 py-4">
+                      Rp {product.harga.toLocaleString("id-ID")}
                     </td>
-                    <td className=" px-3 md:px-6  py-4">
+                    <td className="w-[100px] px-3 md:px-6 py-4">
                       {product.jumlah_stok}
                     </td>
-                    <td className=" px-3 md:px-6  py-4">{product.totalSold}</td>
+                    <td className="w-[150px] px-3 md:px-6 py-4">
+                      {product.totalSold}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+
           <div className="h-[100px]"></div>
           <div className="fixed bottom-0 right-0 left-0 h-[45px] md:h-[60px] lg:h-[80px] w-full bg-neutral px-5 md:px-[50px] lg:px-[60px] 2xl:px-[100px]">
             <div className=" py-2 md:py-4 lg:py-5 border-t-2 border-gray">

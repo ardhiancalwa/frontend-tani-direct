@@ -242,22 +242,8 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                   onClick={() => (window.location.href = "/editprofiletoko")}
                 >
-                  <div
-                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
-                    >
+                  <div className="font-inter font-semibold text-black text-start lg:text-[1rem]">
                     Edit Profile
-                  </div>
-                </button>
-              </div>
-              <div className="py-1">
-                <button
-                  className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
-                  onClick={() => (window.location.href = "/menupesanan")}
-                >
-                  <div
-                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
-                    >
-                    Menu Pesanan
                   </div>
                 </button>
               </div>
@@ -267,10 +253,28 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   // onClick={openModalAddress}
                   onClick={() => (window.location.href = "/editalamatseller")}
                 >
-                  <div
-                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
-                    >
+                  <div className="font-inter font-semibold text-black text-start lg:text-[1rem]">
                     Edit Alamat
+                  </div>
+                </button>
+              </div>
+              <div className="py-1">
+                <button
+                  className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                  onClick={() => (window.location.href = "/myproduct")}
+                >
+                  <div className="font-inter font-semibold text-black text-start lg:text-[1rem]">
+                    My Product
+                  </div>
+                </button>
+              </div>
+              <div className="py-1">
+                <button
+                  className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
+                  onClick={() => (window.location.href = "/menupesanan")}
+                >
+                  <div className="font-inter font-semibold text-black text-start lg:text-[1rem]">
+                    Menu Pesanan
                   </div>
                 </button>
               </div>
@@ -279,9 +283,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   className="flex items-center w-full justify-center py-2 border border-black rounded-lg transition duration-300 ease-in-out hover:bg-gray-100 hover:scale-[1.02] active:bg-gray active:bg-opacity-10 active:scale-100"
                   onClick={() => (window.location.href = "/historytransaction")}
                 >
-                  <div
-                      className="font-inter font-semibold text-black text-start lg:text-[1rem]"
-                    >
+                  <div className="font-inter font-semibold text-black text-start lg:text-[1rem]">
                     History Transaction
                   </div>
                 </button>
@@ -529,6 +531,28 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   </button>
                   <button
                     className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
+                    onClick={() => (window.location.href = "/editalamatseller")}
+                  >
+                    <div className="flex flex-row">
+                      <img src={UserIcon} alt="user" />
+                      <div className="w-[10px]"></div>
+                      <div>Edit Alamat</div>
+                    </div>
+                    <img src={NextIcon} alt="next" />
+                  </button>
+                  <button
+                    className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
+                    onClick={() => (window.location.href = "/myproduct")}
+                  >
+                    <div className="flex flex-row">
+                      <img src={HomeIcon} alt="user" />
+                      <div className="w-[10px]"></div>
+                      <div className="md:text-[16px]">My Product</div>
+                    </div>
+                    <img src={NextIcon} alt="next" />
+                  </button>
+                  <button
+                    className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
                     onClick={() => (window.location.href = "/menupesanan")}
                   >
                     <div className="flex flex-row">
@@ -540,47 +564,12 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
                   </button>
                   <button
                     className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
-                    onClick={openModalAddress}
-                  >
-                    <div className="flex flex-row">
-                      <img src={TruckIcon} alt="user" />
-                      <div className="w-[10px]"></div>
-                      <div className="md:text-[16px]">Edit Lokasi Produk</div>
-                    </div>
-                    <img src={NextIcon} alt="next" />
-                  </button>
-                  <button
-                    className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
-                    onClick={() => (window.location.href = "/myproduct")}
-                  >
-                    <div className="flex flex-row">
-                      <img src={HistoryIcon} alt="user" />
-                      <div className="w-[10px]"></div>
-                      <div className="md:text-[16px]">My Product</div>
-                    </div>
-                    <img src={NextIcon} alt="next" />
-                  </button>
-                  <button
-                    className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
-                    onClick={() => (window.location.href = "/informasiproduct")}
-                  >
-                    <div className="flex flex-row">
-                      <img src={HistoryIcon} alt="user" />
-                      <div className="w-[10px]"></div>
-                      <div className="md:text-[16px]">
-                        Information of product
-                      </div>
-                    </div>
-                    <img src={NextIcon} alt="next" />
-                  </button>
-                  <button
-                    className="flex flex-row w-full justify-between border-b-[1px] py-[10px] px-[15px]"
                     onClick={() =>
                       (window.location.href = "/historytransaction")
                     }
                   >
                     <div className="flex flex-row">
-                      <img src={HistoryIcon} alt="user" />
+                      <img src={HomeIcon} alt="user" />
                       <div className="w-[10px]"></div>
                       <div className="md:text-[16px]">History Transaction</div>
                     </div>
