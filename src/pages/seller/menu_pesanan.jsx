@@ -7,7 +7,7 @@ import Header from "../../components/common/header";
 
 const MenuPesanan = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[40px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px]">
+    <div className="max-w-screen-sm md:max-w-full px-[20px] md:px-[50px] lg:px-[60px] xl:px-[60px] 2xl:px-[102px]">
       <Navbar />
       <Header title={"Order Menu"} onClick={() => window.history.back()} />
       <ContentMenuPesanan />
