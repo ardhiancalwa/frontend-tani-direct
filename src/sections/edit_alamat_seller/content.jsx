@@ -207,7 +207,7 @@ const ContentEditAlamatSeller = () => {
           <LoadingScreen />
         </div>
       ) : (
-        <div>
+        <div className="w-full mt-16 md:mt-30 lg:mt-28">
           <div className="h-[20px] lg:h-10"></div>
           <div className="w-full">
             <TextfieldProfile

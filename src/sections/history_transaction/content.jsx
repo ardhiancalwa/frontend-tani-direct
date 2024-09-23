@@ -9,7 +9,7 @@ const ContentHistoryTransaction = ({ transaksi }) => {
     return `${year}-${month}-${day}`;
   };
   return (
-    <div>
+    <div className="mt-14 md:mt-24 lg:mt-20 ">
       <div className="overflow-x-auto py-4 md:py-10">
         <table className="w-full text-xl font-inter text-black">
           <thead className=" ">
