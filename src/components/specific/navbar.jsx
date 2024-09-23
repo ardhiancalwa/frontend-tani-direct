@@ -11,7 +11,6 @@ const Navbar = ({ className }) => {
   const tokenPetani = cookies.get("token_petani");
 
   useEffect(() => {
-    // Mendapatkan data keranjang dari localStorage dan memperbarui jumlah item
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItemCount(cart.length);
   }, []);
@@ -28,7 +27,7 @@ const Navbar = ({ className }) => {
 
   return (
     <div className="flex  w-full lg:flex-row justify-center">
-      <nav className={`bg-white fixed w-full  ${className} z-50 border-black border-opacity-20 px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw]`}>
+      <nav className={`bg-white fixed w-full ${className} z-50 border-black border-opacity-20 px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw]`}>
         <div className=" flex row-auto py-2 md:py-4 items-center justify-between md:border-b border-gray ">
           <a href={"/home"}>
             <div className="text-black w-[40px] h-[23px] md:w-[100px] md:h-[56px] hover:scale-105 active:scale-100 font-semibold font-inter">

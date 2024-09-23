@@ -16,7 +16,7 @@ const CardMyProduct = ({ product }) => {
       <div className="min-w-full flex flex-row row-automd:p-2 lg:pb-4 ">
         <div className="flex items-center">
           <img
-            src={`${imageUrl}${product.image_produk}`}
+            src={`${imageUrl}${product.image_produk[0]}`}
             className="lg:w-[350px] lg:border border-gray border-opacity-30 rounded-xl lg:h-[212px] md:w-[250px] md:h-[150px] w-[150px] h-[100px] object-cover"
             alt="sayur"
           />

@@ -130,7 +130,7 @@ const ContentUserPayment = () => {
 
   const calculateSubtotal = () => {
     return checkedProducts.reduce(
-      (total, product) => total + product.calculatedPrice * product.jumlah,
+      (total, product) => total + (product.calculatedPrice * product.jumlah),
       0
     );
   };
@@ -205,11 +205,11 @@ const ContentUserPayment = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="py-8 border-b border-gray border-opacity-30">
-        <div className="w-full h-auto bg-greenLight rounded-2xl">
-          <div className="flex flex-row items-center p-6">
-            <div className="flex flex-col w-full text-start">
-              <div className="text-[22px] font-semibold font-inter">
+      <div className="py-3 border-b border-gray border-opacity-30">
+        <div className="w-full h-auto bg-greenLight rounded-md">
+          <div className="flex flex-row items-center p-2 xl:p-4 2xl:p-6">
+            <div className="flex flex-col text-start w-full">
+              <div className="text-[0.8rem] md:text-[1.2rem] lg:text-[1rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-semibold font-inter">
                 Delivery Address
               </div>
               <div>
@@ -219,28 +219,28 @@ const ContentUserPayment = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className="text-[20px] font-medium font-inter">
+                    <div className="text-[1rem] xl:text-[1rem] 2xl:text-[1.1rem] font-medium font-inter">
                       {pembeli.nama_pembeli}
                     </div>
-                    <div className="text-[20px] font-medium font-inter">
+                    <div className="text-[0.8rem] xl:text-[1rem] 2xl:text-[1.1rem] font-medium font-inter">
                       {pembeli.kontak_pembeli}
                     </div>
-                    <div className="text-[20px] font-medium font-inter">
+                    <div className="text-[0.8rem] xl:text-[1rem] 2xl:text-[1.1rem] font-medium font-inter">
                       {`${pembeli.nama_alamat}, ${pembeli.detail_alamat}, ${pembeli.kecamatan}, ${pembeli.kota}, ${pembeli.provinsi}`}
                     </div>
                   </div>
                 )}
               </div>
             </div>
-            <button onClick={() => (window.location.href = "/editalamat")}>
-              <img src={EditAddressIcon} alt="edit alamat" />
+            <button className="px-3" onClick={() => (window.location.href = "/editalamat")}>
+              <img src={EditAddressIcon} className="w-[5vw] h-[5vw] md:w-[3vw] md:h-[3vw] lg:w-[2vw] lg:h-[2vw] xl:w-[2vw] xl:h-[2vw] 2xl:w-[1.8vw] 2xl:h-[1.8vw] " alt="edit alamat" />
             </button>
           </div>
         </div>
       </div>
       <div>
         <div
-          className={`overflow-auto py-6 ${containerHeight}`}
+          className={`overflow-auto py-2 ${containerHeight}`}
           style={{
             overflowY: "scroll",
             scrollbarWidth: "none",
@@ -263,16 +263,16 @@ const ContentUserPayment = () => {
       </div>
       <div className="flex flex-row">
         <div className="flex flex-col items-start lg:pb-[290px] w-full">
-          <div className="font-inter font-bold text-black text-[16px] md:text-[22px]">
+          <div className="py-2 font-inter font-bold text-black text-[1rem] md:text-[1.2rem] lg:text-[1.2rem] 2xl:text-[1.5rem]">
             Pilih Pengiriman
           </div>
           <div className="flex flex-col items-start">
-            <div className="relative w-[350px] md:w-[583px] lg:w-[740px] 2xl:w-[88vw] ">
+            <div className="relative w-full md:w-[84vw] lg:w-[88vw] 2xl:w-[89vw] ">
               <div
-                className="flex flex-row justify-between h-[44px] md:h-[58px] items-center border border-gray-300 border-opacity-50 rounded-xl px-5 cursor-pointer"
+                className="flex flex-row justify-between h-[8vw] md:h-[6vw] lg:h-[5vw] 2xl:h-[4vw] items-center border border-gray-300 border-opacity-50 rounded-md px-5 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <div className="w-80 h-18 flex items-center font-medium font-inter text-xl">
+                <div className="w-80 h-10 flex items-center font-medium font-inter text-[1rem] md:text-[1rem] 2xl:text-[1.2rem]">
                   {selectedOption.label}
                 </div>
                 {isOpen ? (
@@ -290,20 +290,20 @@ const ContentUserPayment = () => {
                 )}
               </div>
               {isOpen && (
-                <div className="absolute w-full mt-3 bg-white border border-gray-300 rounded-xl font-inter shadow-lg z-10 max-h-96  overflow-y-auto">
+                <div className="absolute w-full mt-3 bg-white border border-gray-300 rounded-md font-inter shadow-lg z-10 max-h-96 overflow-y-auto">
                   {options.map((option) => (
                     <div
                       key={option.value}
-                      className="p-4 hover:bg-gray-200 cursor-pointer hover:bg-greenLight border-b-2 border-gray px-5 border-opacity-10 text-[14px] lg:text-[20px]"
+                      className="p-4 hover:bg-gray-200 cursor-pointer hover:bg-greenLight border-b-2 border-gray px-5 border-opacity-10 text-[1rem] lg:text-[20px]"
                       onClick={() => handleOptionClick(option)}
                     >
-                      <div className="flex flex-row justify-between font-inter font-semibold text-black text-[14px] md:text-[20px]">
+                      <div className="flex flex-row justify-between font-inter font-semibold text-black text-[0.8rem] md:text-[1rem]">
                         <div>{option.label}</div>
-                        <div className="flex flex-row">
-                          <div className="ml-2">
+                        <div className="flex flex-row items-center">
+                          <div className="text-[0.8rem] md:text-[0.8rem] lg:text-[1rem]">
                             Rp {option.price.toLocaleString("id-ID")}
                           </div>
-                          <div className="ml-2 line-through text-gray text-opacity-30 text-[14px] lg:text-[20px]">
+                          <div className="ml-1 line-through text-gray text-opacity-30 text-[0.5rem] md:text-[0.6rem] lg:text-[0.8rem]">
                             Rp {(option.price + 20000).toLocaleString("id-ID")}
                           </div>
                         </div>
@@ -317,28 +317,28 @@ const ContentUserPayment = () => {
         </div>
       </div>
       <div className="  border-t border-gray border-opacity-30 py-6">
-        <div className="flex flex-col px-6 py-4 bg-gray bg-opacity-20 rounded-2xl text-start">
-          <div className="font-inter font-semibold text-[22px]">
+        <div className="flex flex-col p-3 bg-gray bg-opacity-20 rounded-md text-start">
+          <div className="font-inter font-semibold text-[1.2rem] md:text-[1.2rem]">
             Rincian Pembayaran
           </div>
           <div className="h-5"></div>
-          <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-gray text-opacity-50">
+          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-gray text-opacity-50">
             <div>Subtotal untuk Produk</div>
             <div>Rp {subtotal.toLocaleString("id-ID")}</div>
           </div>
-          <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-gray text-opacity-50">
+          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-gray text-opacity-50">
             <div>Subtotal Pengiriman</div>
-            <div>Rp {totalShippingCost.toLocaleString("id-ID")}</div>
+            <div>Rp {selectedOption.price.toLocaleString("id-ID")}</div>
           </div>
-          <div className="flex flex-row w-full justify-between font-inter font-medium text-[20px] text-black">
+          <div className="flex flex-row justify-between font-inter font-medium text-[1rem] text-black">
             <div>Total Pembayaran</div>
             <div>Rp {totalPayment.toLocaleString("id-ID")}</div>
           </div>
         </div>
       </div>
-      <div className="py-10 px-[400px]">
+      <div className="py-4">
         <button
-          className="w-full h-auto py-4 rounded-2xl bg-primary text-white font-inter font-semibold text-[20px]"
+          className="w-full h-auto py-2 rounded-md bg-primary text-white font-inter font-semibold text-[1rem]"
           onClick={handlePayment}
         >
           Buat Pesanan
