@@ -58,7 +58,7 @@ const SearchBar = ({ setProducts }) => {
     <div className="flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="w-[55vw] h-[8vw] md:w-[45vw] md:h-[5.6vw] lg:w-[60vw] lg:h-[58px] flex items-center"
+        className="w-[55vw] h-[8vw] md:w-[45vw] md:h-[5.6vw] lg:w-[60vw] lg:h-[2.5vw] flex items-center"
       >
         <span className="flex items-center justify-center w-full h-full rounded-md lg:rounded-xl ring-[1px] ring-gray ring-opacity-40 pl-5 pr-5 transition-all duration-300 ease-in-out focus-within:ring-opacity-100 hover:ring-opacity-100 hover:ring-gray-700">
           <input
@@ -66,7 +66,7 @@ const SearchBar = ({ setProducts }) => {
             placeholder="Search"
             value={searchTerm}
             onChange={handleInputChange}
-            className="flex-1 px-4 py-2 font-medium text-black text-[12px] md:text-[16px] lg:text-[20px] font-inter rounded-md focus:outline-none placeholder-black"
+            className="flex-1 px-4 font-medium text-black text-[12px] md:text-[16px] lg:text-[20px] font-inter rounded-md focus:outline-none placeholder-black"
           />
           <img
             src={SearchIcon}

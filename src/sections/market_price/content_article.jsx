@@ -43,7 +43,7 @@ const ContentArticle = () => {
   }, []);
 
   return (
-    <div className="lg:px-1">
+    <div className="lg:px-1 mt-10 md:mt-24 2xl:mt-28">
       {loading ? (
         <div>
           <LoadingScreen />

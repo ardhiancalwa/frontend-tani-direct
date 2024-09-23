@@ -13,23 +13,8 @@ const HeaderMarketPrice = () => {
   }, []);
 
   return (
-    <div className="mt-[3vw] md:mt-[8.5vw] lg:mt-[4vw] xl:mt-[2.5vw] 2xl:mt-[2.5vw]">
+    <div className="mt-[3vw] md:mt-[8.5vw] lg:mt-[3.5vw] xl:mt-[2.5vw] 2xl:mt-[2vw] py-2 fixed bg-white w-full">
       <div className="flex flex-row row-auto items-center">
-        {loading ? (
-          <Skeleton className="w-6 h-6 lg:w-10 lg:h-10 rounded-full" />
-        ) : (
-          <button
-            className="flex items-center justify-center"
-            onClick={() => window.history.back()}
-          >
-            <img
-              src={ArrowBack}
-              className="w-5 h-5 lg:w-[45px] lg:h-[45px]"
-              alt="arrow back"
-            />
-          </button>
-        )}
-        <div className="w-2 lg:w-4"></div>
         {loading ? (
           <div>
             <Skeleton className="h-6 w-36 mb-2" />

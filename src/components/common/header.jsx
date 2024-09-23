@@ -4,7 +4,7 @@ import ArrowBack from "../../assets/images/arrow_back3.svg";
 
 const Header = ({ onClick, title }) => {
   return (
-    <div className="mt-[3vw] md:mt-[8.5vw] lg:mt-[4vw] xl:mt-[2.5vw] 2xl:mt-[2vw]">
+    <div className="mt-[3vw] w-full md:mt-[8.5vw] lg:mt-[4vw] xl:mt-[2.5vw] 2xl:mt-[2vw] fixed bg-white z-50">
       <div className="flex flex-row row-auto items-center py-3">
         <button className="flex items-center justify-center active:scale-95" onClick={onClick}>
           <img

@@ -204,9 +204,9 @@ const ContentUserPayment = () => {
   }; 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-28">
       <div className="py-3 border-b border-gray border-opacity-30">
-        <div className="w-full h-auto bg-greenLight rounded-md">
+        <div className="w-full h-auto bg-greenLight bg-opacity-40 rounded-md">
           <div className="flex flex-row items-center p-2 xl:p-4 2xl:p-6">
             <div className="flex flex-col text-start w-full">
               <div className="text-[0.8rem] md:text-[1.2rem] lg:text-[1rem] xl:text-[1.4rem] 2xl:text-[1.5rem] font-semibold font-inter">
@@ -317,16 +317,16 @@ const ContentUserPayment = () => {
         </div>
       </div>
       <div className="  border-t border-gray border-opacity-30 py-6">
-        <div className="flex flex-col p-3 bg-gray bg-opacity-20 rounded-md text-start">
+        <div className="flex flex-col p-3 bg-gray bg-opacity-10 rounded-md text-start">
           <div className="font-inter font-semibold text-[1.2rem] md:text-[1.2rem]">
             Rincian Pembayaran
           </div>
           <div className="h-5"></div>
-          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-gray text-opacity-50">
+          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-black text-opacity-80">
             <div>Subtotal untuk Produk</div>
             <div>Rp {subtotal.toLocaleString("id-ID")}</div>
           </div>
-          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-gray text-opacity-50">
+          <div className="flex flex-row w-full justify-between font-inter font-medium text-[1rem] text-black text-opacity-80">
             <div>Subtotal Pengiriman</div>
             <div>Rp {selectedOption.price.toLocaleString("id-ID")}</div>
           </div>

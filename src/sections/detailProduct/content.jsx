@@ -37,7 +37,7 @@ const ContentDetailProduct = ({
 
   return (
     <div key={product.produkID}>
-      <div className="flex flex-col md:flex-row row-auto">
+      <div className="flex flex-col md:flex-row row-auto mt-28">
         <div>
           {product.image_produk?.slice(0,1).map((image, index) => (
             <img

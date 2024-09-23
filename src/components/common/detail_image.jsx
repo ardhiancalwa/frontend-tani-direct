@@ -81,10 +81,10 @@ const DetailImage = () => {
         >
           {images.length > 0 ? (
             images.map((image, index) => (
-              <div key={index} className="inline-block p-2">
+              <div key={index} className="inline-block p-2 md:p-1">
                 <img
                   src={`${imageUrl}${image}`} // Pastikan image adalah string URL yang benar
-                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-full h-[15.5vw] md:w-[18vw] md:h-[10vw] lg:w-[12vw] lg:h-[7.85vw] xl:w-[12vw] xl:h-[6.5vw] 2xl:w-[14vw] 2xl:h-[7vw]"
+                  className="border border-gray object-cover cursor-pointer border-opacity-30 shadow-md rounded-lg w-[15.5vw] h-[15.5vw] md:w-[10vw] md:h-[10vw] lg:w-[7.85vw] lg:h-[7.85vw] xl:w-[6.5vw] xl:h-[6.5vw] 2xl:w-[7vw] 2xl:h-[7vw]"
                   alt={product.nama_produk}
                 />
               </div>
@@ -94,7 +94,7 @@ const DetailImage = () => {
           )}
         </div>
         <div className="pb-1">
-          <button
+          <buttonus
             onClick={RightArrow}
             className="bg-greenLight h-[15vw] md:h-[10vw] lg:h-[8vw] xl:h-[6.5vw] 2xl:h-[7vw] rounded-r-lg"
           >
@@ -103,7 +103,7 @@ const DetailImage = () => {
               className="w-[8vw] h-[8vw] md:w-7 md:h-7 opacity-80 hover:opacity-100"
               alt=""
             />
-          </button>
+          </buttonus>
         </div>
       </div>
     </div>

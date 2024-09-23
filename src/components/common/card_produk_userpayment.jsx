@@ -37,12 +37,12 @@ const ProductCardUserPayment = ({
         </div>
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-start justify-start md:px-5 xl:px-10">
-            <div className="w-[15vw] md:w-[10vw] lg:w-[7.9vw] xl:w-[6.6vw] font-inter font-bold text-black md:text-primary text-[0.6rem] md:text-[0.8rem] xl:text-[1rem] 2xl:text-[1.2rem]">
+            <div className="w-[15vw] md:w-[10vw] lg:w-[7.9vw] xl:w-[6.6vw] font-inter font-bold text-black md:text-primary text-[0.6rem] md:text-[0.8rem] xl:text-[1rem] 2xl:text-[1rem]">
               {product.calculatedPrice !== undefined
                 ? `Rp ${(product.calculatedPrice * quantity).toLocaleString('id-ID')}`
                 : "Loading..."}
             </div>
-            <div className="hidden md:flex font-inter font-normal text-gray line-through text-[0.6rem] xl:text-[0.8rem] 2xl:text-[1rem]">
+            <div className="hidden md:flex font-inter font-normal text-gray line-through text-[0.6rem] xl:text-[0.8rem] 2xl:text-[0.8rem] ml-4">
               {product.calculatedPrice !== undefined
                 ? `Rp ${(
                     product.calculatedPrice * quantity +
