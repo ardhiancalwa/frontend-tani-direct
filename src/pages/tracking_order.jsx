@@ -7,7 +7,7 @@ import Header from "../components/common/header";
 
 const TrackingOrder = () => {
   return (
-    <div className="max-w-screen-sm md:max-w-full px-[10px] md:px-[50px] lg:px-[90px] xl:px-[90px] 2xl:px-[120px]">
+    <div className="max-w-screen-sm md:max-w-full px-[5vw] md:px-[8vw] lg:px-[6vw] xl:px-[5vw] 2xl:px-[5vw]">
       <Navbar />
       <Header title={"Tracking Order"} onClick={() => window.history.back()} />
       <ContentTrackingOrder />

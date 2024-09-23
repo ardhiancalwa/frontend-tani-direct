@@ -10,7 +10,7 @@ const CardWishList = ({ product, onRemoveBookmark }) => {
   const imageUrl =
     "https://res.cloudinary.com/dqj2k0khn/image/upload/v1722727432/";
   return (
-    <div className="2xl:py-[0.5vw] md:py-3 py-2">
+    <div className="2xl:py-[0.5vw] md:py-3 py-2 mt-28">
       <div className="min-w-full w-[350px] h-[85px] md:w-[604px] md:h-[141px] lg:w-[900px] lg:h-[200px] 2xl:w-[1240px] 2xl:h-[260px] flex flex-row md:p-2 row-auto border border-gray border-opacity-50 rounded-md md:rounded-xl shadow-sm lg:shadow-md overflow-hidden">
         <div className="flex items-center px-[15px] py-[0px]">
           <img

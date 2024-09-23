@@ -71,7 +71,7 @@ const CardProduct = ({ product }) => {
             />
             <span className="font-inter font-semibold ml-1 xl:ml-2 text-[0.5rem] md:text-[0.8rem] lg:text-[1rem] xl:text-[1.2rem]">
               <span className="text-yellow">4.9</span>
-              <span className="text-yellow ml-1">/ 5</span>
+              <span className="text-yellow ml-1">/ 5.0</span>
             </span>
           </div>
           <div className="flex flex-row justify-between items-center mt-[1vw] md:mt-[2vw] lg:py-[0.5vw] xl:py-[0.2vw] 2xl:py-[0.5vw]">

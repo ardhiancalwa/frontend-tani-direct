@@ -131,7 +131,7 @@ const ContentProfile = (profileData) => {
         </div>
       ) : (
         <div
-          className="lg:pl-[5vw] 2xl:px-[3vw] w-full  "
+          className="lg:pl-[5vw] 2xl:px-[3vw] w-full mt-16 md:mt-36 2xl:mt-28 "
           key={profileData.pembeliID}
         >
           <div className="flex flex-col lg:flex-row lg:gap-5 ">

@@ -3,7 +3,7 @@ import React from "react";
 const BlogArticle = ({ title, text, time }) => {
   return (
     <button
-      className="lg:pl-14 md:py-[14px] py-2 lg:py-2"
+      className=" md:py-[14px] py-2 lg:py-2"
       onClick={() => (window.location.href = "/marketprice/detailblog")}
     >
       <div className="flex flex-col items-start border-b-2 border-gray border-opacity-50 py-1">
