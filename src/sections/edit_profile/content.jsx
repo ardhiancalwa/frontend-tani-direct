@@ -252,7 +252,7 @@ const ContentEditProfile = () => {
           <LoadingScreen />
         </div>
       ) : (
-        <div className="inline-flex flex-col w-full">
+        <div className="inline-flex flex-col w-full mt-16 md:mt-30 2xl:mt-28">
           <div className="flex flex-col w-full justify-start items-start ">
             <div className="w-full">
               <TextfieldProfile

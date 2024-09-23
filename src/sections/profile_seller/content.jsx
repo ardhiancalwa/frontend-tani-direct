@@ -199,7 +199,7 @@ const ContentPetaniProfilePage = (profileDataPetani) => {
   };
 
   return (
-    <div className="lg:pl-16 2xl:px-5 w-full" key={profileDataPetani.petaniID}>
+    <div className="lg:pl-16 2xl:px-5 w-full mt-16 md:mt-36 2xl:mt-28 " key={profileDataPetani.petaniID}>
       {loading ? (
         <LoadingScreen />
       ) : (

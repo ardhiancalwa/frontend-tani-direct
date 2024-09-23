@@ -281,7 +281,7 @@ const ContentEditAlamat = () => {
         </div>
       ) : (
         <div>
-          <div className="w-full">
+          <div className="w-full mt-16 md:mt-30 lg:mt-28">
             <TextfieldProfile
               title="Nama Lengkap"
               placeholder={updatedAlamat.nama_pembeli || ""}

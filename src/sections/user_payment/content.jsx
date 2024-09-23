@@ -185,7 +185,7 @@ const ContentUserPayment = () => {
         onSuccess: async function (result) {
           toast.success("Payment successful! Please wait for confirmation.");
           // Transaksi dianggap berhasil di front-end, tapi status di backend di-update melalui notifikasi Midtrans
-          window.location.href = "/trackingorder";
+          window.location.href = "/home";
         },
         onPending: function () {
           toast("Waiting for payment confirmation", { icon: "🔃" });

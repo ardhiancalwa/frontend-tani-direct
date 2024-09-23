@@ -96,7 +96,7 @@ const ContentEditProfileToko = () => {
           <LoadingScreen />
         </div>
       ) : (
-        <div>
+        <div className="mt-16 md:mt-30 2xl:mt-28">
           <div key={updatedProfile.petaniID}>``
             <TextfieldProfile
               title={"Nama Toko"}

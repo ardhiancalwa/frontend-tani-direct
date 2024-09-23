@@ -64,7 +64,7 @@ const MyProduct = () => {
       {loading ? (
         <LoadingScreen />
       ) : (
-        <div>
+        <div className="mt-10 md:mt-24">
           {product.map((item) => (
             <CardMyProduct key={item.produkID} product={item} />
           ))}
